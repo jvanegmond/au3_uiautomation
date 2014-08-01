@@ -829,3 +829,167 @@ Global $dtagIUIAutomation = "CompareElements hresult(ptr;ptr;long*);" & _
 "ReservedMixedAttributeValue hresult(ptr*);" & _
 "ElementFromIAccessible hresult(idispatch;int;ptr*);" & _
 "ElementFromIAccessibleBuildCache hresult(iaccessible;int;ptr;ptr*);"
+
+
+Local $UIA_propertiesSupportedArray[115][2] = [ _
+		["title", $UIA_NamePropertyId], _
+		["class", $UIA_ClassNamePropertyId], _
+		["iaccessiblevalue", $UIA_LegacyIAccessibleValuePropertyId], _
+		["iaccessiblechildId", $UIA_LegacyIAccessibleChildIdPropertyId], _
+		["RuntimeId", $UIA_RuntimeIdPropertyId], _
+		["BoundingRectangle", $UIA_BoundingRectanglePropertyId], _
+		["ProcessId", $UIA_ProcessIdPropertyId], _
+		["ControlType", $UIA_ControlTypePropertyId], _
+		["LocalizedControlType", $UIA_LocalizedControlTypePropertyId], _
+		["Name", $UIA_NamePropertyId], _
+		["AcceleratorKey", $UIA_AcceleratorKeyPropertyId], _
+		["AccessKey", $UIA_AccessKeyPropertyId], _
+		["HasKeyboardFocus", $UIA_HasKeyboardFocusPropertyId], _
+		["IsKeyboardFocusable", $UIA_IsKeyboardFocusablePropertyId], _
+		["IsEnabled", $UIA_IsEnabledPropertyId], _
+		["AutomationId", $UIA_AutomationIdPropertyId], _
+		["ClassName", $UIA_ClassNamePropertyId], _
+		["HelpText", $UIA_HelpTextPropertyId], _
+		["ClickablePoint", $UIA_ClickablePointPropertyId], _
+		["Culture", $UIA_CulturePropertyId], _
+		["IsControlElement", $UIA_IsControlElementPropertyId], _
+		["IsContentElement", $UIA_IsContentElementPropertyId], _
+		["LabeledBy", $UIA_LabeledByPropertyId], _
+		["IsPassword", $UIA_IsPasswordPropertyId], _
+		["NativeWindowHandle", $UIA_NativeWindowHandlePropertyId], _
+		["ItemType", $UIA_ItemTypePropertyId], _
+		["IsOffscreen", $UIA_IsOffscreenPropertyId], _
+		["Orientation", $UIA_OrientationPropertyId], _
+		["FrameworkId", $UIA_FrameworkIdPropertyId], _
+		["IsRequiredForForm", $UIA_IsRequiredForFormPropertyId], _
+		["ItemStatus", $UIA_ItemStatusPropertyId], _
+		["IsDockPatternAvailable", $UIA_IsDockPatternAvailablePropertyId], _
+		["IsExpandCollapsePatternAvailable", $UIA_IsExpandCollapsePatternAvailablePropertyId], _
+		["IsGridItemPatternAvailable", $UIA_IsGridItemPatternAvailablePropertyId], _
+		["IsGridPatternAvailable", $UIA_IsGridPatternAvailablePropertyId], _
+		["IsInvokePatternAvailable", $UIA_IsInvokePatternAvailablePropertyId], _
+		["IsMultipleViewPatternAvailable", $UIA_IsMultipleViewPatternAvailablePropertyId], _
+		["IsRangeValuePatternAvailable", $UIA_IsRangeValuePatternAvailablePropertyId], _
+		["IsScrollPatternAvailable", $UIA_IsScrollPatternAvailablePropertyId], _
+		["IsScrollItemPatternAvailable", $UIA_IsScrollItemPatternAvailablePropertyId], _
+		["IsSelectionItemPatternAvailable", $UIA_IsSelectionItemPatternAvailablePropertyId], _
+		["IsSelectionPatternAvailable", $UIA_IsSelectionPatternAvailablePropertyId], _
+		["IsTablePatternAvailable", $UIA_IsTablePatternAvailablePropertyId], _
+		["IsTableItemPatternAvailable", $UIA_IsTableItemPatternAvailablePropertyId], _
+		["IsTextPatternAvailable", $UIA_IsTextPatternAvailablePropertyId], _
+		["IsTogglePatternAvailable", $UIA_IsTogglePatternAvailablePropertyId], _
+		["IsTransformPatternAvailable", $UIA_IsTransformPatternAvailablePropertyId], _
+		["IsValuePatternAvailable", $UIA_IsValuePatternAvailablePropertyId], _
+		["IsWindowPatternAvailable", $UIA_IsWindowPatternAvailablePropertyId], _
+		["ValueValue", $UIA_ValueValuePropertyId], _
+		["ValueIsReadOnly", $UIA_ValueIsReadOnlyPropertyId], _
+		["RangeValueValue", $UIA_RangeValueValuePropertyId], _
+		["RangeValueIsReadOnly", $UIA_RangeValueIsReadOnlyPropertyId], _
+		["RangeValueMinimum", $UIA_RangeValueMinimumPropertyId], _
+		["RangeValueMaximum", $UIA_RangeValueMaximumPropertyId], _
+		["RangeValueLargeChange", $UIA_RangeValueLargeChangePropertyId], _
+		["RangeValueSmallChange", $UIA_RangeValueSmallChangePropertyId], _
+		["ScrollHorizontalScrollPercent", $UIA_ScrollHorizontalScrollPercentPropertyId], _
+		["ScrollHorizontalViewSize", $UIA_ScrollHorizontalViewSizePropertyId], _
+		["ScrollVerticalScrollPercent", $UIA_ScrollVerticalScrollPercentPropertyId], _
+		["ScrollVerticalViewSize", $UIA_ScrollVerticalViewSizePropertyId], _
+		["ScrollHorizontallyScrollable", $UIA_ScrollHorizontallyScrollablePropertyId], _
+		["ScrollVerticallyScrollable", $UIA_ScrollVerticallyScrollablePropertyId], _
+		["SelectionSelection", $UIA_SelectionSelectionPropertyId], _
+		["SelectionCanSelectMultiple", $UIA_SelectionCanSelectMultiplePropertyId], _
+		["SelectionIsSelectionRequired", $UIA_SelectionIsSelectionRequiredPropertyId], _
+		["GridRowCount", $UIA_GridRowCountPropertyId], _
+		["GridColumnCount", $UIA_GridColumnCountPropertyId], _
+		["GridItemRow", $UIA_GridItemRowPropertyId], _
+		["GridItemColumn", $UIA_GridItemColumnPropertyId], _
+		["GridItemRowSpan", $UIA_GridItemRowSpanPropertyId], _
+		["GridItemColumnSpan", $UIA_GridItemColumnSpanPropertyId], _
+		["GridItemContainingGrid", $UIA_GridItemContainingGridPropertyId], _
+		["DockDockPosition", $UIA_DockDockPositionPropertyId], _
+		["ExpandCollapseExpandCollapseState", $UIA_ExpandCollapseExpandCollapseStatePropertyId], _
+		["MultipleViewCurrentView", $UIA_MultipleViewCurrentViewPropertyId], _
+		["MultipleViewSupportedViews", $UIA_MultipleViewSupportedViewsPropertyId], _
+		["WindowCanMaximize", $UIA_WindowCanMaximizePropertyId], _
+		["WindowCanMinimize", $UIA_WindowCanMinimizePropertyId], _
+		["WindowWindowVisualState", $UIA_WindowWindowVisualStatePropertyId], _
+		["WindowWindowInteractionState", $UIA_WindowWindowInteractionStatePropertyId], _
+		["WindowIsModal", $UIA_WindowIsModalPropertyId], _
+		["WindowIsTopmost", $UIA_WindowIsTopmostPropertyId], _
+		["SelectionItemIsSelected", $UIA_SelectionItemIsSelectedPropertyId], _
+		["SelectionItemSelectionContainer", $UIA_SelectionItemSelectionContainerPropertyId], _
+		["TableRowHeaders", $UIA_TableRowHeadersPropertyId], _
+		["TableColumnHeaders", $UIA_TableColumnHeadersPropertyId], _
+		["TableRowOrColumnMajor", $UIA_TableRowOrColumnMajorPropertyId], _
+		["TableItemRowHeaderItems", $UIA_TableItemRowHeaderItemsPropertyId], _
+		["TableItemColumnHeaderItems", $UIA_TableItemColumnHeaderItemsPropertyId], _
+		["ToggleToggleState", $UIA_ToggleToggleStatePropertyId], _
+		["TransformCanMove", $UIA_TransformCanMovePropertyId], _
+		["TransformCanResize", $UIA_TransformCanResizePropertyId], _
+		["TransformCanRotate", $UIA_TransformCanRotatePropertyId], _
+		["IsLegacyIAccessiblePatternAvailable", $UIA_IsLegacyIAccessiblePatternAvailablePropertyId], _
+		["LegacyIAccessibleChildId", $UIA_LegacyIAccessibleChildIdPropertyId], _
+		["LegacyIAccessibleName", $UIA_LegacyIAccessibleNamePropertyId], _
+		["LegacyIAccessibleValue", $UIA_LegacyIAccessibleValuePropertyId], _
+		["LegacyIAccessibleDescription", $UIA_LegacyIAccessibleDescriptionPropertyId], _
+		["LegacyIAccessibleRole", $UIA_LegacyIAccessibleRolePropertyId], _
+		["LegacyIAccessibleState", $UIA_LegacyIAccessibleStatePropertyId], _
+		["LegacyIAccessibleHelp", $UIA_LegacyIAccessibleHelpPropertyId], _
+		["LegacyIAccessibleKeyboardShortcut", $UIA_LegacyIAccessibleKeyboardShortcutPropertyId], _
+		["LegacyIAccessibleSelection", $UIA_LegacyIAccessibleSelectionPropertyId], _
+		["LegacyIAccessibleDefaultAction", $UIA_LegacyIAccessibleDefaultActionPropertyId], _
+		["AriaRole", $UIA_AriaRolePropertyId], _
+		["AriaProperties", $UIA_AriaPropertiesPropertyId], _
+		["IsDataValidForForm", $UIA_IsDataValidForFormPropertyId], _
+		["ControllerFor", $UIA_ControllerForPropertyId], _
+		["DescribedBy", $UIA_DescribedByPropertyId], _
+		["FlowsTo", $UIA_FlowsToPropertyId], _
+		["ProviderDescription", $UIA_ProviderDescriptionPropertyId], _
+		["IsItemContainerPatternAvailable", $UIA_IsItemContainerPatternAvailablePropertyId], _
+		["IsVirtualizedItemPatternAvailable", $UIA_IsVirtualizedItemPatternAvailablePropertyId], _
+		["IsSynchronizedInputPatternAvailable", $UIA_IsSynchronizedInputPatternAvailablePropertyId] _
+		]
+
+
+Local $UIA_ControlArray[41][3] = [ _
+		["UIA_AppBarControlTypeId", 50040, "Identifies the AppBar control type. Supported starting with Windows 8.1."], _
+		["UIA_ButtonControlTypeId", 50000, "Identifies the Button control type."], _
+		["UIA_CalendarControlTypeId", 50001, "Identifies the Calendar control type."], _
+		["UIA_CheckBoxControlTypeId", 50002, "Identifies the CheckBox control type."], _
+		["UIA_ComboBoxControlTypeId", 50003, "Identifies the ComboBox control type."], _
+		["UIA_CustomControlTypeId", 50025, "Identifies the Custom control type. For more information, see Custom Properties, Events, and Control Patterns."], _
+		["UIA_DataGridControlTypeId", 50028, "Identifies the DataGrid control type."], _
+		["UIA_DataItemControlTypeId", 50029, "Identifies the DataItem control type."], _
+		["UIA_DocumentControlTypeId", 50030, "Identifies the Document control type."], _
+		["UIA_EditControlTypeId", 50004, "Identifies the Edit control type."], _
+		["UIA_GroupControlTypeId", 50026, "Identifies the Group control type."], _
+		["UIA_HeaderControlTypeId", 50034, "Identifies the Header control type."], _
+		["UIA_HeaderItemControlTypeId", 50035, "Identifies the HeaderItem control type."], _
+		["UIA_HyperlinkControlTypeId", 50005, "Identifies the Hyperlink control type."], _
+		["UIA_ImageControlTypeId", 50006, "Identifies the Image control type."], _
+		["UIA_ListControlTypeId", 50008, "Identifies the List control type."], _
+		["UIA_ListItemControlTypeId", 50007, "Identifies the ListItem control type."], _
+		["UIA_MenuBarControlTypeId", 50010, "Identifies the MenuBar control type."], _
+		["UIA_MenuControlTypeId", 50009, "Identifies the Menu control type."], _
+		["UIA_MenuItemControlTypeId", 50011, "Identifies the MenuItem control type."], _
+		["UIA_PaneControlTypeId", 50033, "Identifies the Pane control type."], _
+		["UIA_ProgressBarControlTypeId", 50012, "Identifies the ProgressBar control type."], _
+		["UIA_RadioButtonControlTypeId", 50013, "Identifies the RadioButton control type."], _
+		["UIA_ScrollBarControlTypeId", 50014, "Identifies the ScrollBar control type."], _
+		["UIA_SemanticZoomControlTypeId", 50039, "Identifies the SemanticZoom control type. Supported starting with Windows 8."], _
+		["UIA_SeparatorControlTypeId", 50038, "Identifies the Separator control type."], _
+		["UIA_SliderControlTypeId", 50015, "Identifies the Slider control type."], _
+		["UIA_SpinnerControlTypeId", 50016, "Identifies the Spinner control type."], _
+		["UIA_SplitButtonControlTypeId", 50031, "Identifies the SplitButton control type."], _
+		["UIA_StatusBarControlTypeId", 50017, "Identifies the StatusBar control type."], _
+		["UIA_TabControlTypeId", 50018, "Identifies the Tab control type."], _
+		["UIA_TabItemControlTypeId", 50019, "Identifies the TabItem control type."], _
+		["UIA_TableControlTypeId", 50036, "Identifies the Table control type."], _
+		["UIA_TextControlTypeId", 50020, "Identifies the Text control type."], _
+		["UIA_ThumbControlTypeId", 50027, "Identifies the Thumb control type."], _
+		["UIA_TitleBarControlTypeId", 50037, "Identifies the TitleBar control type."], _
+		["UIA_ToolBarControlTypeId", 50021, "Identifies the ToolBar control type."], _
+		["UIA_ToolTipControlTypeId", 50022, "Identifies the ToolTip control type."], _
+		["UIA_TreeControlTypeId", 50023, "Identifies the Tree control type."], _
+		["UIA_TreeItemControlTypeId", 50024, "Identifies the TreeItem control type."], _
+		["UIA_WindowControlTypeId", 50032, "Identifies the Window control type."] _
+		]

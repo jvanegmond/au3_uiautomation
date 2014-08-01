@@ -9,7 +9,7 @@
 #include <WinAPI.au3>
 #include <debug.au3>
 ;~ #include "CUIAutomation2.au3"
-#include "UIAWrappers.au3"
+#include "..\UIAWrappers.au3"
 HotKeySet("{ESC}", "Terminate")
 
 ;~ Turn debugging UIA on by default, dumps most details to consolewindow for the moment, later will use a logfile

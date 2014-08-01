@@ -8,7 +8,7 @@
 ;~ then you have to fallback to mousemove, mouseclick functions of autoit or
 ;~ the sendinput function from microsoft (not declared in the standard autoit library)
 
-#include "UIAWrappers.au3"
+#include "..\UIAWrappers.au3"
 
 #AutoIt3Wrapper_UseX64=Y  ;Should be used for stuff like tagpoint having right struct etc. when running on a 64 bits os
 

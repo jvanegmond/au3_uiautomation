@@ -1,4 +1,4 @@
-#include "UIAWrappers.au3"
+#include "..\UIAWrappers.au3"
 
 #AutoIt3Wrapper_UseX64=N
 

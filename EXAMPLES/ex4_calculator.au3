@@ -12,7 +12,7 @@
 ;~ Focus of application is sometimes to be set (and sometimes not as you look on the clicking of the
 ;~ buttons it will even happen when there is a screen in front of the calculator)
 
-#include "UIAWrappers.au3"
+#include "..\UIAWrappers.au3"
 
 #AutoIt3Wrapper_UseX64=Y  ;Should be used for stuff like tagpoint having right struct etc. when running on a 64 bits os
 

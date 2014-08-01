@@ -3,7 +3,7 @@
 #include <GUIConstantsEx.au3>
 #include <WindowsConstants.au3>
 #include <WinAPI.au3>
-#include "UIAWrappers.au3"
+#include "..\UIAWrappers.au3"
 #include <Misc.au3>
 
 #AutoIt3Wrapper_UseX64=Y  ;Should be used for stuff like tagpoint having right struct etc. when running on a 64 bits os

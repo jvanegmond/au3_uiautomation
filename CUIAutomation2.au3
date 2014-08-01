@@ -612,8 +612,8 @@ Global $dtagIUIAutomationTogglePattern = "Toggle hresult();" & _
 "CachedToggleState hresult(long*);"
 
 Global Const $sIID_IUIAutomationTransformPattern="{A9B55844-A55D-4EF0-926D-569C16FF89BB}"
-Global $dtagIUIAutomationTransformPattern = "Move hresult(ushort;ushort);" & _
-"Resize hresult(ushort;ushort);" & _
+Global $dtagIUIAutomationTransformPattern = "Move hresult(double;double);" & _ ;~ fixed ushort to be double
+"Resize hresult(double;double);" & _ ;~ fixed ushort to be double
 "Rotate hresult(ushort);" & _
 "CurrentCanMove hresult(long*);" & _
 "CurrentCanResize hresult(long*);" & _

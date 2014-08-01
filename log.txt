@@ -1,0 +1,1236 @@
+20140513-211415285 Starting : C:\Windows\system32\calc.exe  from C:\Windows\system3220140513-211415555 _UIA_getObjectByFindAll processid:=54961
+20140513-211415557   _UIA_getObjectByFindAll processid:=5496
+20140513-211415559   adding index 8 name:processid value:5496
+20140513-211420473         j:0[30002][5496][3184]0
+20140513-211420478         j:0[30002][5496][5496]1
+20140513-211420606 Storing parent for found object in RTI as RTI.PARENT
+20140513-211420616 Starting : C:\Windows\system32\notepad.exe  from C:\Windows\system3220140513-211420895 _UIA_getObjectByFindAll processid:=38641
+20140513-211420899   _UIA_getObjectByFindAll processid:=3864
+20140513-211420902   adding index 8 name:processid value:3864
+20140513-211425473         j:0[30002][3864][3184]0
+20140513-211425479         j:0[30002][3864][3864]1
+20140513-211425607 Storing parent for found object in RTI as RTI.PARENT
+20140513-211425617 Starting : C:\Program Files (x86)\Microsoft Office\Office14\winword.exe  from C:\Program Files (x86)\Microsoft Office\Office1420140513-211425896 _UIA_getObjectByFindAll processid:=65961
+20140513-211425900   _UIA_getObjectByFindAll processid:=6596
+20140513-211425904   adding index 8 name:processid value:6596
+20140513-211430473         j:0[30002][6596][3184]0
+20140513-211430485         j:0[30002][6596][6596]1
+20140513-211430623 Storing parent for found object in RTI as RTI.PARENT
+20140513-211430633 _UIA_action: Finding object Word.Mainwindow
+20140513-211430637 find 1 classname:=OpusApp
+20140513-211430640 _UIA_getObjectByFindAll classname:=OpusApp1
+20140513-211430644   _UIA_getObjectByFindAll classname:=OpusApp
+20140513-211430647   adding index 3 name:classname value:OpusApp
+20140513-211435474         j:0[30012][OpusApp][#32769]0
+20140513-211435479         j:0[30012][OpusApp][Shell_TrayWnd]0
+20140513-211435488         j:0[30012][OpusApp][Button]0
+20140513-211435494         j:0[30012][OpusApp][TrayNotifyWnd]0
+20140513-211435500         j:0[30012][OpusApp][TrayClockWClass]0
+20140513-211435506         j:0[30012][OpusApp][TrayShowDesktopButtonWClass]0
+20140513-211435512         j:0[30012][OpusApp][SysPager]0
+20140513-211435517         j:0[30012][OpusApp][ToolbarWindow32]0
+20140513-211435528         j:0[30012][OpusApp][ToolbarWindow32]0
+20140513-211435532         j:0[30012][OpusApp][Button]0
+20140513-211435535         j:0[30012][OpusApp][ReBarWindow32]0
+20140513-211435539         j:0[30012][OpusApp][CiceroUIWndFrame]0
+20140513-211435544         j:0[30012][OpusApp][MSTaskSwWClass]0
+20140513-211435547         j:0[30012][OpusApp][MSTaskListWClass]0
+20140513-211435559         j:0[30012][OpusApp][OpusApp]1
+20140513-211435706 Storing parent for found object in RTI as RTI.PARENT
+20140513-211435711 Storing in RTI as RTI.Word.Mainwindow
+20140513-211435774 Action 1 setfocus on Word.Mainwindow
+20140513-211435978 _UIA_action: Finding object Word.btnBold
+20140513-211435982 _UIA_action: No RTI.SEARCHCONTEXT used for Word.btnBold
+20140513-211435986 _UIA_action: try for RTI.WORD.MAINWINDOW
+20140513-211435989 _UIA_action: Finding object Word.btnBold under RTI.WORD.MAINWINDOW
+20140513-211435993 find 2 name:=((Vet)|(Bold))
+20140513-211435997 _UIA_getObjectByFindAll name:=((Vet)|(Bold))1
+20140513-211436000   _UIA_getObjectByFindAll name:=((Vet)|(Bold))
+20140513-211436004   adding index 0 name:name value:((Vet)|(Bold))
+20140513-211436071         j:0[30005][((Vet)|(Bold))][Document1 - Microsoft Word]0
+20140513-211436074         j:0[30005][((Vet)|(Bold))][MsoDockTop]0
+20140513-211436078         j:0[30005][((Vet)|(Bold))][Ribbon]0
+20140513-211436081         j:0[30005][((Vet)|(Bold))][Ribbon]0
+20140513-211436085         j:0[30005][((Vet)|(Bold))][Ribbon]0
+20140513-211436088         j:0[30005][((Vet)|(Bold))][Werkbalk Snelle toegang]0
+20140513-211436091         j:0[30005][((Vet)|(Bold))][Opslaan]0
+20140513-211436093         j:0[30005][((Vet)|(Bold))][Ongedaan maken onmogelijk]0
+20140513-211436095         j:0[30005][((Vet)|(Bold))][Ongedaan maken onmogelijk]0
+20140513-211436098         j:0[30005][((Vet)|(Bold))][Ongedaan maken onmogelijk]0
+20140513-211436100         j:0[30005][((Vet)|(Bold))][Herhalen onmogelijk]0
+20140513-211436103         j:0[30005][((Vet)|(Bold))][Werkbalk aanpassen]0
+20140513-211436106         j:0[30005][((Vet)|(Bold))][Minimaliseren]0
+20140513-211436109         j:0[30005][((Vet)|(Bold))][Maximaliseren]0
+20140513-211436112         j:0[30005][((Vet)|(Bold))][Sluiten]0
+20140513-211436115         j:0[30005][((Vet)|(Bold))][Tabblad Bestand]0
+20140513-211436118         j:0[30005][((Vet)|(Bold))][Linttabbladen]0
+20140513-211436121         j:0[30005][((Vet)|(Bold))][Start]0
+20140513-211436124         j:0[30005][((Vet)|(Bold))][Invoegen]0
+20140513-211436127         j:0[30005][((Vet)|(Bold))][Pagina-indeling]0
+20140513-211436130         j:0[30005][((Vet)|(Bold))][Verwijzingen]0
+20140513-211436133         j:0[30005][((Vet)|(Bold))][Verzendlijsten]0
+20140513-211436135         j:0[30005][((Vet)|(Bold))][Controleren]0
+20140513-211436138         j:0[30005][((Vet)|(Bold))][Beeld]0
+20140513-211436140         j:0[30005][((Vet)|(Bold))][Het lint minimaliseren]0
+20140513-211436143         j:0[30005][((Vet)|(Bold))][Microsoft Word Help]0
+20140513-211436145         j:0[30005][((Vet)|(Bold))][Lint onder]0
+20140513-211436148         j:0[30005][((Vet)|(Bold))][Start]0
+20140513-211436150         j:0[30005][((Vet)|(Bold))][Klembord]0
+20140513-211436153         j:0[30005][((Vet)|(Bold))][Plakken]0
+20140513-211436155         j:0[30005][((Vet)|(Bold))][Plakken]0
+20140513-211436159         j:0[30005][((Vet)|(Bold))][Plakken]0
+20140513-211436162         j:0[30005][((Vet)|(Bold))][Knippen]0
+20140513-211436164         j:0[30005][((Vet)|(Bold))][Kopiëren]0
+20140513-211436167         j:0[30005][((Vet)|(Bold))][Opmaak kopiëren/plakken]0
+20140513-211436169         j:0[30005][((Vet)|(Bold))][Office Klembord...]0
+20140513-211436172         j:0[30005][((Vet)|(Bold))][Lettertype]0
+20140513-211436174         j:0[30005][((Vet)|(Bold))][Lettertype:]0
+20140513-211436176         j:0[30005][((Vet)|(Bold))][Lettertype:]0
+20140513-211436179         j:0[30005][((Vet)|(Bold))][Openen]0
+20140513-211436181         j:0[30005][((Vet)|(Bold))][Tekengrootte:]0
+20140513-211436184         j:0[30005][((Vet)|(Bold))][Tekengrootte:]0
+20140513-211436186         j:0[30005][((Vet)|(Bold))][Openen]0
+20140513-211436189         j:0[30005][((Vet)|(Bold))][Lettertype vergroten]0
+20140513-211436191         j:0[30005][((Vet)|(Bold))][Lettertype verkleinen]0
+20140513-211436193         j:0[30005][((Vet)|(Bold))][Hoofdlettergebruik]0
+20140513-211436196         j:0[30005][((Vet)|(Bold))][Opmaak wissen]0
+20140513-211436198         j:0[30005][((Vet)|(Bold))][Vet]1
+20140513-211436323 Storing parent for found object in RTI as RTI.PARENT
+20140513-211436351 Action 2 click on Word.btnBold
+20140513-211436587 _UIA_action: Finding object word.document
+20140513-211436591 _UIA_action: No RTI.SEARCHCONTEXT used for word.document
+20140513-211436595 _UIA_action: try for RTI.WORD.MAINWINDOW
+20140513-211436599 _UIA_action: Finding object word.document under RTI.WORD.MAINWINDOW
+20140513-211436603 find 2 classname:=_WwG
+20140513-211436607 _UIA_getObjectByFindAll classname:=_WwG1
+20140513-211436610   _UIA_getObjectByFindAll classname:=_WwG
+20140513-211436614   adding index 3 name:classname value:_WwG
+20140513-211436698         j:0[30012][_WwG][OpusApp]0
+20140513-211436701         j:0[30012][_WwG][MsoCommandBarDock]0
+20140513-211436705         j:0[30012][_WwG][MsoCommandBar]0
+20140513-211436708         j:0[30012][_WwG][MsoWorkPane]0
+20140513-211436711         j:0[30012][_WwG][NUIPane]0
+20140513-211436714         j:0[30012][_WwG][NetUIHWNDElement]0
+20140513-211436717         j:0[30012][_WwG][NetUInetpane]0
+20140513-211436721         j:0[30012][_WwG][NetUIElement]0
+20140513-211436724         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436728         j:0[30012][_WwG][NetUISplitButtonAnchor]0
+20140513-211436731         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436734         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436737         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436740         j:0[30012][_WwG][NetUIAnchor]0
+20140513-211436743         j:0[30012][_WwG][NetUIOfficeCaption]0
+20140513-211436746         j:0[30012][_WwG][NetUIAppFrameHelper]0
+20140513-211436749         j:0[30012][_WwG][NetUIAppFrameHelper]0
+20140513-211436752         j:0[30012][_WwG][NetUIAppFrameHelper]0
+20140513-211436755         j:0[30012][_WwG][NetUIRibbonTab]0
+20140513-211436758         j:0[30012][_WwG][NetUIPanViewer]0
+20140513-211436761         j:0[30012][_WwG][NetUIRibbonTab]0
+20140513-211436765         j:0[30012][_WwG][NetUIRibbonTab]0
+20140513-211436768         j:0[30012][_WwG][NetUIRibbonTab]0
+20140513-211436771         j:0[30012][_WwG][NetUIRibbonTab]0
+20140513-211436774         j:0[30012][_WwG][NetUIRibbonTab]0
+20140513-211436777         j:0[30012][_WwG][NetUIRibbonTab]0
+20140513-211436780         j:0[30012][_WwG][NetUIRibbonTab]0
+20140513-211436783         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436786         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436789         j:0[30012][_WwG][NetUIPanViewer]0
+20140513-211436792         j:0[30012][_WwG][NetUIOrderedGroup]0
+20140513-211436795         j:0[30012][_WwG][NetUIChunk]0
+20140513-211436798         j:0[30012][_WwG][NetUISplitButtonAnchor]0
+20140513-211436801         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436804         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436807         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436810         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436814         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436817         j:0[30012][_WwG][NetUISimpleButton]0
+20140513-211436820         j:0[30012][_WwG][NetUIChunk]0
+20140513-211436823         j:0[30012][_WwG][NetUIComboboxAnchor]0
+20140513-211436826         j:0[30012][_WwG][NetUITextbox]0
+20140513-211436829         j:0[30012][_WwG][NetUIStickyButton]0
+20140513-211436832         j:0[30012][_WwG][NetUIComboboxAnchor]0
+20140513-211436835         j:0[30012][_WwG][NetUITextbox]0
+20140513-211436838         j:0[30012][_WwG][NetUIStickyButton]0
+20140513-211436841         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436844         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436847         j:0[30012][_WwG][NetUIAnchor]0
+20140513-211436850         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436854         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436858         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436862         j:0[30012][_WwG][NetUISplitButtonAnchor]0
+20140513-211436865         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436869         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436873         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436876         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436880         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436883         j:0[30012][_WwG][NetUIAnchor]0
+20140513-211436887         j:0[30012][_WwG][NetUISplitButtonAnchor]0
+20140513-211436891         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436895         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436898         j:0[30012][_WwG][NetUISplitButtonAnchor]0
+20140513-211436902         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436906         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436909         j:0[30012][_WwG][NetUISimpleButton]0
+20140513-211436912         j:0[30012][_WwG][NetUIChunk]0
+20140513-211436915         j:0[30012][_WwG][NetUISplitButtonAnchor]0
+20140513-211436917         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436920         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436923         j:0[30012][_WwG][NetUISplitButtonAnchor]0
+20140513-211436926         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436930         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436933         j:0[30012][_WwG][NetUIAnchor]0
+20140513-211436936         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436939         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436941         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436944         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436947         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436950         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436953         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436956         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436959         j:0[30012][_WwG][NetUIAnchor]0
+20140513-211436962         j:0[30012][_WwG][NetUISplitButtonAnchor]0
+20140513-211436965         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436968         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436971         j:0[30012][_WwG][NetUISplitButtonAnchor]0
+20140513-211436973         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436976         j:0[30012][_WwG][NetUIRibbonButton]0
+20140513-211436979         j:0[30012][_WwG][NetUISimpleButton]0
+20140513-211436982         j:0[30012][_WwG][NetUIChunk]0
+20140513-211436985         j:0[30012][_WwG][NetUIElement]0
+20140513-211436987         j:0[30012][_WwG][NetUIAnchor]0
+20140513-211436990         j:0[30012][_WwG][NetUIScrollViewer]0
+20140513-211436993         j:0[30012][_WwG][NetUIGalleryButtonGroup]0
+20140513-211436996         j:0[30012][_WwG][NetUIGalleryButton]0
+20140513-211436998         j:0[30012][_WwG][NetUIGalleryButton]0
+20140513-211437001         j:0[30012][_WwG][NetUIGalleryButton]0
+20140513-211437004         j:0[30012][_WwG][NetUIGalleryButton]0
+20140513-211437007         j:0[30012][_WwG][NetUIGalleryButton]0
+20140513-211437010         j:0[30012][_WwG][NetUIGalleryButton]0
+20140513-211437013         j:0[30012][_WwG][NetUIGalleryButton]0
+20140513-211437015         j:0[30012][_WwG][NetUIGalleryButton]0
+20140513-211437017         j:0[30012][_WwG][NetUIGalleryButton]0
+20140513-211437020         j:0[30012][_WwG][NetUIGalleryButton]0
+20140513-211437023         j:0[30012][_WwG][NetUIGalleryButton]0
+20140513-211437025         j:0[30012][_WwG][NetUIGalleryButton]0
+20140513-211437028         j:0[30012][_WwG][NetUIGalleryButton]0
+20140513-211437030         j:0[30012][_WwG][NetUIGalleryButton]0
+20140513-211437032         j:0[30012][_WwG][NetUIGalleryButton]0
+20140513-211437035         j:0[30012][_WwG][NetUIGalleryButton]0
+20140513-211437038         j:0[30012][_WwG][NetUIRepeatButton]0
+20140513-211437040         j:0[30012][_WwG][NetUIRepeatButton]0
+20140513-211437043         j:0[30012][_WwG][NetUISimpleButton]0
+20140513-211437045         j:0[30012][_WwG][NetUIAnchor]0
+20140513-211437048         j:0[30012][_WwG][NetUISimpleButton]0
+20140513-211437050         j:0[30012][_WwG][NetUIChunk]0
+20140513-211437053         j:0[30012][_WwG][NetUIAnchor]0
+20140513-211437055         j:0[30012][_WwG][MsoCommandBarDock]0
+20140513-211437058         j:0[30012][_WwG][MsoCommandBar]0
+20140513-211437060         j:0[30012][_WwG][MsoWorkPane]0
+20140513-211437063         j:0[30012][_WwG][NUIPane]0
+20140513-211437066         j:0[30012][_WwG][NetUIHWNDElement]0
+20140513-211437069         j:0[30012][_WwG][NetUInetpane]0
+20140513-211437072         j:0[30012][_WwG][NetUISimpleButton]0
+20140513-211437075         j:0[30012][_WwG][NetUISimpleButton]0
+20140513-211437078         j:0[30012][_WwG][NetUISimpleButton]0
+20140513-211437081         j:0[30012][_WwG][NetUISimpleButton]0
+20140513-211437084         j:0[30012][_WwG][NetUISimpleButton]0
+20140513-211437087         j:0[30012][_WwG][NetUIStickyButton]0
+20140513-211437090         j:0[30012][_WwG][NetUIStickyButton]0
+20140513-211437092         j:0[30012][_WwG][NetUIStickyButton]0
+20140513-211437095         j:0[30012][_WwG][NetUIStickyButton]0
+20140513-211437098         j:0[30012][_WwG][NetUIStickyButton]0
+20140513-211437101         j:0[30012][_WwG][NetUISimpleButton]0
+20140513-211437104         j:0[30012][_WwG][NetUIRepeatButton]0
+20140513-211437106         j:0[30012][_WwG][NetUISlider]0
+20140513-211437109         j:0[30012][_WwG][NetUIRepeatButton]0
+20140513-211437112         j:0[30012][_WwG][NetUIThumb]0
+20140513-211437115         j:0[30012][_WwG][NetUIRepeatButton]0
+20140513-211437118         j:0[30012][_WwG][NetUIRepeatButton]0
+20140513-211437120         j:0[30012][_WwG][NetUIGrippie]0
+20140513-211437123         j:0[30012][_WwG][_WwF]0
+20140513-211437126         j:0[30012][_WwG][_WwB]0
+20140513-211437129         j:0[30012][_WwG][MsoCommandBar]0
+20140513-211437133         j:0[30012][_WwG][MsoCommandBar]0
+20140513-211437138         j:0[30012][_WwG][_WwG]1
+20140513-211437307 Storing parent for found object in RTI as RTI.PARENT
+20140513-211437332 Action 3 sendkeys on word.document
+20140513-211437446 _UIA_action: Finding object word.btnZoeken
+20140513-211437448 _UIA_action: No RTI.SEARCHCONTEXT used for word.btnZoeken
+20140513-211437450 _UIA_action: try for RTI.WORD.MAINWINDOW
+20140513-211437452 _UIA_action: Finding object word.btnZoeken under RTI.WORD.MAINWINDOW
+20140513-211437454 find 2 name:=((Zoeken.*)|(Find.*)); ControlType:=Button; acceleratorkey:=Ctrl\+F
+20140513-211437456 _UIA_getObjectByFindAll name:=((Zoeken.*)|(Find.*)); ControlType:=Button; acceleratorkey:=Ctrl\+F3
+20140513-211437457   _UIA_getObjectByFindAll name:=((Zoeken.*)|(Find.*))
+20140513-211437459   adding index 0 name:name value:((Zoeken.*)|(Find.*))
+20140513-211437461   _UIA_getObjectByFindAll  ControlType:=Button
+20140513-211437463   adding index 7 name:ControlType value:50000
+20140513-211437465   _UIA_getObjectByFindAll  acceleratorkey:=Ctrl\+F
+20140513-211437466   adding index 9 name:acceleratorkey value:Ctrl\+F
+20140513-211437617         j:0[30005][((Zoeken.*)|(Find.*))][Document1 - Microsoft Word]0
+20140513-211437621         j:0[30005][((Zoeken.*)|(Find.*))][MsoDockTop]0
+20140513-211437624         j:0[30005][((Zoeken.*)|(Find.*))][Ribbon]0
+20140513-211437627         j:0[30005][((Zoeken.*)|(Find.*))][Ribbon]0
+20140513-211437632         j:0[30005][((Zoeken.*)|(Find.*))][Ribbon]0
+20140513-211437635         j:0[30005][((Zoeken.*)|(Find.*))][Werkbalk Snelle toegang]0
+20140513-211437638         j:0[30005][((Zoeken.*)|(Find.*))][Opslaan]0
+20140513-211437641         j:0[30005][((Zoeken.*)|(Find.*))][Ongedaan maken Typen]0
+20140513-211437644         j:0[30005][((Zoeken.*)|(Find.*))][Ongedaan maken Typen]0
+20140513-211437647         j:0[30005][((Zoeken.*)|(Find.*))][Ongedaan maken Typen]0
+20140513-211437650         j:0[30005][((Zoeken.*)|(Find.*))][Herhalen Typen]0
+20140513-211437653         j:0[30005][((Zoeken.*)|(Find.*))][Werkbalk aanpassen]0
+20140513-211437656         j:0[30005][((Zoeken.*)|(Find.*))][Minimaliseren]0
+20140513-211437659         j:0[30005][((Zoeken.*)|(Find.*))][Maximaliseren]0
+20140513-211437662         j:0[30005][((Zoeken.*)|(Find.*))][Sluiten]0
+20140513-211437665         j:0[30005][((Zoeken.*)|(Find.*))][Tabblad Bestand]0
+20140513-211437668         j:0[30005][((Zoeken.*)|(Find.*))][Linttabbladen]0
+20140513-211437671         j:0[30005][((Zoeken.*)|(Find.*))][Start]0
+20140513-211437674         j:0[30005][((Zoeken.*)|(Find.*))][Invoegen]0
+20140513-211437677         j:0[30005][((Zoeken.*)|(Find.*))][Pagina-indeling]0
+20140513-211437679         j:0[30005][((Zoeken.*)|(Find.*))][Verwijzingen]0
+20140513-211437682         j:0[30005][((Zoeken.*)|(Find.*))][Verzendlijsten]0
+20140513-211437685         j:0[30005][((Zoeken.*)|(Find.*))][Controleren]0
+20140513-211437688         j:0[30005][((Zoeken.*)|(Find.*))][Beeld]0
+20140513-211437691         j:0[30005][((Zoeken.*)|(Find.*))][Het lint minimaliseren]0
+20140513-211437694         j:0[30005][((Zoeken.*)|(Find.*))][Microsoft Word Help]0
+20140513-211437697         j:0[30005][((Zoeken.*)|(Find.*))][Lint onder]0
+20140513-211437700         j:0[30005][((Zoeken.*)|(Find.*))][Start]0
+20140513-211437702         j:0[30005][((Zoeken.*)|(Find.*))][Klembord]0
+20140513-211437705         j:0[30005][((Zoeken.*)|(Find.*))][Plakken]0
+20140513-211437708         j:0[30005][((Zoeken.*)|(Find.*))][Plakken]0
+20140513-211437712         j:0[30005][((Zoeken.*)|(Find.*))][Plakken]0
+20140513-211437714         j:0[30005][((Zoeken.*)|(Find.*))][Knippen]0
+20140513-211437717         j:0[30005][((Zoeken.*)|(Find.*))][Kopiëren]0
+20140513-211437720         j:0[30005][((Zoeken.*)|(Find.*))][Opmaak kopiëren/plakken]0
+20140513-211437723         j:0[30005][((Zoeken.*)|(Find.*))][Office Klembord...]0
+20140513-211437726         j:0[30005][((Zoeken.*)|(Find.*))][Lettertype]0
+20140513-211437729         j:0[30005][((Zoeken.*)|(Find.*))][Lettertype:]0
+20140513-211437732         j:0[30005][((Zoeken.*)|(Find.*))][Lettertype:]0
+20140513-211437734         j:0[30005][((Zoeken.*)|(Find.*))][Openen]0
+20140513-211437737         j:0[30005][((Zoeken.*)|(Find.*))][Tekengrootte:]0
+20140513-211437740         j:0[30005][((Zoeken.*)|(Find.*))][Tekengrootte:]0
+20140513-211437743         j:0[30005][((Zoeken.*)|(Find.*))][Openen]0
+20140513-211437746         j:0[30005][((Zoeken.*)|(Find.*))][Lettertype vergroten]0
+20140513-211437749         j:0[30005][((Zoeken.*)|(Find.*))][Lettertype verkleinen]0
+20140513-211437752         j:0[30005][((Zoeken.*)|(Find.*))][Hoofdlettergebruik]0
+20140513-211437755         j:0[30005][((Zoeken.*)|(Find.*))][Opmaak wissen]0
+20140513-211437757         j:0[30005][((Zoeken.*)|(Find.*))][Vet]0
+20140513-211437760         j:0[30005][((Zoeken.*)|(Find.*))][Cursief]0
+20140513-211437763         j:0[30005][((Zoeken.*)|(Find.*))][Onderstrepen]0
+20140513-211437766         j:0[30005][((Zoeken.*)|(Find.*))][Onderstrepen]0
+20140513-211437769         j:0[30005][((Zoeken.*)|(Find.*))][Onderstrepen]0
+20140513-211437772         j:0[30005][((Zoeken.*)|(Find.*))][Doorhalen]0
+20140513-211437775         j:0[30005][((Zoeken.*)|(Find.*))][Subscript]0
+20140513-211437778         j:0[30005][((Zoeken.*)|(Find.*))][Superscript]0
+20140513-211437781         j:0[30005][((Zoeken.*)|(Find.*))][Teksteffecten]0
+20140513-211437784         j:0[30005][((Zoeken.*)|(Find.*))][Tekstmarkeringskleur]0
+20140513-211437786         j:0[30005][((Zoeken.*)|(Find.*))][Tekstmarkeringskleur]0
+20140513-211437789         j:0[30005][((Zoeken.*)|(Find.*))][Tekstmarkeringskleur]0
+20140513-211437792         j:0[30005][((Zoeken.*)|(Find.*))][Tekstkleur]0
+20140513-211437795         j:0[30005][((Zoeken.*)|(Find.*))][Tekstkleur]0
+20140513-211437798         j:0[30005][((Zoeken.*)|(Find.*))][Tekstkleur]0
+20140513-211437801         j:0[30005][((Zoeken.*)|(Find.*))][Lettertype...]0
+20140513-211437804         j:0[30005][((Zoeken.*)|(Find.*))][Alinea]0
+20140513-211437807         j:0[30005][((Zoeken.*)|(Find.*))][Opsommingstekens]0
+20140513-211437810         j:0[30005][((Zoeken.*)|(Find.*))][Opsommingstekens]0
+20140513-211437812         j:0[30005][((Zoeken.*)|(Find.*))][Opsommingstekens]0
+20140513-211437815         j:0[30005][((Zoeken.*)|(Find.*))][Nummering]0
+20140513-211437818         j:0[30005][((Zoeken.*)|(Find.*))][Nummering]0
+20140513-211437821         j:0[30005][((Zoeken.*)|(Find.*))][Nummering]0
+20140513-211437824         j:0[30005][((Zoeken.*)|(Find.*))][Lijst met meerdere niveaus]0
+20140513-211437827         j:0[30005][((Zoeken.*)|(Find.*))][Inspringing verkleinen]0
+20140513-211437829         j:0[30005][((Zoeken.*)|(Find.*))][Inspringing vergroten]0
+20140513-211437832         j:0[30005][((Zoeken.*)|(Find.*))][Sorteren...]0
+20140513-211437835         j:0[30005][((Zoeken.*)|(Find.*))][Alles weergeven]0
+20140513-211437838         j:0[30005][((Zoeken.*)|(Find.*))][Links uitlijnen]0
+20140513-211437841         j:0[30005][((Zoeken.*)|(Find.*))][Centreren]0
+20140513-211437844         j:0[30005][((Zoeken.*)|(Find.*))][Rechts uitlijnen]0
+20140513-211437846         j:0[30005][((Zoeken.*)|(Find.*))][Uitvullen]0
+20140513-211437849         j:0[30005][((Zoeken.*)|(Find.*))][Regel- en alinea-afstand ]0
+20140513-211437852         j:0[30005][((Zoeken.*)|(Find.*))][Arcering]0
+20140513-211437855         j:0[30005][((Zoeken.*)|(Find.*))][Arcering]0
+20140513-211437858         j:0[30005][((Zoeken.*)|(Find.*))][Arcering]0
+20140513-211437861         j:0[30005][((Zoeken.*)|(Find.*))][Randen]0
+20140513-211437864         j:0[30005][((Zoeken.*)|(Find.*))][Onderrand]0
+20140513-211437866         j:0[30005][((Zoeken.*)|(Find.*))][Randen]0
+20140513-211437869         j:0[30005][((Zoeken.*)|(Find.*))][Alinea...]0
+20140513-211437872         j:0[30005][((Zoeken.*)|(Find.*))][Stijlen]0
+20140513-211437876         j:0[30005][((Zoeken.*)|(Find.*))][Snelle stijlen]0
+20140513-211437880         j:0[30005][((Zoeken.*)|(Find.*))][Snelle stijlen]0
+20140513-211437885         j:0[30005][((Zoeken.*)|(Find.*))][¶ Standaard]0
+20140513-211437888         j:0[30005][((Zoeken.*)|(Find.*))][¶ Geen afstand]0
+20140513-211437891         j:0[30005][((Zoeken.*)|(Find.*))][Kop 1]0
+20140513-211437893         j:0[30005][((Zoeken.*)|(Find.*))][Kop 2]0
+20140513-211437896         j:0[30005][((Zoeken.*)|(Find.*))][Titel]0
+20140513-211437899         j:0[30005][((Zoeken.*)|(Find.*))][Ondertitel]0
+20140513-211437901         j:0[30005][((Zoeken.*)|(Find.*))][Subtiele benadrukking]0
+20140513-211437904         j:0[30005][((Zoeken.*)|(Find.*))][Nadruk]0
+20140513-211437907         j:0[30005][((Zoeken.*)|(Find.*))][Intensieve benadrukking]0
+20140513-211437909         j:0[30005][((Zoeken.*)|(Find.*))][Zwaar]0
+20140513-211437912         j:0[30005][((Zoeken.*)|(Find.*))][Citaat]0
+20140513-211437915         j:0[30005][((Zoeken.*)|(Find.*))][Duidelijk citaat]0
+20140513-211437918         j:0[30005][((Zoeken.*)|(Find.*))][Subtiele verwijzing]0
+20140513-211437921         j:0[30005][((Zoeken.*)|(Find.*))][Intensieve verwijzing]0
+20140513-211437924         j:0[30005][((Zoeken.*)|(Find.*))][Titel van boek]0
+20140513-211437927         j:0[30005][((Zoeken.*)|(Find.*))][¶ Lijstalinea]0
+20140513-211437930         j:0[30005][((Zoeken.*)|(Find.*))][Rij omhoog]0
+20140513-211437933         j:0[30005][((Zoeken.*)|(Find.*))][Rij omlaag]0
+20140513-211437936         j:0[30005][((Zoeken.*)|(Find.*))][Snelle stijlen]0
+20140513-211437939         j:0[30005][((Zoeken.*)|(Find.*))][Stijl wijzigen]0
+20140513-211437942         j:0[30005][((Zoeken.*)|(Find.*))][Stijlen...]0
+20140513-211437945         j:0[30005][((Zoeken.*)|(Find.*))][Bewerken]0
+20140513-211437948         j:0[30005][((Zoeken.*)|(Find.*))][Bewerken]0
+20140513-211437951         j:0[30005][((Zoeken.*)|(Find.*))][MsoDockBottom]0
+20140513-211437954         j:0[30005][((Zoeken.*)|(Find.*))][Statusbalk]0
+20140513-211437957         j:0[30005][((Zoeken.*)|(Find.*))][Statusbalk]0
+20140513-211437962         j:0[30005][((Zoeken.*)|(Find.*))][Statusbalk]0
+20140513-211437964         j:0[30005][((Zoeken.*)|(Find.*))][Paginanummer 1 van 1]0
+20140513-211437967         j:0[30005][((Zoeken.*)|(Find.*))][Woorden tellen 0]0
+20140513-211437970         j:0[30005][((Zoeken.*)|(Find.*))][Spelling- en grammaticacontrole Controleren...]0
+20140513-211437972         j:0[30005][((Zoeken.*)|(Find.*))][Taal Nederlands (standaard)]0
+20140513-211437975         j:0[30005][((Zoeken.*)|(Find.*))][Macro opnemen Geen opname]0
+20140513-211437978         j:0[30005][((Zoeken.*)|(Find.*))][Afdrukweergave]0
+20140513-211437980         j:0[30005][((Zoeken.*)|(Find.*))][Lezen in volledig scherm]0
+20140513-211437983         j:0[30005][((Zoeken.*)|(Find.*))][Weblay-out]0
+20140513-211437985         j:0[30005][((Zoeken.*)|(Find.*))][Overzicht]0
+20140513-211437988         j:0[30005][((Zoeken.*)|(Find.*))][Concept]0
+20140513-211437991         j:0[30005][((Zoeken.*)|(Find.*))][In-/uitzoomen 100%]0
+20140513-211437993         j:0[30005][((Zoeken.*)|(Find.*))][Uitzoomen]0
+20140513-211437997         j:0[30005][((Zoeken.*)|(Find.*))][Zoomschuifregelaar]0
+20140513-211438000         j:0[30005][((Zoeken.*)|(Find.*))][Pagina links]0
+20140513-211438002         j:0[30005][((Zoeken.*)|(Find.*))][Positie]0
+20140513-211438005         j:0[30005][((Zoeken.*)|(Find.*))][Pagina rechts]0
+20140513-211438008         j:0[30005][((Zoeken.*)|(Find.*))][Inzoomen]0
+20140513-211438011         j:0[30005][((Zoeken.*)|(Find.*))][Vak Formaat]0
+20140513-211438015         j:0[30005][((Zoeken.*)|(Find.*))][Document1]0
+20140513-211438017         j:0[30005][((Zoeken.*)|(Find.*))][MSO Generic Control Container]0
+20140513-211438020         j:0[30005][((Zoeken.*)|(Find.*))][Liniaal]0
+20140513-211438023         j:0[30005][((Zoeken.*)|(Find.*))][MSO Generic Control Container]0
+20140513-211438025         j:0[30005][((Zoeken.*)|(Find.*))][Vorige]0
+20140513-211438052         j:0[30005][((Zoeken.*)|(Find.*))][Bladerobject selecteren (Alt+Ctrl+HOME)]0
+20140513-211438055         j:0[30005][((Zoeken.*)|(Find.*))][Volgende]0
+20140513-211438058         j:0[30005][((Zoeken.*)|(Find.*))][Microsoft Word-document]0
+20140513-211438061         j:0[30005][((Zoeken.*)|(Find.*))][Verticaal]0
+20140513-211438065         j:0[30005][((Zoeken.*)|(Find.*))][Regel omhoog]0
+20140513-211438068         j:0[30005][((Zoeken.*)|(Find.*))][Pagina omhoog]0
+20140513-211438071         j:0[30005][((Zoeken.*)|(Find.*))][Positie]0
+20140513-211438073         j:0[30005][((Zoeken.*)|(Find.*))][Pagina omlaag]0
+20140513-211438076         j:0[30005][((Zoeken.*)|(Find.*))][Regel omlaag]0
+20140513-211438081         j:0[30005][((Zoeken.*)|(Find.*))][Systeem]0
+20140513-211438084         j:0[30005][((Zoeken.*)|(Find.*))][Systeem]0
+20140513-211438086         j:0[30005][((Zoeken.*)|(Find.*))][Minimaliseren]0
+20140513-211438089         j:0[30005][((Zoeken.*)|(Find.*))][Maximaliseren]0
+20140513-211438091         j:0[30005][((Zoeken.*)|(Find.*))][Sluiten]0
+20140513-211438094         j:0[30005][((Zoeken.*)|(Find.*))][Systeem]0
+20140513-211438096         j:0[30005][((Zoeken.*)|(Find.*))][Systeem]0
+20140513-211438099         j:0[30005][((Zoeken.*)|(Find.*))][Minimaliseren]0
+20140513-211438102         j:0[30005][((Zoeken.*)|(Find.*))][Maximaliseren]0
+20140513-211438105         j:0[30005][((Zoeken.*)|(Find.*))][Sluiten]0
+20140513-211438107 ***** Dumping tree *****
+20140513-211438150 Title is: <Document1 - Microsoft Word>	Class   := <OpusApp>	controltype:= <UIA_WindowControlTypeId>	,<50032>	, (0000C370)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438154 Title is: <MsoDockTop>	Class   := <MsoCommandBarDock>	controltype:= <UIA_PaneControlTypeId>	,<50033>	, (0000C371)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438159 Title is: <Ribbon>	Class   := <MsoCommandBar>	controltype:= <UIA_ToolBarControlTypeId>	,<50021>	, (0000C365)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438163 Title is: <Ribbon>	Class   := <MsoWorkPane>	controltype:= <UIA_PaneControlTypeId>	,<50033>	, (0000C371)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438166 Title is: <>	Class   := <NUIPane>	controltype:= <UIA_PaneControlTypeId>	,<50033>	, (0000C371)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438232 Title is: <>	Class   := <NetUIHWNDElement>	controltype:= <UIA_PaneControlTypeId>	,<50033>	, (0000C371)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438241 Title is: <Ribbon>	Class   := <NetUInetpane>	controltype:= <UIA_PaneControlTypeId>	,<50033>	, (0000C371)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438249 Title is: <Werkbalk Snelle toegang>	Class   := <NetUIElement>	controltype:= <UIA_ToolBarControlTypeId>	,<50021>	, (0000C365)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438256 Title is: <Opslaan>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <Ctrl+S>	, automationid:= <>	
+20140513-211438263 Title is: <Ongedaan maken Typen>	Class   := <NetUISplitButtonAnchor>	controltype:= <UIA_SplitButtonControlTypeId>	,<50031>	, (0000C36F)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438269 Title is: <Ongedaan maken Typen>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438276 Title is: <Ongedaan maken Typen>	Class   := <NetUIRibbonButton>	controltype:= <UIA_MenuItemControlTypeId>	,<50011>	, (0000C35B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438283 Title is: <Herhalen Typen>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <Ctrl+Y>	, automationid:= <>	
+20140513-211438289 Title is: <Werkbalk aanpassen>	Class   := <NetUIAnchor>	controltype:= <UIA_MenuItemControlTypeId>	,<50011>	, (0000C35B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438296 Title is: <>	Class   := <NetUIOfficeCaption>	controltype:= <UIA_TitleBarControlTypeId>	,<50037>	, (0000C375)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438303 Title is: <Minimaliseren>	Class   := <NetUIAppFrameHelper>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438310 Title is: <Maximaliseren>	Class   := <NetUIAppFrameHelper>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438316 Title is: <Sluiten>	Class   := <NetUIAppFrameHelper>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438336 Title is: <Tabblad Bestand>	Class   := <NetUIRibbonTab>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <FileTabButton>	
+20140513-211438341 Title is: <Linttabbladen>	Class   := <NetUIPanViewer>	controltype:= <UIA_TabControlTypeId>	,<50018>	, (0000C362)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438345 Title is: <Start>	Class   := <NetUIRibbonTab>	controltype:= <UIA_TabItemControlTypeId>	,<50019>	, (0000C363)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438350 Title is: <Invoegen>	Class   := <NetUIRibbonTab>	controltype:= <UIA_TabItemControlTypeId>	,<50019>	, (0000C363)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438355 Title is: <Pagina-indeling>	Class   := <NetUIRibbonTab>	controltype:= <UIA_TabItemControlTypeId>	,<50019>	, (0000C363)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438360 Title is: <Verwijzingen>	Class   := <NetUIRibbonTab>	controltype:= <UIA_TabItemControlTypeId>	,<50019>	, (0000C363)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438364 Title is: <Verzendlijsten>	Class   := <NetUIRibbonTab>	controltype:= <UIA_TabItemControlTypeId>	,<50019>	, (0000C363)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438369 Title is: <Controleren>	Class   := <NetUIRibbonTab>	controltype:= <UIA_TabItemControlTypeId>	,<50019>	, (0000C363)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438373 Title is: <Beeld>	Class   := <NetUIRibbonTab>	controltype:= <UIA_TabItemControlTypeId>	,<50019>	, (0000C363)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438378 Title is: <Het lint minimaliseren>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438382 Title is: <Microsoft Word Help>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438386 Title is: <Lint onder>	Class   := <NetUIPanViewer>	controltype:= <UIA_PaneControlTypeId>	,<50033>	, (0000C371)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438391 Title is: <Start>	Class   := <NetUIOrderedGroup>	controltype:= <UIA_CustomControlTypeId>	,<50025>	, (0000C369)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438396 Title is: <Klembord>	Class   := <NetUIChunk>	controltype:= <UIA_GroupControlTypeId>	,<50026>	, (0000C36A)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438401 Title is: <Plakken>	Class   := <NetUISplitButtonAnchor>	controltype:= <UIA_SplitButtonControlTypeId>	,<50031>	, (0000C36F)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438405 Title is: <Plakken>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <Ctrl+V>	, automationid:= <>	
+20140513-211438411 Title is: <Plakken>	Class   := <NetUIRibbonButton>	controltype:= <UIA_MenuItemControlTypeId>	,<50011>	, (0000C35B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438416 Title is: <Knippen>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <Ctrl+X>	, automationid:= <>	
+20140513-211438420 Title is: <Kopiëren>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <Ctrl+C>	, automationid:= <>	
+20140513-211438425 Title is: <Opmaak kopiëren/plakken>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <Ctrl+Shift+C>	, automationid:= <>	
+20140513-211438429 Title is: <Office Klembord...>	Class   := <NetUISimpleButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438434 Title is: <Lettertype>	Class   := <NetUIChunk>	controltype:= <UIA_GroupControlTypeId>	,<50026>	, (0000C36A)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438438 Title is: <Lettertype:>	Class   := <NetUIComboboxAnchor>	controltype:= <UIA_ComboBoxControlTypeId>	,<50003>	, (0000C353)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438478 Title is: <Lettertype:>	Class   := <NetUITextbox>	controltype:= <UIA_EditControlTypeId>	,<50004>	, (0000C354)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438487 Title is: <Openen>	Class   := <NetUIStickyButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438495 Title is: <Tekengrootte:>	Class   := <NetUIComboboxAnchor>	controltype:= <UIA_ComboBoxControlTypeId>	,<50003>	, (0000C353)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438503 Title is: <Tekengrootte:>	Class   := <NetUITextbox>	controltype:= <UIA_EditControlTypeId>	,<50004>	, (0000C354)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438511 Title is: <Openen>	Class   := <NetUIStickyButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438519 Title is: <Lettertype vergroten>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <Ctrl+>>	, automationid:= <>	
+20140513-211438527 Title is: <Lettertype verkleinen>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <Ctrl+<>	, automationid:= <>	
+20140513-211438535 Title is: <Hoofdlettergebruik>	Class   := <NetUIAnchor>	controltype:= <UIA_MenuItemControlTypeId>	,<50011>	, (0000C35B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438543 Title is: <Opmaak wissen>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438551 Title is: <Vet>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <Ctrl+B>	, automationid:= <>	
+20140513-211438559 Title is: <Cursief>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <Ctrl+I>	, automationid:= <>	
+20140513-211438567 Title is: <Onderstrepen>	Class   := <NetUISplitButtonAnchor>	controltype:= <UIA_SplitButtonControlTypeId>	,<50031>	, (0000C36F)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438575 Title is: <Onderstrepen>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438582 Title is: <Onderstrepen>	Class   := <NetUIRibbonButton>	controltype:= <UIA_MenuItemControlTypeId>	,<50011>	, (0000C35B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438590 Title is: <Doorhalen>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438598 Title is: <Subscript>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <Ctrl+=>	, automationid:= <>	
+20140513-211438606 Title is: <Superscript>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <Ctrl+Shift++>	, automationid:= <>	
+20140513-211438613 Title is: <Teksteffecten>	Class   := <NetUIAnchor>	controltype:= <UIA_MenuItemControlTypeId>	,<50011>	, (0000C35B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438667 Title is: <Tekstmarkeringskleur>	Class   := <NetUISplitButtonAnchor>	controltype:= <UIA_SplitButtonControlTypeId>	,<50031>	, (0000C36F)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438675 Title is: <Tekstmarkeringskleur>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438684 Title is: <Tekstmarkeringskleur>	Class   := <NetUIRibbonButton>	controltype:= <UIA_MenuItemControlTypeId>	,<50011>	, (0000C35B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438692 Title is: <Tekstkleur>	Class   := <NetUISplitButtonAnchor>	controltype:= <UIA_SplitButtonControlTypeId>	,<50031>	, (0000C36F)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438700 Title is: <Tekstkleur>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438708 Title is: <Tekstkleur>	Class   := <NetUIRibbonButton>	controltype:= <UIA_MenuItemControlTypeId>	,<50011>	, (0000C35B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438717 Title is: <Lettertype...>	Class   := <NetUISimpleButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438725 Title is: <Alinea>	Class   := <NetUIChunk>	controltype:= <UIA_GroupControlTypeId>	,<50026>	, (0000C36A)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438733 Title is: <Opsommingstekens>	Class   := <NetUISplitButtonAnchor>	controltype:= <UIA_SplitButtonControlTypeId>	,<50031>	, (0000C36F)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438741 Title is: <Opsommingstekens>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438749 Title is: <Opsommingstekens>	Class   := <NetUIRibbonButton>	controltype:= <UIA_MenuItemControlTypeId>	,<50011>	, (0000C35B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438757 Title is: <Nummering>	Class   := <NetUISplitButtonAnchor>	controltype:= <UIA_SplitButtonControlTypeId>	,<50031>	, (0000C36F)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438765 Title is: <Nummering>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438774 Title is: <Nummering>	Class   := <NetUIRibbonButton>	controltype:= <UIA_MenuItemControlTypeId>	,<50011>	, (0000C35B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438782 Title is: <Lijst met meerdere niveaus>	Class   := <NetUIAnchor>	controltype:= <UIA_MenuItemControlTypeId>	,<50011>	, (0000C35B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438790 Title is: <Inspringing verkleinen>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438798 Title is: <Inspringing vergroten>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438806 Title is: <Sorteren...>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438814 Title is: <Alles weergeven>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <Ctrl+*>	, automationid:= <>	
+20140513-211438822 Title is: <Links uitlijnen>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <Ctrl+L>	, automationid:= <>	
+20140513-211438830 Title is: <Centreren>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <Ctrl+E>	, automationid:= <>	
+20140513-211438838 Title is: <Rechts uitlijnen>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <Ctrl+R>	, automationid:= <>	
+20140513-211438846 Title is: <Uitvullen>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <Ctrl+J>	, automationid:= <>	
+20140513-211438854 Title is: <Regel- en alinea-afstand >	Class   := <NetUIAnchor>	controltype:= <UIA_MenuItemControlTypeId>	,<50011>	, (0000C35B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438862 Title is: <Arcering>	Class   := <NetUISplitButtonAnchor>	controltype:= <UIA_SplitButtonControlTypeId>	,<50031>	, (0000C36F)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438871 Title is: <Arcering>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438879 Title is: <Arcering>	Class   := <NetUIRibbonButton>	controltype:= <UIA_MenuItemControlTypeId>	,<50011>	, (0000C35B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438887 Title is: <Randen>	Class   := <NetUISplitButtonAnchor>	controltype:= <UIA_SplitButtonControlTypeId>	,<50031>	, (0000C36F)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438892 Title is: <Onderrand>	Class   := <NetUIRibbonButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438896 Title is: <Randen>	Class   := <NetUIRibbonButton>	controltype:= <UIA_MenuItemControlTypeId>	,<50011>	, (0000C35B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438901 Title is: <Alinea...>	Class   := <NetUISimpleButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438905 Title is: <Stijlen>	Class   := <NetUIChunk>	controltype:= <UIA_GroupControlTypeId>	,<50026>	, (0000C36A)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438910 Title is: <Snelle stijlen>	Class   := <NetUIElement>	controltype:= <UIA_GroupControlTypeId>	,<50026>	, (0000C36A)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438914 Title is: <>	Class   := <NetUIAnchor>	controltype:= <UIA_MenuItemControlTypeId>	,<50011>	, (0000C35B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438919 Title is: <Snelle stijlen>	Class   := <NetUIScrollViewer>	controltype:= <UIA_PaneControlTypeId>	,<50033>	, (0000C371)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438923 Title is: <>	Class   := <NetUIGalleryButtonGroup>	controltype:= <UIA_DataGridControlTypeId>	,<50028>	, (0000C36C)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438927 Title is: <¶ Standaard>	Class   := <NetUIGalleryButton>	controltype:= <UIA_ListItemControlTypeId>	,<50007>	, (0000C357)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438931 Title is: <¶ Geen afstand>	Class   := <NetUIGalleryButton>	controltype:= <UIA_ListItemControlTypeId>	,<50007>	, (0000C357)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438935 Title is: <Kop 1>	Class   := <NetUIGalleryButton>	controltype:= <UIA_ListItemControlTypeId>	,<50007>	, (0000C357)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438939 Title is: <Kop 2>	Class   := <NetUIGalleryButton>	controltype:= <UIA_ListItemControlTypeId>	,<50007>	, (0000C357)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438949 Title is: <Titel>	Class   := <NetUIGalleryButton>	controltype:= <UIA_ListItemControlTypeId>	,<50007>	, (0000C357)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438954 Title is: <Ondertitel>	Class   := <NetUIGalleryButton>	controltype:= <UIA_ListItemControlTypeId>	,<50007>	, (0000C357)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438959 Title is: <Subtiele benadrukking>	Class   := <NetUIGalleryButton>	controltype:= <UIA_ListItemControlTypeId>	,<50007>	, (0000C357)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438963 Title is: <Nadruk>	Class   := <NetUIGalleryButton>	controltype:= <UIA_ListItemControlTypeId>	,<50007>	, (0000C357)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438967 Title is: <Intensieve benadrukking>	Class   := <NetUIGalleryButton>	controltype:= <UIA_ListItemControlTypeId>	,<50007>	, (0000C357)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438970 Title is: <Zwaar>	Class   := <NetUIGalleryButton>	controltype:= <UIA_ListItemControlTypeId>	,<50007>	, (0000C357)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438974 Title is: <Citaat>	Class   := <NetUIGalleryButton>	controltype:= <UIA_ListItemControlTypeId>	,<50007>	, (0000C357)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438978 Title is: <Duidelijk citaat>	Class   := <NetUIGalleryButton>	controltype:= <UIA_ListItemControlTypeId>	,<50007>	, (0000C357)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438982 Title is: <Subtiele verwijzing>	Class   := <NetUIGalleryButton>	controltype:= <UIA_ListItemControlTypeId>	,<50007>	, (0000C357)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438986 Title is: <Intensieve verwijzing>	Class   := <NetUIGalleryButton>	controltype:= <UIA_ListItemControlTypeId>	,<50007>	, (0000C357)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438990 Title is: <Titel van boek>	Class   := <NetUIGalleryButton>	controltype:= <UIA_ListItemControlTypeId>	,<50007>	, (0000C357)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438994 Title is: <¶ Lijstalinea>	Class   := <NetUIGalleryButton>	controltype:= <UIA_ListItemControlTypeId>	,<50007>	, (0000C357)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211438997 Title is: <Rij omhoog>	Class   := <NetUIRepeatButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439002 Title is: <Rij omlaag>	Class   := <NetUIRepeatButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439010 Title is: <Snelle stijlen>	Class   := <NetUISimpleButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439015 Title is: <Stijl wijzigen>	Class   := <NetUIAnchor>	controltype:= <UIA_MenuItemControlTypeId>	,<50011>	, (0000C35B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439018 Title is: <Stijlen...>	Class   := <NetUISimpleButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <Ctrl+Shift+S>	, automationid:= <>	
+20140513-211439022 Title is: <Bewerken>	Class   := <NetUIChunk>	controltype:= <UIA_GroupControlTypeId>	,<50026>	, (0000C36A)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439026 Title is: <Bewerken>	Class   := <NetUIAnchor>	controltype:= <UIA_MenuItemControlTypeId>	,<50011>	, (0000C35B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439030 Title is: <MsoDockBottom>	Class   := <MsoCommandBarDock>	controltype:= <UIA_PaneControlTypeId>	,<50033>	, (0000C371)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439033 Title is: <Statusbalk>	Class   := <MsoCommandBar>	controltype:= <UIA_ToolBarControlTypeId>	,<50021>	, (0000C365)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439037 Title is: <Statusbalk>	Class   := <MsoWorkPane>	controltype:= <UIA_PaneControlTypeId>	,<50033>	, (0000C371)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439040 Title is: <>	Class   := <NUIPane>	controltype:= <UIA_PaneControlTypeId>	,<50033>	, (0000C371)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439044 Title is: <>	Class   := <NetUIHWNDElement>	controltype:= <UIA_PaneControlTypeId>	,<50033>	, (0000C371)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439047 Title is: <Statusbalk>	Class   := <NetUInetpane>	controltype:= <UIA_StatusBarControlTypeId>	,<50017>	, (0000C361)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439050 Title is: <Paginanummer 1 van 1>	Class   := <NetUISimpleButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439054 Title is: <Woorden tellen 0>	Class   := <NetUISimpleButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439057 Title is: <Spelling- en grammaticacontrole Fouten>	Class   := <NetUISimpleButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439060 Title is: <Taal Nederlands (standaard)>	Class   := <NetUISimpleButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439070 Title is: <Macro opnemen Geen opname>	Class   := <NetUISimpleButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439074 Title is: <Afdrukweergave>	Class   := <NetUIStickyButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439077 Title is: <Lezen in volledig scherm>	Class   := <NetUIStickyButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439081 Title is: <Weblay-out>	Class   := <NetUIStickyButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439084 Title is: <Overzicht>	Class   := <NetUIStickyButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439087 Title is: <Concept>	Class   := <NetUIStickyButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439091 Title is: <In-/uitzoomen 100%>	Class   := <NetUISimpleButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439094 Title is: <Uitzoomen>	Class   := <NetUIRepeatButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439097 Title is: <Zoomschuifregelaar>	Class   := <NetUISlider>	controltype:= <UIA_SliderControlTypeId>	,<50015>	, (0000C35F)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439100 Title is: <Pagina links>	Class   := <NetUIRepeatButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439103 Title is: <Positie>	Class   := <NetUIThumb>	controltype:= <UIA_ThumbControlTypeId>	,<50027>	, (0000C36B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439107 Title is: <Pagina rechts>	Class   := <NetUIRepeatButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439110 Title is: <Inzoomen>	Class   := <NetUIRepeatButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439113 Title is: <Vak Formaat>	Class   := <NetUIGrippie>	controltype:= <UIA_ThumbControlTypeId>	,<50027>	, (0000C36B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439117 Title is: <>	Class   := <_WwF>	controltype:= <UIA_PaneControlTypeId>	,<50033>	, (0000C371)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439120 Title is: <Document1>	Class   := <_WwB>	controltype:= <UIA_PaneControlTypeId>	,<50033>	, (0000C371)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439124 Title is: <MSO Generic Control Container>	Class   := <MsoCommandBar>	controltype:= <UIA_ToolBarControlTypeId>	,<50021>	, (0000C365)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439134 Title is: <Liniaal>	Class   := <>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439138 Title is: <MSO Generic Control Container>	Class   := <MsoCommandBar>	controltype:= <UIA_ToolBarControlTypeId>	,<50021>	, (0000C365)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439141 Title is: <Vorige>	Class   := <>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439145 Title is: <Bladerobject selecteren (Alt+Ctrl+HOME)>	Class   := <>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439148 Title is: <Volgende>	Class   := <>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439152 Title is: <Microsoft Word-document>	Class   := <_WwG>	controltype:= <UIA_PaneControlTypeId>	,<50033>	, (0000C371)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439155 Title is: <Verticaal>	Class   := <NUIScrollbar>	controltype:= <UIA_PaneControlTypeId>	,<50033>	, (0000C371)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439159 Title is: <>	Class   := <NetUIHWNDElement>	controltype:= <UIA_PaneControlTypeId>	,<50033>	, (0000C371)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439162 Title is: <>	Class   := <NetUIScrollBar>	controltype:= <UIA_ScrollBarControlTypeId>	,<50014>	, (0000C35E)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439165 Title is: <Regel omhoog>	Class   := <NetUIRepeatButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439168 Title is: <Pagina omhoog>	Class   := <NetUIRepeatButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439172 Title is: <Positie>	Class   := <NetUIThumb>	controltype:= <UIA_ThumbControlTypeId>	,<50027>	, (0000C36B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439175 Title is: <Pagina omlaag>	Class   := <NetUIRepeatButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439179 Title is: <Regel omlaag>	Class   := <NetUIRepeatButton>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439182 Title is: <>	Class   := <_WwC>	controltype:= <UIA_PaneControlTypeId>	,<50033>	, (0000C371)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439185 Title is: <>	Class   := <_WwC>	controltype:= <UIA_PaneControlTypeId>	,<50033>	, (0000C371)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439189 Title is: <>	Class   := <_WwC>	controltype:= <UIA_PaneControlTypeId>	,<50033>	, (0000C371)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439197 Title is: <>	Class   := <>	controltype:= <UIA_TitleBarControlTypeId>	,<50037>	, (0000C375)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439200 Title is: <Systeem>	Class   := <>	controltype:= <UIA_MenuBarControlTypeId>	,<50010>	, (0000C35A)	, acceleratorkey:= <>	, automationid:= <MenuBar>	
+20140513-211439203 Title is: <Systeem>	Class   := <>	controltype:= <UIA_MenuItemControlTypeId>	,<50011>	, (0000C35B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439205 Title is: <Minimaliseren>	Class   := <>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439208 Title is: <Maximaliseren>	Class   := <>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439211 Title is: <Sluiten>	Class   := <>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439213 Title is: <>	Class   := <>	controltype:= <UIA_TitleBarControlTypeId>	,<50037>	, (0000C375)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439216 Title is: <Systeem>	Class   := <>	controltype:= <UIA_MenuBarControlTypeId>	,<50010>	, (0000C35A)	, acceleratorkey:= <>	, automationid:= <MenuBar>	
+20140513-211439218 Title is: <Systeem>	Class   := <>	controltype:= <UIA_MenuItemControlTypeId>	,<50011>	, (0000C35B)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439221 Title is: <Minimaliseren>	Class   := <>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439223 Title is: <Maximaliseren>	Class   := <>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439226 Title is: <Sluiten>	Class   := <>	controltype:= <UIA_ButtonControlTypeId>	,<50000>	, (0000C350)	, acceleratorkey:= <>	, automationid:= <>	
+20140513-211439247 Not an object failing action click on word.btnZoeken
+20140513-211439249 _UIA_action: Finding object calculator.mainwindow
+20140513-211439251 find 1 classname:=CalcFrame
+20140513-211439253 _UIA_getObjectByFindAll classname:=CalcFrame1
+20140513-211439255   _UIA_getObjectByFindAll classname:=CalcFrame
+20140513-211439257   adding index 3 name:classname value:CalcFrame
+20140513-211443474         j:0[30012][CalcFrame][#32769]0
+20140513-211443481         j:0[30012][CalcFrame][Shell_TrayWnd]0
+20140513-211443489         j:0[30012][CalcFrame][Button]0
+20140513-211443496         j:0[30012][CalcFrame][TrayNotifyWnd]0
+20140513-211443503         j:0[30012][CalcFrame][TrayClockWClass]0
+20140513-211443509         j:0[30012][CalcFrame][TrayShowDesktopButtonWClass]0
+20140513-211443516         j:0[30012][CalcFrame][SysPager]0
+20140513-211443523         j:0[30012][CalcFrame][ToolbarWindow32]0
+20140513-211443535         j:0[30012][CalcFrame][ToolbarWindow32]0
+20140513-211443540         j:0[30012][CalcFrame][Button]0
+20140513-211443543         j:0[30012][CalcFrame][ReBarWindow32]0
+20140513-211443547         j:0[30012][CalcFrame][CiceroUIWndFrame]0
+20140513-211443551         j:0[30012][CalcFrame][MSTaskSwWClass]0
+20140513-211443554         j:0[30012][CalcFrame][MSTaskListWClass]0
+20140513-211443565         j:0[30012][CalcFrame][OpusApp]0
+20140513-211443568         j:0[30012][CalcFrame][MsoCommandBarDock]0
+20140513-211443571         j:0[30012][CalcFrame][MsoCommandBar]0
+20140513-211443574         j:0[30012][CalcFrame][MsoWorkPane]0
+20140513-211443576         j:0[30012][CalcFrame][NUIPane]0
+20140513-211443579         j:0[30012][CalcFrame][NetUIHWNDElement]0
+20140513-211443582         j:0[30012][CalcFrame][NetUInetpane]0
+20140513-211443585         j:0[30012][CalcFrame][NetUIElement]0
+20140513-211443588         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443590         j:0[30012][CalcFrame][NetUISplitButtonAnchor]0
+20140513-211443593         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443596         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443605         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443609         j:0[30012][CalcFrame][NetUIAnchor]0
+20140513-211443613         j:0[30012][CalcFrame][NetUIOfficeCaption]0
+20140513-211443616         j:0[30012][CalcFrame][NetUIAppFrameHelper]0
+20140513-211443619         j:0[30012][CalcFrame][NetUIAppFrameHelper]0
+20140513-211443622         j:0[30012][CalcFrame][NetUIAppFrameHelper]0
+20140513-211443626         j:0[30012][CalcFrame][NetUIRibbonTab]0
+20140513-211443629         j:0[30012][CalcFrame][NetUIPanViewer]0
+20140513-211443632         j:0[30012][CalcFrame][NetUIRibbonTab]0
+20140513-211443635         j:0[30012][CalcFrame][NetUIRibbonTab]0
+20140513-211443639         j:0[30012][CalcFrame][NetUIRibbonTab]0
+20140513-211443642         j:0[30012][CalcFrame][NetUIRibbonTab]0
+20140513-211443645         j:0[30012][CalcFrame][NetUIRibbonTab]0
+20140513-211443648         j:0[30012][CalcFrame][NetUIRibbonTab]0
+20140513-211443651         j:0[30012][CalcFrame][NetUIRibbonTab]0
+20140513-211443654         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443657         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443661         j:0[30012][CalcFrame][NetUIPanViewer]0
+20140513-211443664         j:0[30012][CalcFrame][NetUIOrderedGroup]0
+20140513-211443667         j:0[30012][CalcFrame][NetUIChunk]0
+20140513-211443670         j:0[30012][CalcFrame][NetUISplitButtonAnchor]0
+20140513-211443673         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443677         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443680         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443683         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443686         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443689         j:0[30012][CalcFrame][NetUISimpleButton]0
+20140513-211443692         j:0[30012][CalcFrame][NetUIChunk]0
+20140513-211443695         j:0[30012][CalcFrame][NetUIComboboxAnchor]0
+20140513-211443698         j:0[30012][CalcFrame][NetUITextbox]0
+20140513-211443702         j:0[30012][CalcFrame][NetUIStickyButton]0
+20140513-211443705         j:0[30012][CalcFrame][NetUIComboboxAnchor]0
+20140513-211443708         j:0[30012][CalcFrame][NetUITextbox]0
+20140513-211443711         j:0[30012][CalcFrame][NetUIStickyButton]0
+20140513-211443714         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443717         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443720         j:0[30012][CalcFrame][NetUIAnchor]0
+20140513-211443723         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443726         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443730         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443733         j:0[30012][CalcFrame][NetUISplitButtonAnchor]0
+20140513-211443736         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443739         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443742         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443745         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443748         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443752         j:0[30012][CalcFrame][NetUIAnchor]0
+20140513-211443755         j:0[30012][CalcFrame][NetUISplitButtonAnchor]0
+20140513-211443758         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443761         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443764         j:0[30012][CalcFrame][NetUISplitButtonAnchor]0
+20140513-211443767         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443770         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443773         j:0[30012][CalcFrame][NetUISimpleButton]0
+20140513-211443776         j:0[30012][CalcFrame][NetUIChunk]0
+20140513-211443780         j:0[30012][CalcFrame][NetUISplitButtonAnchor]0
+20140513-211443783         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443786         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443789         j:0[30012][CalcFrame][NetUISplitButtonAnchor]0
+20140513-211443792         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443795         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443798         j:0[30012][CalcFrame][NetUIAnchor]0
+20140513-211443801         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443805         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443808         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443811         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443814         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443817         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443820         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443824         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443827         j:0[30012][CalcFrame][NetUIAnchor]0
+20140513-211443830         j:0[30012][CalcFrame][NetUISplitButtonAnchor]0
+20140513-211443833         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443836         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443839         j:0[30012][CalcFrame][NetUISplitButtonAnchor]0
+20140513-211443842         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443845         j:0[30012][CalcFrame][NetUIRibbonButton]0
+20140513-211443848         j:0[30012][CalcFrame][NetUISimpleButton]0
+20140513-211443852         j:0[30012][CalcFrame][NetUIChunk]0
+20140513-211443855         j:0[30012][CalcFrame][NetUIElement]0
+20140513-211443858         j:0[30012][CalcFrame][NetUIAnchor]0
+20140513-211443861         j:0[30012][CalcFrame][NetUIScrollViewer]0
+20140513-211443864         j:0[30012][CalcFrame][NetUIGalleryButtonGroup]0
+20140513-211443867         j:0[30012][CalcFrame][NetUIGalleryButton]0
+20140513-211443870         j:0[30012][CalcFrame][NetUIGalleryButton]0
+20140513-211443874         j:0[30012][CalcFrame][NetUIGalleryButton]0
+20140513-211443877         j:0[30012][CalcFrame][NetUIGalleryButton]0
+20140513-211443880         j:0[30012][CalcFrame][NetUIGalleryButton]0
+20140513-211443883         j:0[30012][CalcFrame][NetUIGalleryButton]0
+20140513-211443886         j:0[30012][CalcFrame][NetUIGalleryButton]0
+20140513-211443889         j:0[30012][CalcFrame][NetUIGalleryButton]0
+20140513-211443892         j:0[30012][CalcFrame][NetUIGalleryButton]0
+20140513-211443895         j:0[30012][CalcFrame][NetUIGalleryButton]0
+20140513-211443899         j:0[30012][CalcFrame][NetUIGalleryButton]0
+20140513-211443902         j:0[30012][CalcFrame][NetUIGalleryButton]0
+20140513-211443905         j:0[30012][CalcFrame][NetUIGalleryButton]0
+20140513-211443908         j:0[30012][CalcFrame][NetUIGalleryButton]0
+20140513-211443911         j:0[30012][CalcFrame][NetUIGalleryButton]0
+20140513-211443914         j:0[30012][CalcFrame][NetUIGalleryButton]0
+20140513-211443917         j:0[30012][CalcFrame][NetUIRepeatButton]0
+20140513-211443920         j:0[30012][CalcFrame][NetUIRepeatButton]0
+20140513-211443923         j:0[30012][CalcFrame][NetUISimpleButton]0
+20140513-211443927         j:0[30012][CalcFrame][NetUIAnchor]0
+20140513-211443930         j:0[30012][CalcFrame][NetUISimpleButton]0
+20140513-211443933         j:0[30012][CalcFrame][NetUIChunk]0
+20140513-211443936         j:0[30012][CalcFrame][NetUIAnchor]0
+20140513-211443939         j:0[30012][CalcFrame][MsoCommandBarDock]0
+20140513-211443942         j:0[30012][CalcFrame][MsoCommandBar]0
+20140513-211443945         j:0[30012][CalcFrame][MsoWorkPane]0
+20140513-211443948         j:0[30012][CalcFrame][NUIPane]0
+20140513-211443951         j:0[30012][CalcFrame][NetUIHWNDElement]0
+20140513-211443954         j:0[30012][CalcFrame][NetUInetpane]0
+20140513-211443957         j:0[30012][CalcFrame][NetUISimpleButton]0
+20140513-211443960         j:0[30012][CalcFrame][NetUISimpleButton]0
+20140513-211443963         j:0[30012][CalcFrame][NetUISimpleButton]0
+20140513-211443966         j:0[30012][CalcFrame][NetUISimpleButton]0
+20140513-211443969         j:0[30012][CalcFrame][NetUISimpleButton]0
+20140513-211443972         j:0[30012][CalcFrame][NetUIStickyButton]0
+20140513-211443976         j:0[30012][CalcFrame][NetUIStickyButton]0
+20140513-211443978         j:0[30012][CalcFrame][NetUIStickyButton]0
+20140513-211443981         j:0[30012][CalcFrame][NetUIStickyButton]0
+20140513-211443984         j:0[30012][CalcFrame][NetUIStickyButton]0
+20140513-211443986         j:0[30012][CalcFrame][NetUISimpleButton]0
+20140513-211443989         j:0[30012][CalcFrame][NetUIRepeatButton]0
+20140513-211443992         j:0[30012][CalcFrame][NetUISlider]0
+20140513-211443994         j:0[30012][CalcFrame][NetUIRepeatButton]0
+20140513-211443997         j:0[30012][CalcFrame][NetUIThumb]0
+20140513-211444000         j:0[30012][CalcFrame][NetUIRepeatButton]0
+20140513-211444002         j:0[30012][CalcFrame][NetUIRepeatButton]0
+20140513-211444005         j:0[30012][CalcFrame][NetUIGrippie]0
+20140513-211444008         j:0[30012][CalcFrame][_WwF]0
+20140513-211444011         j:0[30012][CalcFrame][_WwB]0
+20140513-211444014         j:0[30012][CalcFrame][MsoCommandBar]0
+20140513-211444017         j:0[30012][CalcFrame][MsoCommandBar]0
+20140513-211444022         j:0[30012][CalcFrame][_WwG]0
+20140513-211444029         j:0[30012][CalcFrame][NUIScrollbar]0
+20140513-211444033         j:0[30012][CalcFrame][NetUIHWNDElement]0
+20140513-211444036         j:0[30012][CalcFrame][NetUIScrollBar]0
+20140513-211444039         j:0[30012][CalcFrame][NetUIRepeatButton]0
+20140513-211444043         j:0[30012][CalcFrame][NetUIRepeatButton]0
+20140513-211444046         j:0[30012][CalcFrame][NetUIThumb]0
+20140513-211444049         j:0[30012][CalcFrame][NetUIRepeatButton]0
+20140513-211444051         j:0[30012][CalcFrame][NetUIRepeatButton]0
+20140513-211444054         j:0[30012][CalcFrame][_WwC]0
+20140513-211444057         j:0[30012][CalcFrame][_WwC]0
+20140513-211444059         j:0[30012][CalcFrame][_WwC]0
+20140513-211444069         j:0[30012][CalcFrame][Notepad]0
+20140513-211444071         j:0[30012][CalcFrame][Edit]0
+20140513-211444083         j:0[30012][CalcFrame][CalcFrame]1
+20140513-211444206 Storing parent for found object in RTI as RTI.PARENT
+20140513-211444208 Storing in RTI as RTI.calculator.mainwindow
+20140513-211444236 Action 4 setfocus on calculator.mainwindow
+20140513-211444439 _UIA_action: Finding object calculator.1
+20140513-211444444 _UIA_action: No RTI.SEARCHCONTEXT used for calculator.1
+20140513-211444448 _UIA_action: try for RTI.CALCULATOR.MAINWINDOW
+20140513-211444452 _UIA_action: Finding object calculator.1 under RTI.CALCULATOR.MAINWINDOW
+20140513-211444457 find 2 name:=1; controltype:=button
+20140513-211444461 _UIA_getObjectByFindAll name:=1; controltype:=button2
+20140513-211444465   _UIA_getObjectByFindAll name:=1
+20140513-211444469   adding index 0 name:name value:1
+20140513-211444473   _UIA_getObjectByFindAll  controltype:=button
+20140513-211444478   adding index 7 name:controltype value:50000
+20140513-211444514         j:0[30005][1][Rekenmachine]0
+20140513-211444519         j:0[30005][1][Geschiedenis van uitvoeringen]0
+20140513-211444522         j:0[30005][1][Geheugen]0
+20140513-211444526         j:0[30005][1][Resultaat]0
+20140513-211444529         j:0[30005][1][0]0
+20140513-211444532         j:0[30005][1][Getallen wissen die in het geheugen zijn opgeslagen]0
+20140513-211444535         j:0[30005][1][Backspace]0
+20140513-211444538         j:0[30005][1][7]0
+20140513-211444541         j:0[30005][1][4]0
+20140513-211444545         j:0[30005][1][1]1
+20140513-211444547         j:1[30003][50000][50000]1
+20140513-211444673 Storing parent for found object in RTI as RTI.PARENT
+20140513-211444684 Action 5 click on calculator.1
+20140513-211444920 _UIA_action: Finding object calculator.2
+20140513-211444925 _UIA_action: No RTI.SEARCHCONTEXT used for calculator.2
+20140513-211444929 _UIA_action: try for RTI.CALCULATOR.MAINWINDOW
+20140513-211444933 _UIA_action: Finding object calculator.2 under RTI.CALCULATOR.MAINWINDOW
+20140513-211444938 find 2 name:=2; controltype:=button
+20140513-211444942 _UIA_getObjectByFindAll name:=2; controltype:=button2
+20140513-211444947   _UIA_getObjectByFindAll name:=2
+20140513-211444951   adding index 0 name:name value:2
+20140513-211444955   _UIA_getObjectByFindAll  controltype:=button
+20140513-211444960   adding index 7 name:controltype value:50000
+20140513-211445013         j:0[30005][2][Rekenmachine]0
+20140513-211445022         j:0[30005][2][Geschiedenis van uitvoeringen]0
+20140513-211445028         j:0[30005][2][Geheugen]0
+20140513-211445034         j:0[30005][2][Resultaat]0
+20140513-211445041         j:0[30005][2][1]0
+20140513-211445047         j:0[30005][2][Getallen wissen die in het geheugen zijn opgeslagen]0
+20140513-211445053         j:0[30005][2][Backspace]0
+20140513-211445059         j:0[30005][2][7]0
+20140513-211445065         j:0[30005][2][4]0
+20140513-211445071         j:0[30005][2][1]0
+20140513-211445077         j:0[30005][2][0]0
+20140513-211445082         j:0[30005][2][Het getal ophalen dat in het geheugen is opgeslagen]0
+20140513-211445088         j:0[30005][2][Invoer wissen]0
+20140513-211445094         j:0[30005][2][8]0
+20140513-211445100         j:0[30005][2][5]0
+20140513-211445106         j:0[30005][2][2]1
+20140513-211445111         j:1[30003][50000][50000]1
+20140513-211445256 Storing parent for found object in RTI as RTI.PARENT
+20140513-211445260 Action 6 click on calculator.2
+20140513-211445499 _UIA_action: Finding object calculator.3
+20140513-211445504 _UIA_action: No RTI.SEARCHCONTEXT used for calculator.3
+20140513-211445508 _UIA_action: try for RTI.CALCULATOR.MAINWINDOW
+20140513-211445513 _UIA_action: Finding object calculator.3 under RTI.CALCULATOR.MAINWINDOW
+20140513-211445517 find 2 name:=3; controltype:=button
+20140513-211445520 _UIA_getObjectByFindAll name:=3; controltype:=button2
+20140513-211445523   _UIA_getObjectByFindAll name:=3
+20140513-211445526   adding index 0 name:name value:3
+20140513-211445529   _UIA_getObjectByFindAll  controltype:=button
+20140513-211445532   adding index 7 name:controltype value:50000
+20140513-211445567         j:0[30005][3][Rekenmachine]0
+20140513-211445574         j:0[30005][3][Geschiedenis van uitvoeringen]0
+20140513-211445578         j:0[30005][3][Geheugen]0
+20140513-211445582         j:0[30005][3][Resultaat]0
+20140513-211445586         j:0[30005][3][12]0
+20140513-211445590         j:0[30005][3][Getallen wissen die in het geheugen zijn opgeslagen]0
+20140513-211445594         j:0[30005][3][Backspace]0
+20140513-211445598         j:0[30005][3][7]0
+20140513-211445602         j:0[30005][3][4]0
+20140513-211445606         j:0[30005][3][1]0
+20140513-211445610         j:0[30005][3][0]0
+20140513-211445614         j:0[30005][3][Het getal ophalen dat in het geheugen is opgeslagen]0
+20140513-211445618         j:0[30005][3][Invoer wissen]0
+20140513-211445622         j:0[30005][3][8]0
+20140513-211445626         j:0[30005][3][5]0
+20140513-211445630         j:0[30005][3][2]0
+20140513-211445634         j:0[30005][3][Het weergegeven getal in het geheugen opslaan]0
+20140513-211445638         j:0[30005][3][Wissen]0
+20140513-211445642         j:0[30005][3][9]0
+20140513-211445646         j:0[30005][3][6]0
+20140513-211445650         j:0[30005][3][3]1
+20140513-211445653         j:1[30003][50000][50000]1
+20140513-211445790 Storing parent for found object in RTI as RTI.PARENT
+20140513-211445801 Action 7 click on calculator.3
+20140513-211446036 _UIA_action: Finding object calculator.backspace
+20140513-211446041 _UIA_action: No RTI.SEARCHCONTEXT used for calculator.backspace
+20140513-211446045 _UIA_action: try for RTI.CALCULATOR.MAINWINDOW
+20140513-211446050 _UIA_action: Finding object calculator.backspace under RTI.CALCULATOR.MAINWINDOW
+20140513-211446054 find 2 AutomationId:=83
+20140513-211446058 _UIA_getObjectByFindAll AutomationId:=831
+20140513-211446063   _UIA_getObjectByFindAll AutomationId:=83
+20140513-211446067   adding index 2 name:AutomationId value:83
+20140513-211446115         j:0[30011][83][160]0
+20140513-211446119         j:0[30011][83][404]0
+20140513-211446123         j:0[30011][83][401]0
+20140513-211446126         j:0[30011][83][150]0
+20140513-211446129         j:0[30011][83][158]0
+20140513-211446133         j:0[30011][83][122]0
+20140513-211446136         j:0[30011][83][83]1
+20140513-211446322 Storing parent for found object in RTI as RTI.PARENT
+20140513-211446327 Action 8 click on calculator.backspace
+20140513-211446560 _UIA_action: Finding object calculator.mnuEdit
+20140513-211446565 _UIA_action: No RTI.SEARCHCONTEXT used for calculator.mnuEdit
+20140513-211446569 _UIA_action: try for RTI.CALCULATOR.MAINWINDOW
+20140513-211446574 _UIA_action: Finding object calculator.mnuEdit under RTI.CALCULATOR.MAINWINDOW
+20140513-211446578 find 2 name:=((Edit)|(Bewerken)); controltype:=MenuItem
+20140513-211446583 _UIA_getObjectByFindAll name:=((Edit)|(Bewerken)); controltype:=MenuItem2
+20140513-211446587   _UIA_getObjectByFindAll name:=((Edit)|(Bewerken))
+20140513-211446591   adding index 0 name:name value:((Edit)|(Bewerken))
+20140513-211446596   _UIA_getObjectByFindAll  controltype:=MenuItem
+20140513-211446598   adding index 7 name:controltype value:50011
+20140513-211446627         j:0[30005][((Edit)|(Bewerken))][Rekenmachine]0
+20140513-211446632         j:0[30005][((Edit)|(Bewerken))][Geschiedenis van uitvoeringen]0
+20140513-211446636         j:0[30005][((Edit)|(Bewerken))][Geheugen]0
+20140513-211446639         j:0[30005][((Edit)|(Bewerken))][Resultaat]0
+20140513-211446642         j:0[30005][((Edit)|(Bewerken))][12]0
+20140513-211446646         j:0[30005][((Edit)|(Bewerken))][Getallen wissen die in het geheugen zijn opgeslagen]0
+20140513-211446649         j:0[30005][((Edit)|(Bewerken))][Backspace]0
+20140513-211446652         j:0[30005][((Edit)|(Bewerken))][7]0
+20140513-211446656         j:0[30005][((Edit)|(Bewerken))][4]0
+20140513-211446659         j:0[30005][((Edit)|(Bewerken))][1]0
+20140513-211446662         j:0[30005][((Edit)|(Bewerken))][0]0
+20140513-211446665         j:0[30005][((Edit)|(Bewerken))][Het getal ophalen dat in het geheugen is opgeslagen]0
+20140513-211446668         j:0[30005][((Edit)|(Bewerken))][Invoer wissen]0
+20140513-211446672         j:0[30005][((Edit)|(Bewerken))][8]0
+20140513-211446675         j:0[30005][((Edit)|(Bewerken))][5]0
+20140513-211446678         j:0[30005][((Edit)|(Bewerken))][2]0
+20140513-211446681         j:0[30005][((Edit)|(Bewerken))][Het weergegeven getal in het geheugen opslaan]0
+20140513-211446684         j:0[30005][((Edit)|(Bewerken))][Wissen]0
+20140513-211446687         j:0[30005][((Edit)|(Bewerken))][9]0
+20140513-211446691         j:0[30005][((Edit)|(Bewerken))][6]0
+20140513-211446694         j:0[30005][((Edit)|(Bewerken))][3]0
+20140513-211446697         j:0[30005][((Edit)|(Bewerken))][Decimaalteken]0
+20140513-211446700         j:0[30005][((Edit)|(Bewerken))][Het weergegeven getal optellen bij een getal dat in het geheugen aanwezig is]0
+20140513-211446703         j:0[30005][((Edit)|(Bewerken))][Negatief maken]0
+20140513-211446706         j:0[30005][((Edit)|(Bewerken))][Delen]0
+20140513-211446709         j:0[30005][((Edit)|(Bewerken))][Vermenigvuldigen]0
+20140513-211446712         j:0[30005][((Edit)|(Bewerken))][Aftrekken]0
+20140513-211446716         j:0[30005][((Edit)|(Bewerken))][Optellen]0
+20140513-211446719         j:0[30005][((Edit)|(Bewerken))][Het weergegeven getal aftrekken van een getal dat in het geheugen aanwezig is]0
+20140513-211446722         j:0[30005][((Edit)|(Bewerken))][Vierkantswortel]0
+20140513-211446725         j:0[30005][((Edit)|(Bewerken))][Percentage]0
+20140513-211446728         j:0[30005][((Edit)|(Bewerken))][Reciproque]0
+20140513-211446731         j:0[30005][((Edit)|(Bewerken))][Is gelijk aan]0
+20140513-211446735         j:0[30005][((Edit)|(Bewerken))][Systeem]0
+20140513-211446738         j:0[30005][((Edit)|(Bewerken))][Systeem]0
+20140513-211446741         j:0[30005][((Edit)|(Bewerken))][Minimaliseren]0
+20140513-211446744         j:0[30005][((Edit)|(Bewerken))][Maximaliseren]0
+20140513-211446747         j:0[30005][((Edit)|(Bewerken))][Sluiten]0
+20140513-211446750         j:0[30005][((Edit)|(Bewerken))][Toepassing]0
+20140513-211446753         j:0[30005][((Edit)|(Bewerken))][Weergave]0
+20140513-211446756         j:0[30005][((Edit)|(Bewerken))][Bewerken]1
+20140513-211446758         j:1[30003][50011][50011]1
+20140513-211446940 Storing parent for found object in RTI as RTI.PARENT
+20140513-211446951 Action 9 click on calculator.mnuEdit
+20140513-211447186 _UIA_action: Finding object calculator.mnuCopy
+20140513-211447191 _UIA_action: No RTI.SEARCHCONTEXT used for calculator.mnuCopy
+20140513-211447195 _UIA_action: try for RTI.CALCULATOR.MAINWINDOW
+20140513-211447199 _UIA_action: Finding object calculator.mnuCopy under RTI.CALCULATOR.MAINWINDOW
+20140513-211447202 find 2 name:=((Copy.*)|(Kopi.*)); controltype:=MenuItem
+20140513-211447206 _UIA_getObjectByFindAll name:=((Copy.*)|(Kopi.*)); controltype:=MenuItem2
+20140513-211447210   _UIA_getObjectByFindAll name:=((Copy.*)|(Kopi.*))
+20140513-211447213   adding index 0 name:name value:((Copy.*)|(Kopi.*))
+20140513-211447217   _UIA_getObjectByFindAll  controltype:=MenuItem
+20140513-211447220   adding index 7 name:controltype value:50011
+20140513-211447249         j:0[30005][((Copy.*)|(Kopi.*))][Rekenmachine]0
+20140513-211447252         j:0[30005][((Copy.*)|(Kopi.*))][Bewerken]0
+20140513-211447255         j:0[30005][((Copy.*)|(Kopi.*))][Kopiëren	Ctrl+C]1
+20140513-211447257         j:1[30003][50011][50011]1
+20140513-211447406 Storing parent for found object in RTI as RTI.PARENT
+20140513-211447413 Action 10 click on calculator.mnuCopy
+20140513-211447647 _UIA_action: Finding object notepad.mainwindow
+20140513-211447652 find 1 classname:=Notepad
+20140513-211447656 _UIA_getObjectByFindAll classname:=Notepad1
+20140513-211447661   _UIA_getObjectByFindAll classname:=Notepad
+20140513-211447665   adding index 3 name:classname value:Notepad
+20140513-211452475         j:0[30012][Notepad][#32769]0
+20140513-211452481         j:0[30012][Notepad][Shell_TrayWnd]0
+20140513-211452489         j:0[30012][Notepad][Button]0
+20140513-211452496         j:0[30012][Notepad][TrayNotifyWnd]0
+20140513-211452503         j:0[30012][Notepad][TrayClockWClass]0
+20140513-211452508         j:0[30012][Notepad][TrayShowDesktopButtonWClass]0
+20140513-211452512         j:0[30012][Notepad][SysPager]0
+20140513-211452516         j:0[30012][Notepad][ToolbarWindow32]0
+20140513-211452523         j:0[30012][Notepad][ToolbarWindow32]0
+20140513-211452528         j:0[30012][Notepad][Button]0
+20140513-211452531         j:0[30012][Notepad][ReBarWindow32]0
+20140513-211452534         j:0[30012][Notepad][CiceroUIWndFrame]0
+20140513-211452538         j:0[30012][Notepad][MSTaskSwWClass]0
+20140513-211452541         j:0[30012][Notepad][MSTaskListWClass]0
+20140513-211452550         j:0[30012][Notepad][CalcFrame]0
+20140513-211452552         j:0[30012][Notepad][CalcFrame]0
+20140513-211452555         j:0[30012][Notepad][Static]0
+20140513-211452558         j:0[30012][Notepad][Static]0
+20140513-211452560         j:0[30012][Notepad][Static]0
+20140513-211452563         j:0[30012][Notepad][Static]0
+20140513-211452566         j:0[30012][Notepad][Static]0
+20140513-211452569         j:0[30012][Notepad][Button]0
+20140513-211452572         j:0[30012][Notepad][Button]0
+20140513-211452575         j:0[30012][Notepad][Button]0
+20140513-211452577         j:0[30012][Notepad][Button]0
+20140513-211452580         j:0[30012][Notepad][Button]0
+20140513-211452583         j:0[30012][Notepad][Button]0
+20140513-211452591         j:0[30012][Notepad][Button]0
+20140513-211452595         j:0[30012][Notepad][Button]0
+20140513-211452599         j:0[30012][Notepad][Button]0
+20140513-211452602         j:0[30012][Notepad][Button]0
+20140513-211452605         j:0[30012][Notepad][Button]0
+20140513-211452608         j:0[30012][Notepad][Button]0
+20140513-211452611         j:0[30012][Notepad][Button]0
+20140513-211452614         j:0[30012][Notepad][Button]0
+20140513-211452618         j:0[30012][Notepad][Button]0
+20140513-211452621         j:0[30012][Notepad][Button]0
+20140513-211452624         j:0[30012][Notepad][Button]0
+20140513-211452627         j:0[30012][Notepad][Button]0
+20140513-211452630         j:0[30012][Notepad][Button]0
+20140513-211452633         j:0[30012][Notepad][Button]0
+20140513-211452636         j:0[30012][Notepad][Button]0
+20140513-211452639         j:0[30012][Notepad][Button]0
+20140513-211452643         j:0[30012][Notepad][Button]0
+20140513-211452646         j:0[30012][Notepad][Button]0
+20140513-211452649         j:0[30012][Notepad][Button]0
+20140513-211452652         j:0[30012][Notepad][Button]0
+20140513-211452655         j:0[30012][Notepad][Button]0
+20140513-211452658         j:0[30012][Notepad][Button]0
+20140513-211452668         j:0[30012][Notepad][OpusApp]0
+20140513-211452671         j:0[30012][Notepad][MsoCommandBarDock]0
+20140513-211452673         j:0[30012][Notepad][MsoCommandBar]0
+20140513-211452676         j:0[30012][Notepad][MsoWorkPane]0
+20140513-211452679         j:0[30012][Notepad][NUIPane]0
+20140513-211452681         j:0[30012][Notepad][NetUIHWNDElement]0
+20140513-211452684         j:0[30012][Notepad][NetUInetpane]0
+20140513-211452687         j:0[30012][Notepad][NetUIElement]0
+20140513-211452690         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452692         j:0[30012][Notepad][NetUISplitButtonAnchor]0
+20140513-211452695         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452698         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452700         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452703         j:0[30012][Notepad][NetUIAnchor]0
+20140513-211452706         j:0[30012][Notepad][NetUIOfficeCaption]0
+20140513-211452709         j:0[30012][Notepad][NetUIAppFrameHelper]0
+20140513-211452711         j:0[30012][Notepad][NetUIAppFrameHelper]0
+20140513-211452714         j:0[30012][Notepad][NetUIAppFrameHelper]0
+20140513-211452717         j:0[30012][Notepad][NetUIRibbonTab]0
+20140513-211452719         j:0[30012][Notepad][NetUIPanViewer]0
+20140513-211452723         j:0[30012][Notepad][NetUIRibbonTab]0
+20140513-211452731         j:0[30012][Notepad][NetUIRibbonTab]0
+20140513-211452735         j:0[30012][Notepad][NetUIRibbonTab]0
+20140513-211452738         j:0[30012][Notepad][NetUIRibbonTab]0
+20140513-211452741         j:0[30012][Notepad][NetUIRibbonTab]0
+20140513-211452745         j:0[30012][Notepad][NetUIRibbonTab]0
+20140513-211452748         j:0[30012][Notepad][NetUIRibbonTab]0
+20140513-211452751         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452754         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452757         j:0[30012][Notepad][NetUIPanViewer]0
+20140513-211452761         j:0[30012][Notepad][NetUIOrderedGroup]0
+20140513-211452764         j:0[30012][Notepad][NetUIChunk]0
+20140513-211452767         j:0[30012][Notepad][NetUISplitButtonAnchor]0
+20140513-211452770         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452773         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452776         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452779         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452782         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452785         j:0[30012][Notepad][NetUISimpleButton]0
+20140513-211452789         j:0[30012][Notepad][NetUIChunk]0
+20140513-211452792         j:0[30012][Notepad][NetUIComboboxAnchor]0
+20140513-211452795         j:0[30012][Notepad][NetUITextbox]0
+20140513-211452798         j:0[30012][Notepad][NetUIStickyButton]0
+20140513-211452802         j:0[30012][Notepad][NetUIComboboxAnchor]0
+20140513-211452805         j:0[30012][Notepad][NetUITextbox]0
+20140513-211452808         j:0[30012][Notepad][NetUIStickyButton]0
+20140513-211452811         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452814         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452817         j:0[30012][Notepad][NetUIAnchor]0
+20140513-211452821         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452824         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452827         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452830         j:0[30012][Notepad][NetUISplitButtonAnchor]0
+20140513-211452833         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452837         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452840         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452843         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452846         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452849         j:0[30012][Notepad][NetUIAnchor]0
+20140513-211452852         j:0[30012][Notepad][NetUISplitButtonAnchor]0
+20140513-211452856         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452859         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452862         j:0[30012][Notepad][NetUISplitButtonAnchor]0
+20140513-211452865         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452868         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452871         j:0[30012][Notepad][NetUISimpleButton]0
+20140513-211452875         j:0[30012][Notepad][NetUIChunk]0
+20140513-211452878         j:0[30012][Notepad][NetUISplitButtonAnchor]0
+20140513-211452881         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452884         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452887         j:0[30012][Notepad][NetUISplitButtonAnchor]0
+20140513-211452890         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452893         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452897         j:0[30012][Notepad][NetUIAnchor]0
+20140513-211452900         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452903         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452906         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452909         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452912         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452915         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452918         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452921         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452924         j:0[30012][Notepad][NetUIAnchor]0
+20140513-211452928         j:0[30012][Notepad][NetUISplitButtonAnchor]0
+20140513-211452931         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452934         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452937         j:0[30012][Notepad][NetUISplitButtonAnchor]0
+20140513-211452940         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452943         j:0[30012][Notepad][NetUIRibbonButton]0
+20140513-211452947         j:0[30012][Notepad][NetUISimpleButton]0
+20140513-211452950         j:0[30012][Notepad][NetUIChunk]0
+20140513-211452953         j:0[30012][Notepad][NetUIElement]0
+20140513-211452957         j:0[30012][Notepad][NetUIAnchor]0
+20140513-211452960         j:0[30012][Notepad][NetUIScrollViewer]0
+20140513-211452963         j:0[30012][Notepad][NetUIGalleryButtonGroup]0
+20140513-211452966         j:0[30012][Notepad][NetUIGalleryButton]0
+20140513-211452970         j:0[30012][Notepad][NetUIGalleryButton]0
+20140513-211452973         j:0[30012][Notepad][NetUIGalleryButton]0
+20140513-211452976         j:0[30012][Notepad][NetUIGalleryButton]0
+20140513-211452979         j:0[30012][Notepad][NetUIGalleryButton]0
+20140513-211452983         j:0[30012][Notepad][NetUIGalleryButton]0
+20140513-211452986         j:0[30012][Notepad][NetUIGalleryButton]0
+20140513-211452989         j:0[30012][Notepad][NetUIGalleryButton]0
+20140513-211452992         j:0[30012][Notepad][NetUIGalleryButton]0
+20140513-211452995         j:0[30012][Notepad][NetUIGalleryButton]0
+20140513-211452999         j:0[30012][Notepad][NetUIGalleryButton]0
+20140513-211453002         j:0[30012][Notepad][NetUIGalleryButton]0
+20140513-211453005         j:0[30012][Notepad][NetUIGalleryButton]0
+20140513-211453008         j:0[30012][Notepad][NetUIGalleryButton]0
+20140513-211453011         j:0[30012][Notepad][NetUIGalleryButton]0
+20140513-211453014         j:0[30012][Notepad][NetUIGalleryButton]0
+20140513-211453017         j:0[30012][Notepad][NetUIRepeatButton]0
+20140513-211453020         j:0[30012][Notepad][NetUIRepeatButton]0
+20140513-211453024         j:0[30012][Notepad][NetUISimpleButton]0
+20140513-211453027         j:0[30012][Notepad][NetUIAnchor]0
+20140513-211453030         j:0[30012][Notepad][NetUISimpleButton]0
+20140513-211453033         j:0[30012][Notepad][NetUIChunk]0
+20140513-211453036         j:0[30012][Notepad][NetUIAnchor]0
+20140513-211453039         j:0[30012][Notepad][MsoCommandBarDock]0
+20140513-211453042         j:0[30012][Notepad][MsoCommandBar]0
+20140513-211453046         j:0[30012][Notepad][MsoWorkPane]0
+20140513-211453049         j:0[30012][Notepad][NUIPane]0
+20140513-211453052         j:0[30012][Notepad][NetUIHWNDElement]0
+20140513-211453055         j:0[30012][Notepad][NetUInetpane]0
+20140513-211453058         j:0[30012][Notepad][NetUISimpleButton]0
+20140513-211453061         j:0[30012][Notepad][NetUISimpleButton]0
+20140513-211453065         j:0[30012][Notepad][NetUISimpleButton]0
+20140513-211453068         j:0[30012][Notepad][NetUISimpleButton]0
+20140513-211453071         j:0[30012][Notepad][NetUISimpleButton]0
+20140513-211453074         j:0[30012][Notepad][NetUIStickyButton]0
+20140513-211453077         j:0[30012][Notepad][NetUIStickyButton]0
+20140513-211453080         j:0[30012][Notepad][NetUIStickyButton]0
+20140513-211453083         j:0[30012][Notepad][NetUIStickyButton]0
+20140513-211453086         j:0[30012][Notepad][NetUIStickyButton]0
+20140513-211453089         j:0[30012][Notepad][NetUISimpleButton]0
+20140513-211453092         j:0[30012][Notepad][NetUIRepeatButton]0
+20140513-211453096         j:0[30012][Notepad][NetUISlider]0
+20140513-211453099         j:0[30012][Notepad][NetUIRepeatButton]0
+20140513-211453102         j:0[30012][Notepad][NetUIThumb]0
+20140513-211453105         j:0[30012][Notepad][NetUIRepeatButton]0
+20140513-211453108         j:0[30012][Notepad][NetUIRepeatButton]0
+20140513-211453111         j:0[30012][Notepad][NetUIGrippie]0
+20140513-211453115         j:0[30012][Notepad][_WwF]0
+20140513-211453118         j:0[30012][Notepad][_WwB]0
+20140513-211453121         j:0[30012][Notepad][MsoCommandBar]0
+20140513-211453125         j:0[30012][Notepad][MsoCommandBar]0
+20140513-211453130         j:0[30012][Notepad][_WwG]0
+20140513-211453132         j:0[30012][Notepad][NUIScrollbar]0
+20140513-211453135         j:0[30012][Notepad][NetUIHWNDElement]0
+20140513-211453138         j:0[30012][Notepad][NetUIScrollBar]0
+20140513-211453140         j:0[30012][Notepad][NetUIRepeatButton]0
+20140513-211453143         j:0[30012][Notepad][NetUIRepeatButton]0
+20140513-211453146         j:0[30012][Notepad][NetUIThumb]0
+20140513-211453148         j:0[30012][Notepad][NetUIRepeatButton]0
+20140513-211453151         j:0[30012][Notepad][NetUIRepeatButton]0
+20140513-211453154         j:0[30012][Notepad][_WwC]0
+20140513-211453156         j:0[30012][Notepad][_WwC]0
+20140513-211453160         j:0[30012][Notepad][_WwC]0
+20140513-211453170         j:0[30012][Notepad][Notepad]1
+20140513-211453306 Storing parent for found object in RTI as RTI.PARENT
+20140513-211453312 Storing in RTI as RTI.notepad.mainwindow
+20140513-211453374 Action 11 setfocus on notepad.mainwindow
+20140513-211453580 _UIA_action: Finding object notepad.mnuEdit
+20140513-211453585 _UIA_action: No RTI.SEARCHCONTEXT used for notepad.mnuEdit
+20140513-211453589 _UIA_action: try for RTI.NOTEPAD.MAINWINDOW
+20140513-211453593 _UIA_action: Finding object notepad.mnuEdit under RTI.NOTEPAD.MAINWINDOW
+20140513-211453597 find 2 name:=((Edit)|(Bewerken))
+20140513-211453602 _UIA_getObjectByFindAll name:=((Edit)|(Bewerken))1
+20140513-211453606   _UIA_getObjectByFindAll name:=((Edit)|(Bewerken))
+20140513-211453611   adding index 0 name:name value:((Edit)|(Bewerken))
+20140513-211453623         j:0[30005][((Edit)|(Bewerken))][Naamloos - Kladblok]0
+20140513-211453628         j:0[30005][((Edit)|(Bewerken))][Verticaal]0
+20140513-211453631         j:0[30005][((Edit)|(Bewerken))][Regel omhoog]0
+20140513-211453635         j:0[30005][((Edit)|(Bewerken))][Regel omlaag]0
+20140513-211453639         j:0[30005][((Edit)|(Bewerken))][Systeem]0
+20140513-211453642         j:0[30005][((Edit)|(Bewerken))][Systeem]0
+20140513-211453646         j:0[30005][((Edit)|(Bewerken))][Minimaliseren]0
+20140513-211453649         j:0[30005][((Edit)|(Bewerken))][Maximaliseren]0
+20140513-211453653         j:0[30005][((Edit)|(Bewerken))][Sluiten]0
+20140513-211453656         j:0[30005][((Edit)|(Bewerken))][Toepassing]0
+20140513-211453660         j:0[30005][((Edit)|(Bewerken))][Bestand]0
+20140513-211453663         j:0[30005][((Edit)|(Bewerken))][Bewerken]1
+20140513-211453790 Storing parent for found object in RTI as RTI.PARENT
+20140513-211453795 Action 12 click on notepad.mnuEdit
+20140513-211454030 _UIA_action: Finding object notepad.mnuPaste
+20140513-211454032 _UIA_action: No RTI.SEARCHCONTEXT used for notepad.mnuPaste
+20140513-211454034 _UIA_action: try for RTI.NOTEPAD.MAINWINDOW
+20140513-211454036 _UIA_action: Finding object notepad.mnuPaste under RTI.NOTEPAD.MAINWINDOW
+20140513-211454038 find 2 name:=((Paste.*)|(Plak.*))
+20140513-211454040 _UIA_getObjectByFindAll name:=((Paste.*)|(Plak.*))1
+20140513-211454042   _UIA_getObjectByFindAll name:=((Paste.*)|(Plak.*))
+20140513-211454044   adding index 0 name:name value:((Paste.*)|(Plak.*))
+20140513-211454052         j:0[30005][((Paste.*)|(Plak.*))][Naamloos - Kladblok]0
+20140513-211454055         j:0[30005][((Paste.*)|(Plak.*))][Bewerken]0
+20140513-211454057         j:0[30005][((Paste.*)|(Plak.*))][Ongedaan maken	Ctrl+Z]0
+20140513-211454060         j:0[30005][((Paste.*)|(Plak.*))][Knippen	Ctrl+X]0
+20140513-211454063         j:0[30005][((Paste.*)|(Plak.*))][Kopiëren	Ctrl+C]0
+20140513-211454065         j:0[30005][((Paste.*)|(Plak.*))][Plakken	Ctrl+V]1
+20140513-211454189 Storing parent for found object in RTI as RTI.PARENT
+20140513-211454193 Action 13 click on notepad.mnuPaste
+20140513-211454426 _UIA_action: Finding object notepad.mainwindow
+20140513-211454431 find 1 classname:=Notepad
+20140513-211454436 _UIA_getObjectByFindAll classname:=Notepad1
+20140513-211454440   _UIA_getObjectByFindAll classname:=Notepad
+20140513-211454445   adding index 3 name:classname value:Notepad
+20140513-211459476         j:0[30012][Notepad][#32769]0
+20140513-211459482         j:0[30012][Notepad][Shell_TrayWnd]0
+20140513-211459492         j:0[30012][Notepad][Button]0
+20140513-211459499         j:0[30012][Notepad][TrayNotifyWnd]0
+20140513-211459505         j:0[30012][Notepad][TrayClockWClass]0
+20140513-211459512         j:0[30012][Notepad][TrayShowDesktopButtonWClass]0
+20140513-211459519         j:0[30012][Notepad][SysPager]0
+20140513-211459526         j:0[30012][Notepad][ToolbarWindow32]0
+20140513-211459534         j:0[30012][Notepad][ToolbarWindow32]0
+20140513-211459538         j:0[30012][Notepad][Button]0
+20140513-211459542         j:0[30012][Notepad][ReBarWindow32]0
+20140513-211459545         j:0[30012][Notepad][CiceroUIWndFrame]0
+20140513-211459549         j:0[30012][Notepad][MSTaskSwWClass]0
+20140513-211459553         j:0[30012][Notepad][MSTaskListWClass]0
+20140513-211459563         j:0[30012][Notepad][Notepad]1
+20140513-211459691 Storing parent for found object in RTI as RTI.PARENT
+20140513-211459695 Storing in RTI as RTI.notepad.mainwindow
+20140513-211459751 Action 14 setvalue on notepad.mainwindow

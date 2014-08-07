@@ -596,3 +596,19 @@ Func _UIA_action($obj_or_string, $strAction, $p1 = 0, $p2 = 0, $p3 = 0, $p4 = 0)
 
 	Return True
 EndFunc   ;==>_UIA_action
+
+Func _UIA_ControlGetHandle($hWnd, $controlID)
+	; check input
+	; call internal function to get control
+	; return it
+EndFunc
+
+Func _UIA_ControlSetText($hWnd, $controlID)
+	; check input
+	; do what _UIA_Action does with setvalue parameter
+EndFunc
+
+Func __UIA_ControlGet($hWnd, $controlID)
+	; Implementation of _UIA_getFirstObjectOfElement here
+	; Make sure it has instance # as well
+EndFunc

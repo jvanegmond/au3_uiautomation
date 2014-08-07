@@ -1,0 +1,21 @@
+[SCRIPT_START]
+;~ Basic start generated
+
+[SCRIPTEND]
+;~ Basic start generated
+
+[MAINWINDOW_START]
+;~ When control is a main window this code is also used
+_UIA_setVar("$UIA_ClassNamePropertyId.mainwindow","title:=$UIA_NamePropertyId;classname:=$UIA_ClassNamePropertyId")
+;~ Action on the logical object as defined
+_UIA_action("$UIA_ClassNamePropertyId.MAINWINDOW","setfocus")
+
+[CONTROL_START]
+;~ Generic part for any control
+$oCtrl$UIA_NamePropertyId=_UIA_getObjectByFindAll(\\TODO: $oParent, "title:=$UIA_NamePropertyId;classname:=$UIA_ClassNamePropertyId"), $treescope_subtree)
+;~$oCtrl$UIA_NamePropertyId=_UIA_getFirstObjectOfElement(\\TODO: $oParent, "title:=$UIA_NamePropertyId;classname:=$UIA_ClassNamePropertyId", $treescope_subtree)
+
+[UIA_EditControlTypeId]
+;~ When the control type is an Edit this is the recorded code
+_UIA_action(""title:=$UIA_NamePropertyId;classname:=$UIA_ClassNamePropertyId","setvalue","$UIA_NamePropertyId")
+;~ _UIA_action(""title:=$UIA_NamePropertyId;classname:=$UIA_ClassNamePropertyId","setvalue","$UIA_NamePropertyId")

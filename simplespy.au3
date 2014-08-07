@@ -130,7 +130,7 @@ If IsObj($oUIElement) Then
 	if $pos > 0 Then
 		$controlIDString=stringleft($controlIDString,$pos)
 	EndIf
-	$controlIDString=_UIA_NiceString($controlIDString)
+	$controlIDString=_NiceString($controlIDString)
 
 ;~  ConsoleWrite("At least we have an element "  & "[" & _UIA_getPropertyValue($oUIElement, $UIA_NamePropertyId) & "][" & _UIA_getPropertyValue($oUIElement, $UIA_ClassNamePropertyId) & "]" & @CRLF)
 	GUICtrlSetData($edtCtrlInfo, "At least we have an element "  & "[" & $title & "][" & $class & "]" & @CRLF,1)
@@ -201,7 +201,7 @@ EndIf
 	_GUICtrlEdit_LineScroll($edtCtrlInfo, 0, 0 - _GUICtrlEdit_GetLineCount($edtCtrlInfo))
 
 	$t=stringsplit(_UIA_getPropertyValue($oUIElement, $UIA_BoundingRectanglePropertyId),";")
-	_UIA_DrawRect($t[1],$t[3]+$t[1],$t[2],$t[4]+$t[2])
+	_DrawRect($t[1],$t[3]+$t[1],$t[2],$t[4]+$t[2])
 EndIf
 
 EndFunc   ;==>GetElementInfo
@@ -244,3 +244,31 @@ func loadCodeTemplates()
     FileClose($hFileOpen)
 EndFunc
 
+func _NiceString($str)
+	local $tStr=$str
+	$tstr=stringreplace($tStr," ","")
+	$tstr=stringreplace($tStr,"\","")
+	return $tStr
+EndFunc
+
+; Draw rectangle on screen.
+Func _DrawRect($tLeft, $tRight, $tTop, $tBottom, $color = 0xFF, $PenWidth = 4)
+    Local $hDC, $hPen, $obj_orig, $x1, $x2, $y1, $y2
+    $x1 = $tLeft
+    $x2 = $tRight
+    $y1 = $tTop
+    $y2 = $tBottom
+    $hDC = _WinAPI_GetWindowDC(0) ; DC of entire screen (desktop)
+    $hPen = _WinAPI_CreatePen($PS_SOLID, $PenWidth, $color)
+    $obj_orig = _WinAPI_SelectObject($hDC, $hPen)
+
+    _WinAPI_DrawLine($hDC, $x1, $y1, $x2, $y1) ; horizontal to right
+    _WinAPI_DrawLine($hDC, $x2, $y1, $x2, $y2) ; vertical down on right
+    _WinAPI_DrawLine($hDC, $x2, $y2, $x1, $y2) ; horizontal to left right
+    _WinAPI_DrawLine($hDC, $x1, $y2, $x1, $y1) ; vertical up on left
+
+    ; clear resources
+    _WinAPI_SelectObject($hDC, $obj_orig)
+    _WinAPI_DeleteObject($hPen)
+    _WinAPI_ReleaseDC(0, $hDC)
+EndFunc   ;==>_DrawtRect

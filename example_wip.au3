@@ -1,3 +1,4 @@
+#include "UIAWrappers.au3"
 
 ; Short test script for development purposes
 
@@ -9,6 +10,6 @@ $pid = Run("notepad.exe")
 
 $hWnd = WinGetHandle("Untitled - Notepad")
 
-$hEdit1 = _UIA_ControlGetHandle($hWnd, "[CLASS:Edit; INSTANCE:1]")
+$hEdit1 = _UIA_ControlGetHandle($hWnd, "[CLASS:Edit; INSTANCE: 1]")
 
 _UIA_ControlSetText($hWnd, $hEdit1, "It works!")

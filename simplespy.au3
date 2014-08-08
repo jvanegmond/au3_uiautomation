@@ -272,3 +272,30 @@ Func _DrawRect($tLeft, $tRight, $tTop, $tBottom, $color = 0xFF, $PenWidth = 4)
     _WinAPI_DeleteObject($hPen)
     _WinAPI_ReleaseDC(0, $hDC)
 EndFunc   ;==>_DrawtRect
+
+
+; #FUNCTION# ====================================================================================================================
+; Name...........: _UIA_getAllPropertyValues($UIA_oUIElement)
+; Description ...: Just return all properties as a string
+; Syntax.........: _UIA_getPropertyValues
+; Parameters ....: $obj - An UI Element object
+; 				   $id - A reference to the property id
+; Return values .: Success      - Returns 1
+;                  Failure		- Returns 0 and sets @error on errors:
+;                  |@error=1     - UI automation failed
+;                  |@error=2     - UI automation desktop failed
+; ===============================================================================================================================
+; ~ Just get all available properties for desktop/should work on all IUIAutomationElements depending on ControlTypePropertyID they work yes/no
+; ~ Just make it a very long string name:= value pairs
+Func _UIA_getAllPropertyValues($UIA_oUIElement)
+	Local $tStr, $tval, $tSeparator
+	$tStr = ""
+	$tSeparator = @CRLF ; To make sure its not a value you normally will get back for values
+	For $i = 0 To UBound($UIA_propertiesSupportedArray) - 1
+		$tval = _UIA_getPropertyValue($UIA_oUIElement, $UIA_propertiesSupportedArray[$i][1])
+		If $tval <> "" Then
+			$tStr = $tStr & "UIA_" & $UIA_propertiesSupportedArray[$i][0] & ":= <" & $tval & ">" & $tSeparator
+		EndIf
+	Next
+	Return $tStr
+EndFunc   ;==>_UIA_getAllPropertyValues

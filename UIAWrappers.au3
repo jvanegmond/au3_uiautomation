@@ -9,21 +9,15 @@
 ; #INDEX# =======================================================================================================================
 ; Title .........: UI automation helper functions
 ; AutoIt Version : 3.3.8.1 and up
-; Description ...: Brings UI automation to AutoIt.
+; Description ...: UI automation for AutoIt.
 ; Author(s) .....: junkew, Manadar
 ; ===============================================================================================================================
 
-Global $UIA_oUIAutomation ; The main library core CUI automation reference
-Global $UIA_oDesktop, $UIA_pDesktop ; Desktop will be frequently the starting point
+Local $UIA_oUIAutomation ; The main library core CUI automation reference
+Local $UIA_oDesktop ; Desktop will be frequently the starting point
 
-Global $UIA_oUIElement, $UIA_pUIElement ; Used frequently to get an element
-
-Global $UIA_oTW, $UIA_pTW ; Generic treewalker which is allways available
-Global $UIA_oTRUECondition ; TRUE condition easy to be available for treewalking
-
-Global $UIA_DefaultWaitTime = 200 ; Frequently it makes sense to have a small waiting time to have windows rebuild, could be set to 0 if good synch is happening
-
-Global $UIA_oMainwindow
+Local $UIA_oTW ; Generic treewalker which is allways available
+Local $UIA_oTRUECondition ; TRUE condition easy to be available for treewalking
 
 ; ===================================================================================================================
 
@@ -39,6 +33,7 @@ Func _UIA_Init()
 	EndIf
 
 	; Try to get the desktop as a generic reference/global for all samples
+	Local $UIA_pDesktop
 	$UIA_oUIAutomation.GetRootElement($UIA_pDesktop)
 	$UIA_oDesktop = ObjCreateInterface($UIA_pDesktop, $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
 	If Not IsObj($UIA_oDesktop) Then
@@ -46,6 +41,7 @@ Func _UIA_Init()
 	EndIf
 
 	; Have a treewalker available to easily walk around the element trees
+	Local $UIA_pTW
 	$UIA_oUIAutomation.RawViewWalker($UIA_pTW)
 	$UIA_oTW = ObjCreateInterface($UIA_pTW, $sIID_IUIAutomationTreeWalker, $dtagIUIAutomationTreeWalker)
 	If Not IsObj($UIA_oTW) = 0 Then
@@ -148,32 +144,6 @@ Func _UIA_getPropertyValue($obj, $id)
 	Return $tStr
 EndFunc   ;==>_UIA_getPropertyValue
 
-; #FUNCTION# ====================================================================================================================
-; Name...........: _UIA_getAllPropertyValues($UIA_oUIElement)
-; Description ...: Just return all properties as a string
-; Syntax.........: _UIA_getPropertyValues
-; Parameters ....: $obj - An UI Element object
-; 				   $id - A reference to the property id
-; Return values .: Success      - Returns 1
-;                  Failure		- Returns 0 and sets @error on errors:
-;                  |@error=1     - UI automation failed
-;                  |@error=2     - UI automation desktop failed
-; ===============================================================================================================================
-; ~ Just get all available properties for desktop/should work on all IUIAutomationElements depending on ControlTypePropertyID they work yes/no
-; ~ Just make it a very long string name:= value pairs
-Func _UIA_getAllPropertyValues($UIA_oUIElement)
-	Local $tStr, $tval, $tSeparator
-	$tStr = ""
-	$tSeparator = @CRLF ; To make sure its not a value you normally will get back for values
-	For $i = 0 To UBound($UIA_propertiesSupportedArray) - 1
-		$tval = _UIA_getPropertyValue($UIA_oUIElement, $UIA_propertiesSupportedArray[$i][1])
-		If $tval <> "" Then
-			$tStr = $tStr & "UIA_" & $UIA_propertiesSupportedArray[$i][0] & ":= <" & $tval & ">" & $tSeparator
-		EndIf
-	Next
-	Return $tStr
-EndFunc   ;==>_UIA_getAllPropertyValues
-
 ; INTERNAL USE
 ; Small helper function to get an object out of a treeSearch based on the name / title
 ; Not possible to match on multiple properties then findall should be used
@@ -214,6 +184,7 @@ Func _UIA_getFirstObjectOfElement($obj, $str, $treeScope)
 	$iTry = 1
 	$UIA_oUIElement = ""
 	Local Const $UIA_tryMax = 3 ; Retry
+	Local $UIA_pUIElement
 
 	While Not IsObj($UIA_oUIElement) And $iTry <= $UIA_tryMax
 		$t = $obj.Findfirst($treeScope, $oCondition, $UIA_pUIElement)
@@ -317,6 +288,7 @@ Func _UIA_getObjectByFindAll($obj, $str, $treeScope, $p1 = 0)
 	EndIf
 
 	;
+	Local $UIA_pUIElement
 	For $i = 0 To $iLength - 1; it's zero based
 		$oAutomationElementArray.GetElement($i, $UIA_pUIElement)
 		$UIA_oUIElement = ObjCreateInterface($UIA_pUIElement, $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
@@ -388,52 +360,6 @@ Func _UIA_getObjectByFindAll($obj, $str, $treeScope, $p1 = 0)
 
 	Return ""
 EndFunc   ;==>_UIA_getObjectByFindAll
-
-Func _UIA_getPattern($obj, $patternID)
-	Local $patternArray[21][3] = [ _
-			[$UIA_ValuePatternId, $sIID_IUIAutomationValuePattern, $dtagIUIAutomationValuePattern], _
-			[$UIA_InvokePatternId, $sIID_IUIAutomationInvokePattern, $dtagIUIAutomationInvokePattern], _
-			[$UIA_SelectionPatternId, $sIID_IUIAutomationSelectionPattern, $dtagIUIAutomationSelectionPattern], _
-			[$UIA_LegacyIAccessiblePatternId, $sIID_IUIAutomationLegacyIAccessiblePattern, $dtagIUIAutomationLegacyIAccessiblePattern], _
-			[$UIA_SelectionItemPatternId, $sIID_IUIAutomationSelectionItemPattern, $dtagIUIAutomationSelectionItemPattern], _
-			[$UIA_RangeValuePatternId, $sIID_IUIAutomationRangeValuePattern, $dtagIUIAutomationRangeValuePattern], _
-			[$UIA_ScrollPatternId, $sIID_IUIAutomationScrollPattern, $dtagIUIAutomationScrollPattern], _
-			[$UIA_GridPatternId, $sIID_IUIAutomationGridPattern, $dtagIUIAutomationGridPattern], _
-			[$UIA_GridItemPatternId, $sIID_IUIAutomationGridItemPattern, $dtagIUIAutomationGridItemPattern], _
-			[$UIA_MultipleViewPatternId, $sIID_IUIAutomationMultipleViewPattern, $dtagIUIAutomationMultipleViewPattern], _
-			[$UIA_WindowPatternId, $sIID_IUIAutomationWindowPattern, $dtagIUIAutomationWindowPattern], _
-			[$UIA_DockPatternId, $sIID_IUIAutomationDockPattern, $dtagIUIAutomationDockPattern], _
-			[$UIA_TablePatternId, $sIID_IUIAutomationTablePattern, $dtagIUIAutomationTablePattern], _
-			[$UIA_TextPatternId, $sIID_IUIAutomationTextPattern, $dtagIUIAutomationTextPattern], _
-			[$UIA_TogglePatternId, $sIID_IUIAutomationTogglePattern, $dtagIUIAutomationTogglePattern], _
-			[$UIA_TransformPatternId, $sIID_IUIAutomationTransformPattern, $dtagIUIAutomationTransformPattern], _
-			[$UIA_ScrollItemPatternId, $sIID_IUIAutomationScrollItemPattern, $dtagIUIAutomationScrollItemPattern], _
-			[$UIA_ItemContainerPatternId, $sIID_IUIAutomationItemContainerPattern, $dtagIUIAutomationItemContainerPattern], _
-			[$UIA_VirtualizedItemPatternId, $sIID_IUIAutomationVirtualizedItemPattern, $dtagIUIAutomationVirtualizedItemPattern], _
-			[$UIA_SynchronizedInputPatternId, $sIID_IUIAutomationSynchronizedInputPattern, $dtagIUIAutomationSynchronizedInputPattern], _
-			[$UIA_ExpandCollapsePatternId, $sIID_IUIAutomationExpandCollapsePattern, $dtagIUIAutomationExpandCollapsePattern] _
-			]
-
-	Local $pPattern, $oPattern
-	Local $sIID_Pattern
-	Local $sdTagPattern
-	Local $i
-
-	For $i = 0 To UBound($patternArray) - 1
-		If $patternArray[$i][0] = $patternID Then
-			$sIID_Pattern = $patternArray[$i][1]
-			$sdTagPattern = $patternArray[$i][2]
-		EndIf
-	Next
-
-	$obj.getCurrentPattern($patternID, $pPattern)
-	$oPattern = ObjCreateInterface($pPattern, $sIID_Pattern, $sdTagPattern)
-	If IsObj($oPattern) Then
-		Return $oPattern
-	Else
-
-	EndIf
-EndFunc   ;==>_UIA_getPattern
 
 Func _UIA_getTaskBar()
 	Return _UIA_getFirstObjectOfElement($UIA_oDesktop, "classname:=Shell_TrayWnd", $TreeScope_Children)
@@ -531,7 +457,7 @@ Func _UIA_action($obj_or_string, $strAction, $p1 = 0, $p2 = 0, $p3 = 0, $p4 = 0)
 			; Mouse should move to keep it as userlike as possible
 			MouseMove($x, $y, 0)
 			MouseClick($clickAction, $x, $y, $clickCount, 0)
-			Sleep($UIA_DefaultWaitTime)
+			Sleep(200)
 
 		Case "setvalue"
 
@@ -542,8 +468,8 @@ Func _UIA_action($obj_or_string, $strAction, $p1 = 0, $p2 = 0, $p3 = 0, $p4 = 0)
 				WinSetTitle(HWnd($hwnd), "", $p1)
 			Else
 				$obj.setfocus()
-				Sleep($UIA_DefaultWaitTime)
-				$tPattern = _UIA_getPattern($obj, $UIA_ValuePatternId)
+				Sleep(200)
+				$tPattern = __UIA_getPattern($obj, $UIA_ValuePattern)
 				$tPattern.setvalue($p1)
 			EndIf
 
@@ -551,41 +477,41 @@ Func _UIA_action($obj_or_string, $strAction, $p1 = 0, $p2 = 0, $p3 = 0, $p4 = 0)
 			$obj.setfocus()
 			Send("^a")
 			Send($p1)
-			Sleep($UIA_DefaultWaitTime)
+			Sleep(200)
 		Case "sendkeys", "enterstring", "type"
 			$obj.setfocus()
 			Send($p1)
 		Case "invoke"
 			$obj.setfocus()
-			Sleep($UIA_DefaultWaitTime)
-			$tPattern = _UIA_getPattern($obj, $UIA_InvokePatternId)
+			Sleep(200)
+			$tPattern = __UIA_getPattern($obj, $UIA_InvokePattern)
 			$tPattern.invoke()
 		Case "focus", "setfocus", "activate"
 			$obj.setfocus()
-			Sleep($UIA_DefaultWaitTime)
+			Sleep(200)
 		Case "close"
-			$tPattern = _UIA_getPattern($obj, $UIA_WindowPatternId)
+			$tPattern = __UIA_getPattern($obj, $UIA_WindowPattern)
 			$tPattern.close()
 		Case "move"
-			$tPattern = _UIA_getPattern($obj, $UIA_TransformPatternId)
+			$tPattern = __UIA_getPattern($obj, $UIA_TransformPattern)
 			$tPattern.move($p1, $p2)
 		Case "resize"
-			$tPattern = _UIA_getPattern($obj, $UIA_WindowPatternId)
+			$tPattern = __UIA_getPattern($obj, $UIA_WindowPattern)
 			$tPattern.SetWindowVisualState($WindowVisualState_Normal)
 
-			$tPattern = _UIA_getPattern($obj, $UIA_TransformPatternId)
+			$tPattern = __UIA_getPattern($obj, $UIA_TransformPattern)
 			$tPattern.resize($p1, $p2)
 		Case "minimize"
-			$tPattern = _UIA_getPattern($obj, $UIA_WindowPatternId)
+			$tPattern = __UIA_getPattern($obj, $UIA_WindowPattern)
 			$tPattern.SetWindowVisualState($WindowVisualState_Minimized)
 		Case "maximize"
-			$tPattern = _UIA_getPattern($obj, $UIA_WindowPatternId)
+			$tPattern = __UIA_getPattern($obj, $UIA_WindowPattern)
 			$tPattern.SetWindowVisualState($WindowVisualState_Maximized)
 		Case "normal"
-			$tPattern = _UIA_getPattern($obj, $UIA_WindowPatternId)
+			$tPattern = __UIA_getPattern($obj, $UIA_WindowPattern)
 			$tPattern.SetWindowVisualState($WindowVisualState_Normal)
 		Case "close"
-			$tPattern = _UIA_getPattern($obj, $UIA_WindowPatternId)
+			$tPattern = __UIA_getPattern($obj, $UIA_WindowPattern)
 			$tPattern.close()
 		Case "exist", "exists"
 			; This code will never be reached but just to be complete and if it reaches this then its just true
@@ -597,18 +523,162 @@ Func _UIA_action($obj_or_string, $strAction, $p1 = 0, $p2 = 0, $p3 = 0, $p4 = 0)
 	Return True
 EndFunc   ;==>_UIA_action
 
+; ========= PUBLIC METHODS ===========
+
 Func _UIA_ControlGetHandle($hWnd, $controlID)
-	; check input
-	; call internal function to get control
-	; return it
+	If Not __UIA_ControlGet($hWnd) Then
+		$hWnd = __UIA_ControlGet($hWnd)
+		If @error Then Return SetError(1, 0, 0)
+	EndIf
+
+	If Not __UIA_IsControl($controlID) Then
+		$controlID = __UIA_ControlGet($hWnd, $controlID)
+		If @error Then Return SetError(2, 0, 0)
+	EndIf
+
+	Return $controlID
 EndFunc
 
-Func _UIA_ControlSetText($hWnd, $controlID)
-	; check input
-	; do what _UIA_Action does with setvalue parameter
+Func _UIA_ControlSetText($hWnd, $controlID, $text)
+	If Not __UIA_IsControl($controlID) Then
+		$controlID = __UIA_ControlGet($hWnd, $controlID)
+		If @error Then Return SetError(1, 0, 0)
+	EndIf
+
+	$controlID.setfocus()
+	Sleep(200)
+	$tPattern = __UIA_getPattern($controlID, $UIA_ValuePattern)
+	$tPattern.setvalue($text)
 EndFunc
 
-Func __UIA_ControlGet($hWnd, $controlID)
-	; Implementation of _UIA_getFirstObjectOfElement here
-	; Make sure it has instance # as well
+
+; ========= INTERNAL METHODS ===========
+
+
+; __UIA_ControlGet parameters:
+
+; $searchRoot can be:
+; - a Win32 window handle
+; - window title (str)
+; - another control in UI automation tree (for example, a group box)
+; its meaning is basically the root context from which to start the tree search from
+
+; $controlID can be:
+; - a handle to a Win32 control
+; - a handle to a UIAutomation control (this is then returned without modification)
+; - a string in the following format: [KEY: VALUE; KEY: VALUE] where keys can be:
+; ID - UIA_AutomationId
+; TEXT - UIA_ValueValue or UIA_iaccessiblevalue
+; CLASS - UIA_class
+; CLASSNN - CLASS + INSTANCE (legacy)
+; NAME - ??? - The internal .NET Framework WinForms name (if available)
+; REGEXPCLASS - CLASS based on regular expression (check escaping mechanism, backslashes?)
+; X \ Y \ W \ H - UIA_BoundingRectangle
+; INSTANCE - Created by this UDF by walking the UIA tree
+
+Local Const $_UIA_Regex_ControlId_SplitKeyValuePairs = "(?:ID|TEXT|CLASS|CLASSNN|NAME|REGEXPCLASS|X|Y|W|H|INSTANCE): ?(?:[^;]*?;;)*[^;\]]+"
+Local Const $_UIA_Regex_ControlID_IsValidIdentifier = "^\[(?:(?:ID|TEXT|CLASS|CLASSNN|NAME|REGEXPCLASS|X|Y|W|H|INSTANCE): ?(?:.*?;;)*[^;\]]+)\]$"
+
+Func __UIA_ControlGet($searchRoot, $controlID = 1)
+	If IsString($controlId) Then
+		If StringRegExp($controlID, $_UIA_Regex_ControlID_IsValidIdentifier) Then
+			$kvPairs = StringRegExp($controlID, $_UIA_Regex_ControlId_SplitKeyValuePairs, 3)
+			For $i = 0 To UBound($kvPairs)-1
+				$kvPair = $kvPairs[$i]
+				$n = StringInStr($kvPair, ":")
+				$key = StringLeft($kvPair, $n - 1)
+				$value = StringMid($kvPair, $n + 1)
+				Switch $key
+					Case "ID" ; UIA_AutomationId
+
+					Case "TEXT"
+
+					Case "CLASS" ; UIA_class
+
+				EndSwitch
+			Next
+			Exit
+		Else
+			; Legacy support CLASSNN support
+		EndIf
+	ElseIf IsInt($controlID) Then
+		; Legacy support for ID support (integer which is UIA_AutomationId)
+	Else
+		; Either a Win32 control handle or a UIA control handle
+		If __UIA_IsControl($controlID) Then
+			Return $controlID
+		Else
+			; Win32 control
+		EndIf
+	EndIf
 EndFunc
+
+; Gets an UIA element for a Win32 window handle
+Func __UIA_ControlGetFromHwnd($hWnd)
+	If Not WinExists($hWnd) Then Return SetError(1, 0, 0)
+
+	Local $pCondition, $UIA_pUIElement
+
+	$UIA_oUIAutomation.createPropertyCondition($UIA_NativeWindowHandlePropertyId, Int($hWnd), $pCondition)
+	$oCondition = ObjCreateInterface($pCondition, $sIID_IUIAutomationPropertyCondition, $dtagIUIAutomationPropertyCondition)
+
+	$t = $UIA_oDesktop.Findfirst($TreeScope_Children, $oCondition, $UIA_pUIElement)
+	$UIA_oUIElement = ObjCreateInterface($UIA_pUIElement, $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
+
+	Return $UIA_oUIElement
+EndFunc
+
+;Func __UIA_ParseKeyValuePairs($sKeyValuePairs)
+;
+;EndFunc
+
+Func __UIA_IsControl($control)
+	Return False
+EndFunc
+
+Func __UIA_getPattern($obj, $Pattern)
+	; TODO: Reimplement this function so it does not rebuild a massive array each time
+	Local $patternArray[21][3] = [ _
+			[$UIA_ValuePattern, $sIID_IUIAutomationValuePattern, $dtagIUIAutomationValuePattern], _
+			[$UIA_InvokePattern, $sIID_IUIAutomationInvokePattern, $dtagIUIAutomationInvokePattern], _
+			[$UIA_SelectionPattern, $sIID_IUIAutomationSelectionPattern, $dtagIUIAutomationSelectionPattern], _
+			[$UIA_LegacyIAccessiblePattern, $sIID_IUIAutomationLegacyIAccessiblePattern, $dtagIUIAutomationLegacyIAccessiblePattern], _
+			[$UIA_SelectionItemPattern, $sIID_IUIAutomationSelectionItemPattern, $dtagIUIAutomationSelectionItemPattern], _
+			[$UIA_RangeValuePattern, $sIID_IUIAutomationRangeValuePattern, $dtagIUIAutomationRangeValuePattern], _
+			[$UIA_ScrollPattern, $sIID_IUIAutomationScrollPattern, $dtagIUIAutomationScrollPattern], _
+			[$UIA_GridPattern, $sIID_IUIAutomationGridPattern, $dtagIUIAutomationGridPattern], _
+			[$UIA_GridItemPattern, $sIID_IUIAutomationGridItemPattern, $dtagIUIAutomationGridItemPattern], _
+			[$UIA_MultipleViewPattern, $sIID_IUIAutomationMultipleViewPattern, $dtagIUIAutomationMultipleViewPattern], _
+			[$UIA_WindowPattern, $sIID_IUIAutomationWindowPattern, $dtagIUIAutomationWindowPattern], _
+			[$UIA_DockPattern, $sIID_IUIAutomationDockPattern, $dtagIUIAutomationDockPattern], _
+			[$UIA_TablePattern, $sIID_IUIAutomationTablePattern, $dtagIUIAutomationTablePattern], _
+			[$UIA_TextPattern, $sIID_IUIAutomationTextPattern, $dtagIUIAutomationTextPattern], _
+			[$UIA_TogglePattern, $sIID_IUIAutomationTogglePattern, $dtagIUIAutomationTogglePattern], _
+			[$UIA_TransformPattern, $sIID_IUIAutomationTransformPattern, $dtagIUIAutomationTransformPattern], _
+			[$UIA_ScrollItemPattern, $sIID_IUIAutomationScrollItemPattern, $dtagIUIAutomationScrollItemPattern], _
+			[$UIA_ItemContainerPattern, $sIID_IUIAutomationItemContainerPattern, $dtagIUIAutomationItemContainerPattern], _
+			[$UIA_VirtualizedItemPattern, $sIID_IUIAutomationVirtualizedItemPattern, $dtagIUIAutomationVirtualizedItemPattern], _
+			[$UIA_SynchronizedInputPattern, $sIID_IUIAutomationSynchronizedInputPattern, $dtagIUIAutomationSynchronizedInputPattern], _
+			[$UIA_ExpandCollapsePattern, $sIID_IUIAutomationExpandCollapsePattern, $dtagIUIAutomationExpandCollapsePattern] _
+			]
+
+	Local $sIID_Pattern
+	Local $sdTagPattern
+
+	For $i = 0 To UBound($patternArray) - 1
+		If $patternArray[$i][0] = $Pattern Then
+			$sIID_Pattern = $patternArray[$i][1]
+			$sdTagPattern = $patternArray[$i][2]
+			ExitLoop
+		EndIf
+	Next
+
+	Local $pPattern
+	$obj.getCurrentPattern($Pattern, $pPattern)
+	Local $oPattern = ObjCreateInterface($pPattern, $sIID_Pattern, $sdTagPattern)
+	If IsObj($oPattern) Then
+		Return $oPattern
+	Else
+
+	EndIf
+EndFunc   ;==>__UIA_getPattern

@@ -4,7 +4,7 @@
 #include <WindowsConstants.au3>
 #include <WinAPI.au3>
 #include <Misc.au3>
-#include "UIAWrappers.au3"
+#include "..\UIAutomation.au3"
 
 AutoItSetOption("MustDeclareVars", 1)
 

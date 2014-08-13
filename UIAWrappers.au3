@@ -1,9 +1,4 @@
-#include <EditConstants.au3>
-#include <GUIConstantsEx.au3>
-#include <WindowsConstants.au3>
-#include <constants.au3>
-#include <WinAPI.au3>
-#include <Array.au3>
+#include-once
 #include "CUIAutomation2.au3"
 
 ; #INDEX# =======================================================================================================================
@@ -522,37 +517,6 @@ Func _UIA_action($obj_or_string, $strAction, $p1 = 0, $p2 = 0, $p3 = 0, $p4 = 0)
 
 	Return True
 EndFunc   ;==>_UIA_action
-
-; ========= PUBLIC METHODS ===========
-
-Func _UIA_ControlGetHandle($hWnd, $controlID)
-	If Not __UIA_ControlGet($hWnd) Then
-		$hWnd = __UIA_ControlGet($hWnd)
-		If @error Then Return SetError(1, 0, 0)
-	EndIf
-
-	If Not __UIA_IsControl($controlID) Then
-		$controlID = __UIA_ControlGet($hWnd, $controlID)
-		If @error Then Return SetError(2, 0, 0)
-	EndIf
-
-	Return $controlID
-EndFunc
-
-Func _UIA_ControlSetText($hWnd, $controlID, $text)
-	If Not __UIA_IsControl($controlID) Then
-		$controlID = __UIA_ControlGet($hWnd, $controlID)
-		If @error Then Return SetError(1, 0, 0)
-	EndIf
-
-	$controlID.setfocus()
-	Sleep(200)
-	$tPattern = __UIA_getPattern($controlID, $UIA_ValuePattern)
-	$tPattern.setvalue($text)
-EndFunc
-
-
-; ========= INTERNAL METHODS ===========
 
 
 ; __UIA_ControlGet parameters:

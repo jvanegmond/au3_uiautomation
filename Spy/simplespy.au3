@@ -79,11 +79,13 @@ Func GetElementInfo()
 
 ;~ consolewrite("Mouse position is retrieved " & @crlf)
 
+	Local $UIA_pUIElement
 	$UIA_oUIAutomation.ElementFromPoint($tStruct,$UIA_pUIElement )
 
 	;~ consolewrite("Element from point is passed, trying to convert to object ")
 	$oUIElement = objcreateinterface($UIA_pUIElement,$sIID_IUIAutomationElement, $dtagIUIAutomationElement)
 
+	Local $UIA_pTW
 	$UIA_oUIAutomation.RawViewWalker($UIA_pTW)
 	$oTW=ObjCreateInterface($UIA_pTW, $sIID_IUIAutomationTreeWalker, $dtagIUIAutomationTreeWalker)
     If IsObj($oTW) = 0 Then

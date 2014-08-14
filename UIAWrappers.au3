@@ -541,9 +541,12 @@ EndFunc   ;==>_UIA_action
 ; INSTANCE - Created by this UDF by walking the UIA tree
 
 Local Const $_UIA_Regex_ControlId_SplitKeyValuePairs = "(?:ID|TEXT|CLASS|CLASSNN|NAME|REGEXPCLASS|X|Y|W|H|INSTANCE): ?(?:[^;]*?;;)*[^;\]]+"
-Local Const $_UIA_Regex_ControlID_IsValidIdentifier = "^\[(?:(?:ID|TEXT|CLASS|CLASSNN|NAME|REGEXPCLASS|X|Y|W|H|INSTANCE): ?(?:.*?;;)*[^;\]]+)\]$"
+Local Const $_UIA_Regex_ControlID_IsValidIdentifier = "\[(?:(?:(?:ID|TEXT|CLASS|CLASSNN|NAME|REGEXPCLASS|X|Y|W|H|INSTANCE): ?(?:.*?;;)*[^;\]]+);? ?)+\]"
 
-Func __UIA_ControlGet($searchRoot, $controlID = 1)
+#include <Array.au3>
+
+Func __UIA_ControlGet($searchRoot, $controlID = 0)
+	ConsoleWrite($controlId & @CRLF)
 	If IsString($controlId) Then
 		If StringRegExp($controlID, $_UIA_Regex_ControlID_IsValidIdentifier) Then
 			$kvPairs = StringRegExp($controlID, $_UIA_Regex_ControlId_SplitKeyValuePairs, 3)
@@ -559,11 +562,22 @@ Func __UIA_ControlGet($searchRoot, $controlID = 1)
 
 					Case "CLASS" ; UIA_class
 
+					Case "INSTANCE"
+
 				EndSwitch
 			Next
+
+			;$UIA_oUIAutomation.CreatePropertyCondition($propertyID, $tval, $pCondition)
+			;$oCondition = ObjCreateInterface($pCondition, $sIID_IUIAutomationPropertyCondition, $dtagIUIAutomationPropertyCondition)
+
+			;$UIA_oUIAutomation.CreateAndCondition or CreateAndConditionFromArray
+
+			; Local $UIA_pUIElement
+			;$t = $searchRoot.Findfirst($TreeScope_Children, $oCondition, $UIA_pUIElement)
+
 			Exit
 		Else
-			; Legacy support CLASSNN support
+			ConsoleWrite("Legacy support CLASSNN support" & @CRLF)
 		EndIf
 	ElseIf IsInt($controlID) Then
 		; Legacy support for ID support (integer which is UIA_AutomationId)
@@ -597,7 +611,8 @@ EndFunc
 ;EndFunc
 
 Func __UIA_IsControl($control)
-	Return False
+	ConsoleWrite("__UIA_IsControl: " & ObjName($control) & @CRLF)
+	Return IsObj($control)
 EndFunc
 
 Func __UIA_getPattern($obj, $Pattern)

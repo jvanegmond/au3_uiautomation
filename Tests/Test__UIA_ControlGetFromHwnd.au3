@@ -1,5 +1,5 @@
 #include "..\UIAWrappers.au3"
-#include "Assert.au3"
+#include "libraries\Assert.au3"
 
 While ProcessExists("notepad.exe")
 	ProcessClose("notepad.exe") ; forgive me!

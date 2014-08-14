@@ -10,7 +10,7 @@ Func Assert($expected, $actual, $message = "")
 		ConsoleWriteError("Msg: " & $message)
 	EndIf
 	ConsoleWriteError(@CRLF)
-	Exit
+	Exit 1
 EndFunc
 
 Func AssertIsType($var, $type, $message = "")

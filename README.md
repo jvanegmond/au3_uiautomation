@@ -2,6 +2,8 @@ au3_uiautomation
 ================
 UI Automation is a somewhat neglected part of AutoIt. The goal for this project is simple: Get the UI Automation library in tip-top shape for inclusion in the AutoIt core libraries, as well as making it a simpler to use this library without understanding UIA core concepts.
 
+Until this is production ready, please use http://www.autoitscript.com/forum/topic/153520-iuiautomation-ms-framework-automate-chrome-ff-ie/
+
 This is the approach taken for this project:
 
 - Start with the latest release of UIAutomation

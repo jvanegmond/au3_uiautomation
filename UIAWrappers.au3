@@ -8,7 +8,7 @@
 ; Author(s) .....: junkew, Manadar
 ; ===============================================================================================================================
 
-Local $UIA_oUIAutomation ; The main library core CUI automation reference
+Global $UIA_oUIAutomation; The main library core CUI automation reference
 Local $UIA_oDesktop ; Desktop will be frequently the starting point
 
 Local $UIA_oTW ; Generic treewalker which is allways available
@@ -403,7 +403,7 @@ Func _UIA_action($obj_or_string, $strAction, $p1 = 0, $p2 = 0, $p3 = 0, $p4 = 0)
 			$startElement = $tStr
 			If Not IsObj($oStart) Then
 
-				$oStart =$UIA_oDesktop
+				$oStart = $UIA_oDesktop
 				$startElement = "RTI.PARENT"
 				If Not IsObj($oStart) Then
 
@@ -459,7 +459,6 @@ Func _UIA_action($obj_or_string, $strAction, $p1 = 0, $p2 = 0, $p3 = 0, $p4 = 0)
 			If ($controlType = $UIA_WindowControlTypeId) Then
 				$hwnd = 0
 				$obj.CurrentNativeWindowHandle($hwnd)
-				ConsoleWrite($hwnd)
 				WinSetTitle(HWnd($hwnd), "", $p1)
 			Else
 				$obj.setfocus()
@@ -546,26 +545,10 @@ Local Const $_UIA_Regex_ControlID_IsValidIdentifier = "\[(?:(?:(?:ID|TEXT|CLASS|
 #include <Array.au3>
 
 Func __UIA_ControlGet($searchRoot, $controlID = 0)
-	ConsoleWrite($controlId & @CRLF)
-	If IsString($controlId) Then
+	If IsString($controlID) Then
 		If StringRegExp($controlID, $_UIA_Regex_ControlID_IsValidIdentifier) Then
-			$kvPairs = StringRegExp($controlID, $_UIA_Regex_ControlId_SplitKeyValuePairs, 3)
-			For $i = 0 To UBound($kvPairs)-1
-				$kvPair = $kvPairs[$i]
-				$n = StringInStr($kvPair, ":")
-				$key = StringLeft($kvPair, $n - 1)
-				$value = StringMid($kvPair, $n + 1)
-				Switch $key
-					Case "ID" ; UIA_AutomationId
-
-					Case "TEXT"
-
-					Case "CLASS" ; UIA_class
-
-					Case "INSTANCE"
-
-				EndSwitch
-			Next
+			$ret = __UIA_ControlSearch($searchRoot, $controlID)
+			Return SetError(@error, 0, $ret)
 
 			;$UIA_oUIAutomation.CreatePropertyCondition($propertyID, $tval, $pCondition)
 			;$oCondition = ObjCreateInterface($pCondition, $sIID_IUIAutomationPropertyCondition, $dtagIUIAutomationPropertyCondition)
@@ -589,31 +572,98 @@ Func __UIA_ControlGet($searchRoot, $controlID = 0)
 			; Win32 control
 		EndIf
 	EndIf
-EndFunc
+EndFunc   ;==>__UIA_ControlGet
+
+Func __UIA_ControlSearch($searchRoot, $controlSearchString)
+	Local $searchInstance = 1
+
+	; Create condition array
+	$kvPairs = StringRegExp($controlSearchString, $_UIA_Regex_ControlId_SplitKeyValuePairs, 3)
+	$numPairs = UBound($kvPairs)
+	Local $pConditions[$numPairs]
+	For $i = 0 To $numPairs - 1
+		$kvPair = $kvPairs[$i]
+		$n = StringInStr($kvPair, ":")
+		$key = StringLeft($kvPair, $n - 1)
+		$value = StringMid($kvPair, $n + 1)
+		Switch $key
+			Case "ID" ; UIA_AutomationId
+				Local $pCondition
+				$UIA_oUIAutomation.CreatePropertyCondition($UIA_AutomationIdPropertyId, String($value), $pCondition)
+				$pConditions[$i] = $pCondition
+			Case "TEXT"
+
+			Case "CLASS" ; UIA_class
+				Local $pCondition
+				$UIA_oUIAutomation.CreatePropertyCondition($UIA_ClassNamePropertyId, String($value), $pCondition)
+				$pConditions[$i] = $pCondition
+			Case "INSTANCE"
+				$searchInstance = Int($value)
+		EndSwitch
+	Next
+
+	; AND conditions together
+	Local $pCondition = 0
+	If $numPairs = 1 Then
+		$pCondition = $pConditions[0]
+	Else
+		Local $pAndCondition = $pConditions[0]
+		For $i = 1 To $numPairs - 1
+			Local $pNewCondition
+			$UIA_oUIAutomation.CreateAndCondition($pAndCondition, $pConditions[$i], $pNewCondition)
+			$pAndCondition = $pNewCondition
+		Next
+		$pCondition = $pConditions[0]
+	EndIf
+
+	; Search for the element
+	Local $pElements
+	$searchRoot.FindAll($TreeScope_Children, $pCondition, $pElements)
+
+	$oAutomationElementArray = ObjCreateInterface($pElements, $sIID_IUIAutomationElementArray, $dtagIUIAutomationElementArray)
+
+	Local $iLength
+	$oAutomationElementArray.Length($iLength)
+
+	; Pick the element based on the INSTANCE given
+	If $iLength = 0 Then
+		Return SetError(1, 0, 0)
+	Else
+		$searchInstance -= 1 ; for 0-based index in $oAutomationElementArray
+
+		If $searchInstance < 0 Or $searchInstance >= $iLength Then
+			Return SetError(1, 0, 0)
+		EndIf
+
+		Local $pFound
+		$oAutomationElementArray.GetElement($searchInstance, $pFound)
+		$oFound = ObjCreateInterface($pFound, $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
+
+		Return $oFound
+	EndIf
+EndFunc   ;==>__UIA_ControlSearch
 
 ; Gets an UIA element for a Win32 window handle
-Func __UIA_ControlGetFromHwnd($hWnd)
-	If Not WinExists($hWnd) Then Return SetError(1, 0, 0)
+Func __UIA_ControlGetFromHwnd($hwnd)
+	If Not WinExists($hwnd) Then Return SetError(1, 0, 0)
 
 	Local $pCondition, $UIA_pUIElement
 
-	$UIA_oUIAutomation.createPropertyCondition($UIA_NativeWindowHandlePropertyId, Int($hWnd), $pCondition)
-	$oCondition = ObjCreateInterface($pCondition, $sIID_IUIAutomationPropertyCondition, $dtagIUIAutomationPropertyCondition)
+	$UIA_oUIAutomation.createPropertyCondition($UIA_NativeWindowHandlePropertyId, Int($hwnd), $pCondition)
 
-	$t = $UIA_oDesktop.Findfirst($TreeScope_Children, $oCondition, $UIA_pUIElement)
+	$t = $UIA_oDesktop.FindFirst($TreeScope_Children, $pCondition, $UIA_pUIElement)
 	$UIA_oUIElement = ObjCreateInterface($UIA_pUIElement, $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
 
 	Return $UIA_oUIElement
-EndFunc
+EndFunc   ;==>__UIA_ControlGetFromHwnd
 
 ;Func __UIA_ParseKeyValuePairs($sKeyValuePairs)
 ;
 ;EndFunc
 
 Func __UIA_IsControl($control)
-	ConsoleWrite("__UIA_IsControl: " & ObjName($control) & @CRLF)
 	Return IsObj($control)
-EndFunc
+EndFunc   ;==>__UIA_IsControl
 
 Func __UIA_getPattern($obj, $Pattern)
 	; TODO: Reimplement this function so it does not rebuild a massive array each time

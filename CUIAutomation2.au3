@@ -813,7 +813,7 @@ Global $dtagIUIAutomation = "CompareElements hresult(ptr;ptr;long*);" & _
 		"AddFocusChangedEventHandler hresult(ptr;ptr);" & _
 		"RemoveFocusChangedEventHandler hresult(ptr);" & _
 		"RemoveAllEventHandlers hresult();" & _
-		"IntNativeArrayToSafeArray hresult(int;int;ptr*);" & _
+		"IntNativeArrayToSafeArray hresult(int*;int;ptr*);" & _
 		"IntSafeArrayToNativeArray hresult(ptr;int*;int*);" & _
 		"RectToVariant hresult(struct;variant*);" & _
 		"VariantToRect hresult(variant;struct*);" & _

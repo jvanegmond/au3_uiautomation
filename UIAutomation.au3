@@ -33,8 +33,6 @@ Func _UIA_ControlSetText($hWnd, $controlID, $text)
 		If @error Then Return SetError(2, 0, 0)
 	EndIf
 
-	$controlID.setfocus()
-	Sleep(200)
 	$tPattern = __UIA_getPattern($controlID, $UIA_ValuePattern)
 	$tPattern.setvalue($text)
 EndFunc

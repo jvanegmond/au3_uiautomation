@@ -1,6 +1,6 @@
 ; Fail the test without providing any conditions
-Func AssertFail($message = "")
-	ConsoleWriteError("Assert failed. Test failed.")
+Func AssertFail($message = "", $iLine = @ScriptLineNumber)
+	ConsoleWriteError("Assert failed on line " & $iLine & ". Test failed.")
 	If $message <> "" Then
 		ConsoleWriteError(" Msg: " & $message)
 	EndIf
@@ -9,8 +9,8 @@ Func AssertFail($message = "")
 EndFunc
 
 ; Ends the test with the result that it is inconclusive without providing any conditions
-Func AssertInconclusive($message = "")
-	ConsoleWriteError("Assert failed. Test inconclusive.")
+Func AssertInconclusive($message = "", $iLine = @ScriptLineNumber)
+	ConsoleWriteError("Assert failed on line " & $iLine & ". Test inconclusive.")
 	If $message <> "" Then
 		ConsoleWriteError(" Msg: " & $message)
 	EndIf
@@ -19,16 +19,16 @@ Func AssertInconclusive($message = "")
 EndFunc
 
 ; Checks if $expected and $actual are equal (case sensitive for strings)
-Func AssertAreEqual($expected, $actual, $message = "")
+Func AssertAreEqual($expected, $actual, $message = "", $iLine = @ScriptLineNumber)
 	If Not ($expected == $actual) Then
-		_AssertFail($expected, $actual, $message)
+		_AssertFail($expected, $actual, $message, $iLine)
 	EndIf
 EndFunc
 
 ; Checks if $expected and $actual are not equal (case sensitive for strings)
-Func AssertNotEqual($notExpected, $actual, $message = "")
+Func AssertNotEqual($notExpected, $actual, $message = "", $iLine = @ScriptLineNumber)
 	If $notExpected == $actual Then
-		ConsoleWriteError("Assert failed. Not expected <" & $notExpected & "> Actual <" & $actual & ">")
+		ConsoleWriteError("Assert failed on line " & $iLine & ". Not expected <" & $notExpected & "> Actual <" & $actual & ">")
 		If $message <> "" Then
 			ConsoleWriteError(" Msg: " & $message)
 		EndIf
@@ -38,30 +38,30 @@ Func AssertNotEqual($notExpected, $actual, $message = "")
 EndFunc
 
 ; Checks if $var is of $type type by checking VarGetType($var) = $type
-Func AssertIsType($var, $type, $message = "")
+Func AssertIsType($var, $type, $message = "", $iLine = @ScriptLineNumber)
 	$actualType = VarGetType($var)
 	If Not ($actualType = $type) Then
-		_AssertFail($type, $actualType, $message)
+		_AssertFail($type, $actualType, $message, $iLine)
 	EndIf
 EndFunc
 
 ; Asserts whether $actual is true otherwise fails the test
-Func AssertIsTrue($actual, $message = "")
+Func AssertIsTrue($actual, $message = "", $iLine = @ScriptLineNumber)
 	If Not $actual Then
-		_AssertFail(True, $actual, $message)
+		_AssertFail(True, $actual, $message, $iLine)
 	EndIf
 EndFunc
 
 ; Asserts whether $actual is false otherwise fails the test
-Func AssertIsFalse($actual, $message = "")
+Func AssertIsFalse($actual, $message = "", $iLine = @ScriptLineNumber)
 	If $actual Then
-		_AssertFail(False, $actual, $message)
+		_AssertFail(False, $actual, $message, $iLine)
 	EndIf
 EndFunc
 
 ; Internal
-Func _AssertFail($expected, $actual, $message = "")
-	ConsoleWriteError("Assert failed. Expected <" & $expected & "> Actual <" & $actual & ">")
+Func _AssertFail($expected, $actual, $message, $iLine)
+	ConsoleWriteError("Assert failed on line " & $iLine & ". Expected <" & $expected & "> Actual <" & $actual & ">")
 	If $message <> "" Then
 		ConsoleWriteError(" Msg: " & $message)
 	EndIf

@@ -36,3 +36,21 @@ Func _UIA_ControlSetText($hWnd, $controlID, $text)
 	$tPattern = __UIA_getPattern($controlID, $UIA_ValuePattern)
 	$tPattern.setvalue($text)
 EndFunc
+
+Func _UIA_ControlGetText($hWnd, $controlID)
+	If Not __UIA_IsControl($hWnd) Then
+		$hWnd = __UIA_ControlGetFromHwnd($hWnd)
+		If @error Then Return SetError(1, 0, 0)
+	EndIf
+
+	If Not __UIA_IsControl($controlID) Then
+		$controlID = __UIA_ControlGet($hWnd, $controlID)
+		If @error Then Return SetError(2, 0, 0)
+	EndIf
+
+	$tPattern = __UIA_getPattern($controlID, $UIA_ValuePattern)
+
+	Local $sText = ""
+	$tPattern.CurrentValue($sText)
+	Return $sText
+EndFunc

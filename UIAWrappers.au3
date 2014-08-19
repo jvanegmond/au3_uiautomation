@@ -539,9 +539,9 @@ EndFunc   ;==>_UIA_action
 ; X \ Y \ W \ H - UIA_BoundingRectangle
 ; INSTANCE - Created by this UDF by walking the UIA tree
 
-Local Const $_UIA_Regex_ControlId_SplitKeyValuePairs = "(?:ID|TEXT|CLASS|CLASSNN|NAME|REGEXPCLASS|X|Y|W|H|INSTANCE): ?(?:[^;]*?;;)*[^;\]]+"
-Local Const $_UIA_Regex_ControlId_IsValidIdentifier = "\[(?:(?:(?:ID|TEXT|CLASS|CLASSNN|NAME|REGEXPCLASS|X|Y|W|H|INSTANCE): ?(?:.*?;;)*[^;\]]+);? ?)+\]"
-Local Const $UIA_Regex_ControlId_ClassNameNN = "^([^\[\]]*?)([0-9])$"
+Local Const $_UIA_Regex_ControlId_SplitKeyValuePairs = "(?:ID|TEXT|CLASS|CLASSNN|NAME|REGEXPCLASS|X|Y|W|H|INSTANCE|HANDLE): ?(?:[^;]*?;;)*[^;\]]+"
+Local Const $_UIA_Regex_ControlId_IsValidIdentifier = "\[(?:(?:(?:ID|TEXT|CLASS|CLASSNN|NAME|REGEXPCLASS|X|Y|W|H|INSTANCE|HANDLE): ?(?:.*?;;)*[^;\]]+);? ?)+\]"
+Local Const $UIA_Regex_ControlId_ClassNameNN = "^([^\[\]]+?)([0-9])$"
 
 #include <Array.au3>
 
@@ -551,24 +551,31 @@ Func __UIA_ControlGet($searchRoot, $controlID = 0)
 			$ret = __UIA_ControlSearch($searchRoot, $controlID)
 			Return SetError(@error, 0, $ret)
 		Else
-			; Legacy support for ClassNameNN format
-			If StringRegExp($controlID, $UIA_Regex_ControlId_ClassNameNN) Then
+			; Legacy support for ClassNameNN format (or legacy ID support)
+			If StringRegExp($controlID, $UIA_Regex_ControlId_ClassNameNN) And Not StringRegExp($controlID, "^[0-9]+$") Then
 				$ret = __UIA_ControlSearch($searchRoot, "[CLASSNN:" & $controlID & "]")
 				Return SetError(@error, 0, $ret)
-			Else
-				Return SetError(1, 0, 0)
 			EndIf
 		EndIf
-	ElseIf IsInt($controlID) Then
-		; Legacy support for ID support (integer which is UIA_AutomationId)
-	Else
-		; Either a Win32 control handle or a UIA control handle
-		If __UIA_IsControl($controlID) Then
-			Return $controlID
-		Else
-			; Win32 control
-		EndIf
 	EndIf
+
+	; hWnd pointing to Win32 control
+	If IsHWnd($controlID) Then
+		$ret = __UIA_ControlSearch($searchRoot, "[HANDLE:" & $controlID & "]")
+		Return SetError(@error, 0, $ret)
+	EndIf
+
+	; Legacy ID support (integer which is UIA_AutomationId)
+	If Int($controlID) > 0 Then
+		$ret = __UIA_ControlSearch($searchRoot, "[ID:" & $controlID & "]")
+		Return SetError(@error, 0, $ret)
+	EndIf
+
+	If __UIA_IsControl($controlID) Then
+		Return $controlID
+	EndIf
+
+	Return SetError(1, 0, 0)
 EndFunc   ;==>__UIA_ControlGet
 
 Func __UIA_ControlSearch($searchRoot, $controlSearchString)
@@ -605,6 +612,10 @@ Func __UIA_ControlSearch($searchRoot, $controlSearchString)
 
 				Local $pCondition
 				$UIA_oUIAutomation.CreatePropertyCondition($UIA_ClassNamePropertyId, String($class), $pCondition)
+				$pConditions[$i] = $pCondition
+			Case "HANDLE"
+				Local $pCondition
+				$UIA_oUIAutomation.CreatePropertyCondition($UIA_NativeWindowHandlePropertyId, Int($value), $pCondition)
 				$pConditions[$i] = $pCondition
 		EndSwitch
 	Next

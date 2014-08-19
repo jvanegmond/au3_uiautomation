@@ -540,7 +540,8 @@ EndFunc   ;==>_UIA_action
 ; INSTANCE - Created by this UDF by walking the UIA tree
 
 Local Const $_UIA_Regex_ControlId_SplitKeyValuePairs = "(?:ID|TEXT|CLASS|CLASSNN|NAME|REGEXPCLASS|X|Y|W|H|INSTANCE): ?(?:[^;]*?;;)*[^;\]]+"
-Local Const $_UIA_Regex_ControlID_IsValidIdentifier = "\[(?:(?:(?:ID|TEXT|CLASS|CLASSNN|NAME|REGEXPCLASS|X|Y|W|H|INSTANCE): ?(?:.*?;;)*[^;\]]+);? ?)+\]"
+Local Const $_UIA_Regex_ControlId_IsValidIdentifier = "\[(?:(?:(?:ID|TEXT|CLASS|CLASSNN|NAME|REGEXPCLASS|X|Y|W|H|INSTANCE): ?(?:.*?;;)*[^;\]]+);? ?)+\]"
+Local Const $UIA_Regex_ControlId_ClassNameNN = "^([^\[\]]*?)([0-9])$"
 
 #include <Array.au3>
 
@@ -549,18 +550,14 @@ Func __UIA_ControlGet($searchRoot, $controlID = 0)
 		If StringRegExp($controlID, $_UIA_Regex_ControlID_IsValidIdentifier) Then
 			$ret = __UIA_ControlSearch($searchRoot, $controlID)
 			Return SetError(@error, 0, $ret)
-
-			;$UIA_oUIAutomation.CreatePropertyCondition($propertyID, $tval, $pCondition)
-			;$oCondition = ObjCreateInterface($pCondition, $sIID_IUIAutomationPropertyCondition, $dtagIUIAutomationPropertyCondition)
-
-			;$UIA_oUIAutomation.CreateAndCondition or CreateAndConditionFromArray
-
-			; Local $UIA_pUIElement
-			;$t = $searchRoot.Findfirst($TreeScope_Children, $oCondition, $UIA_pUIElement)
-
-			Exit
 		Else
-			ConsoleWrite("Legacy support CLASSNN support" & @CRLF)
+			; Legacy support for ClassNameNN format
+			If StringRegExp($controlID, $UIA_Regex_ControlId_ClassNameNN) Then
+				$ret = __UIA_ControlSearch($searchRoot, "[CLASSNN:" & $controlID & "]")
+				Return SetError(@error, 0, $ret)
+			Else
+				Return SetError(1, 0, 0)
+			EndIf
 		EndIf
 	ElseIf IsInt($controlID) Then
 		; Legacy support for ID support (integer which is UIA_AutomationId)
@@ -599,6 +596,16 @@ Func __UIA_ControlSearch($searchRoot, $controlSearchString)
 				$pConditions[$i] = $pCondition
 			Case "INSTANCE"
 				$searchInstance = Int($value)
+			Case "CLASSNN"
+				$parsed = StringRegExp($value, $UIA_Regex_ControlId_ClassNameNN, 1)
+				If @error Then Return SetError(1, 0, 0)
+
+				$class = $parsed[0]
+				$searchInstance = Int($parsed[1])
+
+				Local $pCondition
+				$UIA_oUIAutomation.CreatePropertyCondition($UIA_ClassNamePropertyId, String($class), $pCondition)
+				$pConditions[$i] = $pCondition
 		EndSwitch
 	Next
 

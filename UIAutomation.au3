@@ -39,3 +39,10 @@ Func _UIA_ControlGetText($hWnd, $controlID)
 	$tPattern.CurrentValue($sText)
 	Return $sText
 EndFunc
+
+Func _UIA_ControlFocus($hWnd, $controlID)
+	$controlID = _UIA_ControlGetHandle($hWnd, $controlID)
+	If @error Then Return SetError(@error, 0, 0)
+
+	$controlID.setfocus()
+EndFunc

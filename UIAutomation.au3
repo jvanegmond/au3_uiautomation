@@ -46,3 +46,13 @@ Func _UIA_ControlFocus($hWnd, $controlID)
 
 	$controlID.setfocus()
 EndFunc
+
+Func _UIA_ControlClick($hWnd, $controlID)
+	$controlID = _UIA_ControlGetHandle($hWnd, $controlID)
+	If @error Then Return SetError(@error, 0, 0)
+
+	$controlID.setfocus()
+
+	$tPattern = __UIA_getPattern($controlID, $UIA_InvokePattern)
+	$tPattern.invoke()
+EndFunc

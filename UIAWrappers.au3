@@ -105,9 +105,9 @@ Func _UIA_getPropertyIndex($propName)
 EndFunc   ;==>_UIA_getPropertyIndex
 
 ; #FUNCTION# ====================================================================================================================
-; Name...........: _UIA_getPropertyValue($obj, $id)
+; Name...........: _UIA_GetPropertyValue($obj, $id)
 ; Description ...: Just return a single property or if its an array string them together
-; Syntax.........: _UIA_getPropertyValue
+; Syntax.........: _UIA_GetPropertyValue
 ; Parameters ....: $obj - An UI Element object
 ; 				   $id - A reference to the property id
 ; Return values .: Success      - Returns 1
@@ -115,7 +115,7 @@ EndFunc   ;==>_UIA_getPropertyIndex
 ;                  |@error=1     - UI automation failed
 ; ===============================================================================================================================
 ; Just return a single property or if its an array string them together
-Func _UIA_getPropertyValue($obj, $id)
+Func _UIA_GetPropertyValue($obj, $id)
 	Local $tval
 	Local $tStr
 	Local $i
@@ -137,7 +137,7 @@ Func _UIA_getPropertyValue($obj, $id)
 		Return $tStr
 	EndIf
 	Return $tStr
-EndFunc   ;==>_UIA_getPropertyValue
+EndFunc   ;==>_UIA_GetPropertyValue
 
 ; INTERNAL USE
 ; Small helper function to get an object out of a treeSearch based on the name / title
@@ -289,8 +289,8 @@ Func _UIA_getObjectByFindAll($obj, $str, $treeScope, $p1 = 0)
 		$UIA_oUIElement = ObjCreateInterface($UIA_pUIElement, $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
 
 		;
-		; 			& "Class   := <" & _UIA_getPropertyValue($UIA_oUIElement,$uia_classnamepropertyid) &  ">" & @TAB _
-		; 			& "controltype:= <" &  _UIA_getPropertyValue($UIA_oUIElement,$UIA_ControlTypePropertyId) &  ">" & @TAB & @CRLF, $UIA_Log_Wrapper)
+		; 			& "Class   := <" & _UIA_GetPropertyValue($UIA_oUIElement,$uia_classnamepropertyid) &  ">" & @TAB _
+		; 			& "controltype:= <" &  _UIA_GetPropertyValue($UIA_oUIElement,$UIA_ControlTypePropertyId) &  ">" & @TAB & @CRLF, $UIA_Log_Wrapper)
 
 		; 		Walk through all properties in the properties2Match array to match
 		; 		Normally not a big array just 1 - 5 elements frequently just 1
@@ -308,7 +308,7 @@ Func _UIA_getObjectByFindAll($obj, $str, $treeScope, $p1 = 0)
 					$propertyVal = Number($propertyVal)
 			EndSwitch
 
-			$propertyActualValue = _UIA_getPropertyValue($UIA_oUIElement, $propertyID)
+			$propertyActualValue = _UIA_GetPropertyValue($UIA_oUIElement, $propertyID)
 			$tMatch = StringRegExp($propertyActualValue, $propertyVal, 0)
 
 			; Filter so not to much logging happens
@@ -427,7 +427,7 @@ Func _UIA_action($obj_or_string, $strAction, $p1 = 0, $p2 = 0, $p3 = 0, $p4 = 0)
 		EndIf
 	EndIf
 
-	$controlType = _UIA_getPropertyValue($obj, $UIA_ControlTypePropertyId)
+	$controlType = _UIA_GetPropertyValue($obj, $UIA_ControlTypePropertyId)
 
 	; Execute the given action
 	Switch $strAction
@@ -444,7 +444,7 @@ Func _UIA_action($obj_or_string, $strAction, $p1 = 0, $p2 = 0, $p3 = 0, $p4 = 0)
 			If StringInStr($strAction, "double") Then $clickCount = 2
 
 			Local $t
-			$t = StringSplit(_UIA_getPropertyValue($obj, $UIA_BoundingRectanglePropertyId), "; ")
+			$t = StringSplit(_UIA_GetPropertyValue($obj, $UIA_BoundingRectanglePropertyId), "; ")
 			$x = Int($t[1] + ($t[3] / 2))
 			$y = Int($t[2] + $t[4] / 2)
 
@@ -463,7 +463,7 @@ Func _UIA_action($obj_or_string, $strAction, $p1 = 0, $p2 = 0, $p3 = 0, $p4 = 0)
 			Else
 				$obj.setfocus()
 				Sleep(200)
-				$tPattern = __UIA_getPattern($obj, $UIA_ValuePattern)
+				$tPattern = __UIA_GetPattern($obj, $UIA_ValuePattern)
 				$tPattern.setvalue($p1)
 			EndIf
 
@@ -478,34 +478,34 @@ Func _UIA_action($obj_or_string, $strAction, $p1 = 0, $p2 = 0, $p3 = 0, $p4 = 0)
 		Case "invoke"
 			$obj.setfocus()
 			Sleep(200)
-			$tPattern = __UIA_getPattern($obj, $UIA_InvokePattern)
+			$tPattern = __UIA_GetPattern($obj, $UIA_InvokePattern)
 			$tPattern.invoke()
 		Case "focus", "setfocus", "activate"
 			$obj.setfocus()
 			Sleep(200)
 		Case "close"
-			$tPattern = __UIA_getPattern($obj, $UIA_WindowPattern)
+			$tPattern = __UIA_GetPattern($obj, $UIA_WindowPattern)
 			$tPattern.close()
 		Case "move"
-			$tPattern = __UIA_getPattern($obj, $UIA_TransformPattern)
+			$tPattern = __UIA_GetPattern($obj, $UIA_TransformPattern)
 			$tPattern.move($p1, $p2)
 		Case "resize"
-			$tPattern = __UIA_getPattern($obj, $UIA_WindowPattern)
+			$tPattern = __UIA_GetPattern($obj, $UIA_WindowPattern)
 			$tPattern.SetWindowVisualState($WindowVisualState_Normal)
 
-			$tPattern = __UIA_getPattern($obj, $UIA_TransformPattern)
+			$tPattern = __UIA_GetPattern($obj, $UIA_TransformPattern)
 			$tPattern.resize($p1, $p2)
 		Case "minimize"
-			$tPattern = __UIA_getPattern($obj, $UIA_WindowPattern)
+			$tPattern = __UIA_GetPattern($obj, $UIA_WindowPattern)
 			$tPattern.SetWindowVisualState($WindowVisualState_Minimized)
 		Case "maximize"
-			$tPattern = __UIA_getPattern($obj, $UIA_WindowPattern)
+			$tPattern = __UIA_GetPattern($obj, $UIA_WindowPattern)
 			$tPattern.SetWindowVisualState($WindowVisualState_Maximized)
 		Case "normal"
-			$tPattern = __UIA_getPattern($obj, $UIA_WindowPattern)
+			$tPattern = __UIA_GetPattern($obj, $UIA_WindowPattern)
 			$tPattern.SetWindowVisualState($WindowVisualState_Normal)
 		Case "close"
-			$tPattern = __UIA_getPattern($obj, $UIA_WindowPattern)
+			$tPattern = __UIA_GetPattern($obj, $UIA_WindowPattern)
 			$tPattern.close()
 		Case "exist", "exists"
 			; This code will never be reached but just to be complete and if it reaches this then its just true
@@ -683,7 +683,7 @@ Func __UIA_IsControl($control)
 	Return IsObj($control)
 EndFunc   ;==>__UIA_IsControl
 
-Func __UIA_getPattern($obj, $Pattern)
+Func __UIA_GetPattern($obj, $Pattern)
 	; TODO: Reimplement this function so it does not rebuild a massive array each time
 	Local $patternArray[21][3] = [ _
 			[$UIA_ValuePattern, $sIID_IUIAutomationValuePattern, $dtagIUIAutomationValuePattern], _
@@ -728,4 +728,4 @@ Func __UIA_getPattern($obj, $Pattern)
 	Else
 
 	EndIf
-EndFunc   ;==>__UIA_getPattern
+EndFunc   ;==>__UIA_GetPattern

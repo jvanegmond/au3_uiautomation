@@ -87,13 +87,13 @@ Func _UIA_ControlGetPos($hWnd, $controlID)
 	$aWinBound = _UIA_GetPropertyValue($hWnd, $UIA_BoundingRectanglePropertyId)
 	$aBound = _UIA_GetPropertyValue($controlID, $UIA_BoundingRectanglePropertyId)
 
-	$aBound[0] = $aBound[0] - $aWinBound[0] - 3
-	$aBound[1] = $aBound[1] - $aWinBound[1] - 3
+	$aBound[0] = $aBound[0] - $aWinBound[0]
+	$aBound[1] = $aBound[1] - $aWinBound[1]
 
 	Return $aBound
 EndFunc
 
-Func _UIA_ControlSend($hWnd, $controlID, $string, $flag)
+Func _UIA_ControlSend($hWnd, $controlID, $string, $flag = 0)
 	$controlID = _UIA_ControlGetHandle($hWnd, $controlID)
 	If @error Then Return SetError(@error, 0, 0)
 

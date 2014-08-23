@@ -61,14 +61,13 @@ Func _UIA_ControlClick($hWnd, $controlID, $button = "invoke", $clicks = 1, $x = 
 	Else
 		WinActivate($hWnd)
 
-		$sBoundingRectangle = _UIA_GetPropertyValue($controlID, $UIA_BoundingRectanglePropertyId)
-		$t = StringSplit($sBoundingRectangle, "; ", 1)
+		$aBound = _UIA_GetPropertyValue($controlID, $UIA_BoundingRectanglePropertyId)
 
-		If $x = Default Then $x = $t[3] / 2
-		If $y = Default Then $y = $t[4] / 2
+		If $x = Default Then $x = $aBound[2] / 2
+		If $y = Default Then $y = $aBound[3] / 2
 
-		$x = $x + Int($t[1])
-		$y = $y + Int($t[2])
+		$x = $x + Int($aBound[0])
+		$y = $y + Int($aBound[1])
 
 		MouseClick($button, $x, $y, $clicks, 0)
 	EndIf

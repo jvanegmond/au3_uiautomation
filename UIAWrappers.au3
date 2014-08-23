@@ -125,18 +125,7 @@ Func _UIA_GetPropertyValue($obj, $id)
 	EndIf
 
 	$obj.GetCurrentPropertyValue($id, $tval)
-	$tStr = "" & $tval
-	If IsArray($tval) Then
-		$tStr = ""
-		For $i = 0 To UBound($tval) - 1
-			$tStr = $tStr & $tval[$i]
-			If $i <> UBound($tval) - 1 Then
-				$tStr = $tStr & "; "
-			EndIf
-		Next
-		Return $tStr
-	EndIf
-	Return $tStr
+	Return $tval
 EndFunc   ;==>_UIA_GetPropertyValue
 
 ; INTERNAL USE
@@ -444,9 +433,9 @@ Func _UIA_action($obj_or_string, $strAction, $p1 = 0, $p2 = 0, $p3 = 0, $p4 = 0)
 			If StringInStr($strAction, "double") Then $clickCount = 2
 
 			Local $t
-			$t = StringSplit(_UIA_GetPropertyValue($obj, $UIA_BoundingRectanglePropertyId), "; ")
-			$x = Int($t[1] + ($t[3] / 2))
-			$y = Int($t[2] + $t[4] / 2)
+			$t = _UIA_GetPropertyValue($obj, $UIA_BoundingRectanglePropertyId)
+			$x = Int($t[0] + ($t[2] / 2))
+			$y = Int($t[1] + $t[3] / 2)
 
 
 			; Mouse should move to keep it as userlike as possible

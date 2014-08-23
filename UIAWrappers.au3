@@ -8,8 +8,11 @@
 ; Author(s) .....: junkew, Manadar
 ; ===============================================================================================================================
 
-Global $UIA_oUIAutomation; The main library core CUI automation reference
-Local $UIA_oDesktop ; Desktop will be frequently the starting point
+Local $UIA_oUIAutomation
+
+Local Const $_UIA_Regex_ControlId_SplitKeyValuePairs = "(?:ID|TEXT|CLASS|CLASSNN|NAME|REGEXPCLASS|X|Y|W|H|INSTANCE|HANDLE): ?(?:[^;]*?;;)*[^;\]]+"
+Local Const $_UIA_Regex_ControlId_IsValidIdentifier = "\[(?:(?:(?:ID|TEXT|CLASS|CLASSNN|NAME|REGEXPCLASS|X|Y|W|H|INSTANCE|HANDLE): ?(?:.*?;;)*[^;\]]+);? ?)+\]"
+Local Const $UIA_Regex_ControlId_ClassNameNN = "^([^\[\]]+?)([0-9])$"
 
 ; ===================================================================================================================
 Local Const $patternArray[21][3] = [ _
@@ -43,14 +46,6 @@ Func _UIA_Init()
 	$UIA_oUIAutomation = ObjCreateInterface($sCLSID_CUIAutomation, $sIID_IUIAutomation, $dtagIUIAutomation)
 	If Not IsObj($UIA_oUIAutomation) Then
 		Return SetError(1, 0, 0)
-	EndIf
-
-	; Try to get the desktop as a generic reference/global for all samples
-	Local $UIA_pDesktop
-	$UIA_oUIAutomation.GetRootElement($UIA_pDesktop)
-	$UIA_oDesktop = ObjCreateInterface($UIA_pDesktop, $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
-	If Not IsObj($UIA_oDesktop) Then
-		Return SetError(2, 0, 0)
 	EndIf
 
 	Return $UIA_oUIAutomation
@@ -120,10 +115,6 @@ EndFunc   ;==>_UIA_CreateControlPattern
 ; REGEXPCLASS - CLASS based on regular expression (check escaping mechanism, backslashes?)
 ; X \ Y \ W \ H - UIA_BoundingRectangle
 ; INSTANCE - Created by this UDF by walking the UIA tree
-
-Local Const $_UIA_Regex_ControlId_SplitKeyValuePairs = "(?:ID|TEXT|CLASS|CLASSNN|NAME|REGEXPCLASS|X|Y|W|H|INSTANCE|HANDLE): ?(?:[^;]*?;;)*[^;\]]+"
-Local Const $_UIA_Regex_ControlId_IsValidIdentifier = "\[(?:(?:(?:ID|TEXT|CLASS|CLASSNN|NAME|REGEXPCLASS|X|Y|W|H|INSTANCE|HANDLE): ?(?:.*?;;)*[^;\]]+);? ?)+\]"
-Local Const $UIA_Regex_ControlId_ClassNameNN = "^([^\[\]]+?)([0-9])$"
 
 ; Internal: Use _UIA_ControlGetHandle instead
 Func __UIA_ControlGet($searchRoot, $controlID = 0)
@@ -250,11 +241,25 @@ Func __UIA_ControlGetFromHwnd($hwnd)
 
 	$UIA_oUIAutomation.createPropertyCondition($UIA_NativeWindowHandlePropertyId, Int($hwnd), $pCondition)
 
-	$t = $UIA_oDesktop.FindFirst($TreeScope_Children, $pCondition, $UIA_pUIElement)
+	$t = _UIA_GetDesktopElement().FindFirst($TreeScope_Children, $pCondition, $UIA_pUIElement)
 	$UIA_oUIElement = ObjCreateInterface($UIA_pUIElement, $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
 
 	Return $UIA_oUIElement
 EndFunc   ;==>__UIA_ControlGetFromHwnd
+
+Func _UIA_GetDesktopElement()
+	Local $UIA_oDesktop ; Desktop will be frequently the starting point
+
+	; Try to get the desktop as a generic reference/global for all samples
+	Local $UIA_pDesktop
+	$UIA_oUIAutomation.GetRootElement($UIA_pDesktop)
+	$UIA_oDesktop = ObjCreateInterface($UIA_pDesktop, $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
+	If Not _UIA_IsElement($UIA_oDesktop) Then
+		Return SetError(1, 0, 0)
+	EndIf
+
+	Return $UIA_oDesktop
+EndFunc
 
 Func _UIA_IsElement($control)
 	Return IsObj($control)

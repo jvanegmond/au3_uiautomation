@@ -9,12 +9,12 @@
 ; ===============================================================================================================================
 
 Func _UIA_ControlGetHandle($hWnd, $controlID)
-	If Not __UIA_IsControl($hWnd) Then
+	If Not _UIA_IsElement($hWnd) Then
 		$hWnd = __UIA_ControlGetFromHwnd($hWnd)
 		If @error Then Return SetError(1, 0, 0)
 	EndIf
 
-	If Not __UIA_IsControl($controlID) Then
+	If Not _UIA_IsElement($controlID) Then
 		$controlID = __UIA_ControlGet($hWnd, $controlID)
 		If @error Then Return SetError(2, 0, 0)
 	EndIf
@@ -26,7 +26,7 @@ Func _UIA_ControlSetText($hWnd, $controlID, $text, $flag = 0)
 	$controlID = _UIA_ControlGetHandle($hWnd, $controlID)
 	If @error Then Return SetError(@error, 0, 0)
 
-	$tPattern = __UIA_GetPattern($controlID, $UIA_ValuePattern)
+	$tPattern = _UIA_CreateControlPattern($controlID, $UIA_ValuePattern)
 	$tPattern.SetValue($text)
 
 	; TODO: Impl $flag <> 0 to refresh window
@@ -36,7 +36,7 @@ Func _UIA_ControlGetText($hWnd, $controlID)
 	$controlID = _UIA_ControlGetHandle($hWnd, $controlID)
 	If @error Then Return SetError(@error, 0, 0)
 
-	$tPattern = __UIA_GetPattern($controlID, $UIA_ValuePattern)
+	$tPattern = _UIA_CreateControlPattern($controlID, $UIA_ValuePattern)
 	Local $sText = ""
 	$tPattern.CurrentValue($sText)
 	Return $sText
@@ -56,7 +56,7 @@ Func _UIA_ControlClick($hWnd, $controlID, $button = "invoke", $clicks = 1, $x = 
 	If $button = "invoke" Then
 		$controlID.SetFocus()
 
-		$tPattern = __UIA_GetPattern($controlID, $UIA_InvokePattern)
+		$tPattern = _UIA_CreateControlPattern($controlID, $UIA_InvokePattern)
 		$tPattern.Invoke()
 	Else
 		WinActivate($hWnd)
@@ -66,9 +66,41 @@ Func _UIA_ControlClick($hWnd, $controlID, $button = "invoke", $clicks = 1, $x = 
 		If $x = Default Then $x = $aBound[2] / 2
 		If $y = Default Then $y = $aBound[3] / 2
 
-		$x = $x + Int($aBound[0])
-		$y = $y + Int($aBound[1])
+		$x = $x + $aBound[0]
+		$y = $y + $aBound[1]
 
 		MouseClick($button, $x, $y, $clicks, 0)
 	EndIf
+EndFunc
+
+Func _UIA_ControlGetPos($hWnd, $controlID)
+	If Not _UIA_IsElement($hWnd) Then
+		$hWnd = __UIA_ControlGetFromHwnd($hWnd)
+		If @error Then Return SetError(1, 0, 0)
+	EndIf
+
+	If Not _UIA_IsElement($controlID) Then
+		$controlID = __UIA_ControlGet($hWnd, $controlID)
+		If @error Then Return SetError(2, 0, 0)
+	EndIf
+
+	$aWinBound = _UIA_GetPropertyValue($hWnd, $UIA_BoundingRectanglePropertyId)
+	$aBound = _UIA_GetPropertyValue($controlID, $UIA_BoundingRectanglePropertyId)
+
+	$aBound[0] = $aBound[0] - $aWinBound[0] - 3
+	$aBound[1] = $aBound[1] - $aWinBound[1] - 3
+
+	Return $aBound
+EndFunc
+
+Func _UIA_ControlSend($hWnd, $controlID, $string, $flag)
+	$controlID = _UIA_ControlGetHandle($hWnd, $controlID)
+	If @error Then Return SetError(@error, 0, 0)
+
+	WinActivate($hWnd)
+
+	$controlID.SetFocus()
+
+	SendKeepActive($hWnd)
+	Send($string, $flag)
 EndFunc

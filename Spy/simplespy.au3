@@ -4,18 +4,20 @@
 #include <WindowsConstants.au3>
 #include <WinAPI.au3>
 #include <Misc.au3>
+#include <Array.au3>
 #include "..\UIAutomation.au3"
-
-AutoItSetOption("MustDeclareVars", 1)
 
 #AutoIt3Wrapper_UseX64=Y  ;Should be used for stuff like tagpoint having right struct etc. when running on a 64 bits os
 
-const $AutoSpy=0 ;2000 ; SPY about every 2000 milliseconds automatically, 0 is turn of use only ctrl+w
+Local Const $AutoSpy=0 ;2000 ; SPY about every 2000 milliseconds automatically, 0 is turn of use only ctrl+w
 
-global $oldUIElement ; To keep track of latest referenced element
-global $frmSimpleSpy, $edtCtrlInfo , $lblCapture, $lblEscape, $lblRecord, $edtCtrlRecord, $msg, $x, $y, $oUIElement, $oTW, $objParent, $oldElement, $text1, $t
-global $i ; Just a simple counter to measure time expired in main loop
-global $UIA_CodeArray
+Local $oldUIElement ; To keep track of latest referenced element
+Local $frmSimpleSpy, $edtCtrlInfo , $lblCapture, $lblEscape, $lblRecord, $edtCtrlRecord, $msg, $x, $y, $oUIElement, $oTW, $objParent, $oldElement, $text1, $t
+Local $i ; Just a simple counter to measure time expired in main loop
+Local $UIA_CodeArray
+
+Local $UIA_oTW ; Generic treewalker which is allways available
+Local $UIA_oTRUECondition ; TRUE condition easy to be available for treewalking
 
 ;~ Some references for reading
 ;~ [url=http://support.microsoft.com/kb/138518/nl]http://support.microsoft.com/kb/138518/nl[/url]  tagpoint structures attention point
@@ -38,9 +40,22 @@ $lblRecord = GUICtrlCreateLabel("Ctrl + R to record code", 544, 32, 527, 17)
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
 
-_UIA_Init()
+$UIA_oUIAutomation = _UIA_Init()
 
-loadCodeTemplates() ; To use templates per class/controltype
+Local $UIA_pTRUECondition
+
+; Have a treewalker available to easily walk around the element trees
+Local $UIA_pTW
+$UIA_oUIAutomation.RawViewWalker($UIA_pTW)
+$UIA_oTW = ObjCreateInterface($UIA_pTW, $sIID_IUIAutomationTreeWalker, $dtagIUIAutomationTreeWalker)
+If Not IsObj($UIA_oTW) Then
+	MsgBox(0, @ScriptName, "Error creating RawViewWalker")
+	Exit 1
+EndIf
+
+; Create a true condition for easy reference in treewalkers
+$UIA_oUIAutomation.CreateTrueCondition($UIA_pTRUECondition)
+$UIA_oTRUECondition = ObjCreateInterface($UIA_pTRUECondition, $sIID_IUIAutomationCondition, $dtagIUIAutomationCondition)
 
 ; Run the GUI until the dialog is closed
 While true
@@ -63,13 +78,6 @@ WEnd
 Func GetElementInfo()
 	Local $hWnd, $i, $parentCount
 	Local $tStruct = DllStructCreate($tagPOINT) ; Create a structure that defines the point to be checked.
-	;~ Local $tStruct = DllStructCreate("INT64,INT64")
-	;~ 	ToolTip("")
-	;~ Global $UIA_oUIAutomation			;The main library core CUI automation reference
-	;~ Global $UIA_oDesktop, $UIA_pDesktop		 ;Desktop will be frequently the starting point
-
-	;~ Global $UIA_oUIElement, $UIA_pUIElement  ;Used frequently to get an element
-	;~ Global $UIA_oTW, $UIA_pTW		 ;Generic treewalker which is allways available
 
 	$x=MouseGetPos(0)
 	$y=MouseGetPos(1)
@@ -202,8 +210,8 @@ EndIf
 
 	_GUICtrlEdit_LineScroll($edtCtrlInfo, 0, 0 - _GUICtrlEdit_GetLineCount($edtCtrlInfo))
 
-	$t=stringsplit(_UIA_getPropertyValue($oUIElement, $UIA_BoundingRectanglePropertyId),";")
-	_DrawRect($t[1],$t[3]+$t[1],$t[2],$t[4]+$t[2])
+	$t=_UIA_getPropertyValue($oUIElement, $UIA_BoundingRectanglePropertyId)
+	_DrawRect($t[0],$t[2]+$t[0],$t[1],$t[3]+$t[1])
 EndIf
 
 EndFunc   ;==>GetElementInfo
@@ -295,9 +303,228 @@ Func _UIA_getAllPropertyValues($UIA_oUIElement)
 	$tSeparator = @CRLF ; To make sure its not a value you normally will get back for values
 	For $i = 0 To UBound($UIA_propertiesSupportedArray) - 1
 		$tval = _UIA_getPropertyValue($UIA_oUIElement, $UIA_propertiesSupportedArray[$i][1])
+		If IsArray($tval) Then
+			$tval = _ArrayToString($tval, ";")
+		EndIf
 		If $tval <> "" Then
 			$tStr = $tStr & "UIA_" & $UIA_propertiesSupportedArray[$i][0] & ":= <" & $tval & ">" & $tSeparator
 		EndIf
 	Next
 	Return $tStr
 EndFunc   ;==>_UIA_getAllPropertyValues
+
+
+
+; Find it by using a findall array of the UIA framework
+Func _UIA_GetObjectByFindAll($obj, $str, $treeScope, $p1 = 0)
+	Local $pCondition, $pTrueCondition
+	Local $pElements, $iLength
+
+	Local $tResult
+	Local $propertyID
+	Local $tPos
+	Local $relPos
+	Local $relIndex = 0
+	Local $tMatch
+	Local $tStr
+	Local $properties2Match[1][2] ; All properties of the expression to match in a normalized form
+	Local $parentHandle ; Handle to get the parent of the element available
+
+	Local $allProperties, $propertyCount, $propName, $propValue, $bAdd, $index, $i, $arrSize, $j
+	Local $objParent, $propertyActualValue, $propertyVal, $oAutomationElementArray, $matchCount
+
+	; 	Split it first into multiple sections representing each property
+	$allProperties = StringSplit($str, "; ", 1)
+
+	; Redefine the array to have all properties that are used to identify
+	$propertyCount = $allProperties[0]
+	ReDim $properties2Match[$propertyCount][2]
+	For $i = 1 To $allProperties[0]
+		$tResult = StringSplit($allProperties[$i], ":=", 1)
+
+		; Handle syntax without a property to have default name property:  Ok as Name:=Ok
+		If $tResult[0] = 1 Then
+			$tResult[1] = StringStripWS($tResult[1], 3)
+			$propName = $UIA_NamePropertyId
+			$propValue = $allProperties[$i]
+
+			$properties2Match[$i - 1][0] = $propName
+			$properties2Match[$i - 1][1] = $propValue
+		Else
+			$tResult[1] = StringStripWS($tResult[1], 3)
+			$tResult[2] = StringStripWS($tResult[2], 3)
+			$propName = $tResult[1]
+			$propValue = $tResult[2]
+
+			; Exclude the properties with a specific meaning
+			$bAdd = True
+			If $propName = "indexrelative" Then
+				$relPos = $propValue
+				$bAdd = False
+			EndIf
+			If ($propName = "index") Or ($propName = "instance") Then
+				$relIndex = $propValue
+				$bAdd = False
+			EndIf
+
+			If $bAdd = True Then
+				$index = _UIA_GetPropertyIndex($propName)
+
+				; Some properties expect a number (otherwise system will break)
+				Switch $UIA_propertiesSupportedArray[$index][1]
+					Case $UIA_ControlTypePropertyId
+						$propValue = Number(_UIA_GetControlID($propValue))
+				EndSwitch
+
+				; Add it to the normalized array
+				$properties2Match[$i - 1][0] = $UIA_propertiesSupportedArray[$index][1] ; store the propertyID (numeric value)
+				$properties2Match[$i - 1][1] = $propValue
+
+			EndIf
+		EndIf
+	Next
+
+	; Now walk through the tree
+	$obj.FindAll($treeScope, $UIA_oTRUECondition, $pElements)
+	$oAutomationElementArray = ObjCreateInterface($pElements, $sIID_IUIAutomationElementArray, $dtagIUIAutomationElementArray)
+
+	$matchCount = 0
+
+	; If there are no childs found then there is nothing to search
+	If IsObj($oAutomationElementArray) Then
+		; All elements to inspect are in this array
+		$oAutomationElementArray.Length($iLength)
+	Else
+
+		$iLength = 0
+	EndIf
+
+	;
+	Local $UIA_pUIElement
+	For $i = 0 To $iLength - 1; it's zero based
+		$oAutomationElementArray.GetElement($i, $UIA_pUIElement)
+		$UIA_oUIElement = ObjCreateInterface($UIA_pUIElement, $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
+
+		;
+		; 			& "Class   := <" & _UIA_GetPropertyValue($UIA_oUIElement,$uia_classnamepropertyid) &  ">" & @TAB _
+		; 			& "controltype:= <" &  _UIA_GetPropertyValue($UIA_oUIElement,$UIA_ControlTypePropertyId) &  ">" & @TAB & @CRLF, $UIA_Log_Wrapper)
+
+		; 		Walk through all properties in the properties2Match array to match
+		; 		Normally not a big array just 1 - 5 elements frequently just 1
+		$arrSize = UBound($properties2Match, 1) - 1
+		For $j = 0 To $arrSize
+			$propertyID = $properties2Match[$j][0]
+			$propertyVal = $properties2Match[$j][1]
+			$propertyActualValue = ""
+			;
+
+			; Some properties expect a number (otherwise system will break)
+
+			Switch $propertyID
+				Case $UIA_ControlTypePropertyId
+					$propertyVal = Number($propertyVal)
+			EndSwitch
+
+			$propertyActualValue = _UIA_GetPropertyValue($UIA_oUIElement, $propertyID)
+			$tMatch = StringRegExp($propertyActualValue, $propertyVal, 0)
+
+			; Filter so not to much logging happens
+			If $propertyActualValue <> "" Then
+			EndIf
+
+			If $tMatch = 0 Then
+				; 				Special situation could be that its non matching on regex but exact match is there
+				If $propertyVal <> $propertyActualValue Then ExitLoop
+				$tMatch = 1
+			EndIf
+
+		Next
+
+		If $tMatch = 1 Then
+			If $relPos <> 0 Then
+				;
+				$oAutomationElementArray.GetElement($i + $relPos, $UIA_pUIElement)
+				$UIA_oUIElement = ObjCreateInterface($UIA_pUIElement, $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
+			EndIf
+			If $relIndex <> 0 Then
+				$matchCount = $matchCount + 1
+				If $matchCount <> $relIndex Then $tMatch = 0
+			EndIf
+
+			If $tMatch = 1 Then
+
+				; Have the parent also available in the RTI
+				$UIA_oTW.getparentelement($UIA_oUIElement, $parentHandle)
+				$objParent = ObjCreateInterface($parentHandle, $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
+				If IsObj($objParent) Then
+
+				EndIf
+
+				; Add element to runtime information object reference
+				If IsString($p1) Then
+
+
+				EndIf
+				Return $UIA_oUIElement
+			EndIf
+		EndIf
+	Next
+
+	Return ""
+EndFunc   ;==>_UIA_GetObjectByFindAll
+
+
+
+; #FUNCTION# ====================================================================================================================
+; Name...........: _UIA_GetControlName
+; Description ...: Transforms the number of a control to a readable name
+; Syntax.........: _UIA_GetControlName($controlID)
+; Parameters ....: $controlID
+; Return values .: Success      - Returns string
+;                  Failure		- Returns 0 and sets @error on errors:
+;                  |@error=1     - UI automation failed
+;                  |@error=2     - UI automation desktop failed
+; ===============================================================================================================================
+Func _UIA_GetControlName($controlID)
+	Local $i
+	SetError(1, 0, 0)
+	For $i = 0 To UBound($UIA_ControlArray) - 1
+		If ($UIA_ControlArray[$i][1] = $controlID) Then
+			Return $UIA_ControlArray[$i][0]
+		EndIf
+	Next
+EndFunc   ;==>_UIA_GetControlName
+
+; #FUNCTION# ====================================================================================================================
+; Name...........: _UIA_GetControlId
+; Description ...: Transforms the name of a controltype to an id
+; Syntax.........: _UIA_GetControlId($controlName)
+; Parameters ....: $controlName
+; Return values .: Success      - Returns string
+;                  Failure		- Returns 0 and sets @error on errors:
+;                  |@error=1     - UI automation failed
+; ===============================================================================================================================
+Func _UIA_GetControlID($controlName)
+	Local $tName, $i
+	$tName = StringUpper($controlName)
+	If StringLeft($tName, 3) <> "UIA" Then
+		$tName = "UIA_" & $tName & "CONTROLTYPEID"
+	EndIf
+	SetError(1, 0, 0)
+	For $i = 0 To UBound($UIA_ControlArray) - 1
+		If (StringUpper($UIA_ControlArray[$i][0]) = $tName) Then
+			Return $UIA_ControlArray[$i][1]
+		EndIf
+	Next
+EndFunc   ;==>_UIA_GetControlID
+
+; ## Internal use just to find the location of the property name in the property array##
+Func _UIA_GetPropertyIndex($propName)
+	Local $i
+	For $i = 0 To UBound($UIA_propertiesSupportedArray, 1) - 1
+		If StringLower($UIA_propertiesSupportedArray[$i][0]) = StringLower($propName) Then
+			Return $i
+		EndIf
+	Next
+	Return SetError(1, 0, 0)
+EndFunc   ;==>_UIA_GetPropertyIndex

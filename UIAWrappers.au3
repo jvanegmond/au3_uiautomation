@@ -152,6 +152,7 @@ EndFunc   ;==>__UIA_ControlGet
 
 Func __UIA_ControlSearch($searchRoot, $controlSearchString)
 	Local $searchInstance = 1
+	Local $searchText = ""
 
 	; Create condition array
 	$kvPairs = StringRegExp($controlSearchString, $_UIA_Regex_ControlId_SplitKeyValuePairs, 3)
@@ -168,13 +169,24 @@ Func __UIA_ControlSearch($searchRoot, $controlSearchString)
 				$UIA_oUIAutomation.CreatePropertyCondition($UIA_AutomationIdPropertyId, String($value), $pCondition)
 				$pConditions[$i] = $pCondition
 			Case "TEXT"
-				; TODO: Implement text/value property condition
+				; Search for the text later, because FindAll/Properties do not support substring search
+				$searchText = $value
+
+				; Create a true condition so that FindAll does not fail
+				Local $oTrueCondition
+				$UIA_oUIAutomation.CreateTrueCondition($oTrueCondition)
+				$pConditions[$i] = $oTrueCondition
 			Case "CLASS" ; UIA_class
 				Local $pCondition
 				$UIA_oUIAutomation.CreatePropertyCondition($UIA_ClassNamePropertyId, String($value), $pCondition)
 				$pConditions[$i] = $pCondition
 			Case "INSTANCE"
 				$searchInstance = Int($value)
+
+				; Create a true condition so that FindAll does not fail
+				Local $oTrueCondition
+				$UIA_oUIAutomation.CreateTrueCondition($oTrueCondition)
+				$pConditions[$i] = $oTrueCondition
 			Case "CLASSNN"
 				$parsed = StringRegExp($value, $UIA_Regex_ControlId_ClassNameNN, 1)
 				If @error Then Return SetError(1, 0, 0)
@@ -225,11 +237,37 @@ Func __UIA_ControlSearch($searchRoot, $controlSearchString)
 			Return SetError(1, 0, 0)
 		EndIf
 
-		Local $pFound
-		$oAutomationElementArray.GetElement($searchInstance, $pFound)
-		$oFound = ObjCreateInterface($pFound, $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
+		; If no text search parameter was given, just pick the element and return it
+		If $searchText = "" Then
+			Local $pFound
+			$oAutomationElementArray.GetElement($searchInstance, $pFound)
+			$oFound = ObjCreateInterface($pFound, $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
+			Return $oFound
+		Else
+			Local $aResults[$iLength]
+			Local $curInstance = 0
+			For $i = 1 To $iLength - 1
 
-		Return $oFound
+				Local $pFound
+				$oAutomationElementArray.GetElement($i, $pFound)
+				$oFound = ObjCreateInterface($pFound, $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
+
+				$tPattern = _UIA_CreateControlPattern($oFound, $UIA_ValuePattern)
+				If Not @error Then
+					Local $sText = ""
+					$tPattern.CurrentValue($sText)
+
+					If StringInStr($sText, $searchText) Then
+						If $curInstance = $searchInstance Then
+							Return $oFound
+						EndIf
+						$curInstance += 1
+					EndIf
+				EndIf
+			Next
+
+			Return SetError(1, 0, 0)
+		EndIf
 	EndIf
 EndFunc   ;==>__UIA_ControlSearch
 

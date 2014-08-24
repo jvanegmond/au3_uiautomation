@@ -1,4 +1,4 @@
-#include "..\UIAWrappers.au3"
+#include "..\UIAutomation.au3"
 #include "libraries\Assert.au3"
 
 $hWnd = GUICreate("Test window")

@@ -9,24 +9,18 @@
 
 #AutoIt3Wrapper_UseX64=Y  ;Should be used for stuff like tagpoint having right struct etc. when running on a 64 bits os
 
-Local Const $AutoSpy=0 ;2000 ; SPY about every 2000 milliseconds automatically, 0 is turn of use only ctrl+w
+Local Const $AutoSpy = 0 ;2000 ; SPY about every 2000 milliseconds automatically, 0 is turn of use only ctrl+w
 
 Local $oldUIElement ; To keep track of latest referenced element
-Local $frmSimpleSpy, $edtCtrlInfo , $lblCapture, $lblEscape, $lblRecord, $edtCtrlRecord, $msg, $x, $y, $oUIElement, $oTW, $objParent, $oldElement, $text1, $t
+Local $frmSimpleSpy, $edtCtrlInfo, $lblCapture, $lblEscape, $msg, $x, $y, $oUIElement, $oTW, $objParent, $oldElement, $text1, $t
 Local $i ; Just a simple counter to measure time expired in main loop
 Local $UIA_CodeArray
 
 Local $UIA_oTW ; Generic treewalker which is allways available
 Local $UIA_oTRUECondition ; TRUE condition easy to be available for treewalking
 
-;~ Some references for reading
-;~ [url=http://support.microsoft.com/kb/138518/nl]http://support.microsoft.com/kb/138518/nl[/url]  tagpoint structures attention point
-;~ [url=http://www.autoitscript.com/forum/topic/128406-interface-autoitobject-iuiautomation/]http://www.autoitscript.com/forum/topic/128406-interface-autoitobject-iuiautomation/[/url]
-;~ [url=http://msdn.microsoft.com/en-us/library/windows/desktop/ff625914(v=vs.85).aspx]http://msdn.microsoft.com/en-us/library/windows/desktop/ff625914(v=vs.85).aspx[/url]
-
 HotKeySet("{ESC}", "Close") ; Set ESC as a hotkey to exit the script.
 HotKeySet("^w", "GetElementInfo") ; Set Hotkey Ctrl+M to get some basic information in the GUI
-HotKeySet("^r", "GenCode") ; Set Hotkey Ctrl+R to generate some code line in a basic way
 
 #Region ### START Koda GUI section ### Form=
 $frmSimpleSpy = GUICreate("Simple UIA Spy", 801, 601, 181, 4)
@@ -34,9 +28,6 @@ $edtCtrlInfo = GUICtrlCreateEdit("", 18, 18, 512, 580)
 GUICtrlSetData(-1, "")
 $lblCapture = GUICtrlCreateLabel("Ctrl+W to capture information", 544, 10, 528, 17)
 $lblEscape = GUICtrlCreateLabel("Escape to exit", 544, 53, 528, 17)
-$edtCtrlRecord = GUICtrlCreateEdit("", 544, 72, 233, 520)
-GUICtrlSetData(-1, "//TO DO edtCtrlRecord")
-$lblRecord = GUICtrlCreateLabel("Ctrl + R to record code", 544, 32, 527, 17)
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
 
@@ -58,18 +49,15 @@ $UIA_oUIAutomation.CreateTrueCondition($UIA_pTRUECondition)
 $UIA_oTRUECondition = ObjCreateInterface($UIA_pTRUECondition, $sIID_IUIAutomationCondition, $dtagIUIAutomationCondition)
 
 ; Run the GUI until the dialog is closed
-While true
+While True
 	$msg = GUIGetMsg()
-	sleep(100)
-	;~ if _ispressed(01) Then
-	;~ getelementinfo()
-	;~ endif
+	Sleep(100)
 
 	;Just to show anyway the information about every n ms so ctrl+w is not interfering / removing window as unwanted side effects
-	$i=$i+100
-	if ($autoSpy<>0) and ($i>= $autoSpy) then
-		$i=0
-		getelementinfo()
+	$i = $i + 100
+	If ($AutoSpy <> 0) And ($i >= $AutoSpy) Then
+		$i = 0
+		GetElementInfo()
 	EndIf
 
 	If $msg = $GUI_EVENT_CLOSE Then ExitLoop
@@ -79,209 +67,175 @@ Func GetElementInfo()
 	Local $hWnd, $i, $parentCount
 	Local $tStruct = DllStructCreate($tagPOINT) ; Create a structure that defines the point to be checked.
 
-	$x=MouseGetPos(0)
-	$y=MouseGetPos(1)
+	$x = MouseGetPos(0)
+	$y = MouseGetPos(1)
 	DllStructSetData($tStruct, "x", $x)
 	DllStructSetData($tStruct, "y", $y)
-;~ 	consolewrite(DllStructGetData($tStruct,"x") & DllStructGetData($tStruct,"y"))
+	; 	consolewrite(DllStructGetData($tStruct,"x") & DllStructGetData($tStruct,"y"))
 
-;~ consolewrite("Mouse position is retrieved " & @crlf)
+	; consolewrite("Mouse position is retrieved " & @crlf)
 
 	Local $UIA_pUIElement
-	$UIA_oUIAutomation.ElementFromPoint($tStruct,$UIA_pUIElement )
+	$UIA_oUIAutomation.ElementFromPoint($tStruct, $UIA_pUIElement)
 
-	;~ consolewrite("Element from point is passed, trying to convert to object ")
-	$oUIElement = objcreateinterface($UIA_pUIElement,$sIID_IUIAutomationElement, $dtagIUIAutomationElement)
+	; consolewrite("Element from point is passed, trying to convert to object ")
+	$oUIElement = ObjCreateInterface($UIA_pUIElement, $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
 
 	Local $UIA_pTW
 	$UIA_oUIAutomation.RawViewWalker($UIA_pTW)
-	$oTW=ObjCreateInterface($UIA_pTW, $sIID_IUIAutomationTreeWalker, $dtagIUIAutomationTreeWalker)
-    If IsObj($oTW) = 0 Then
-        msgbox(1,"UI automation treewalker failed", "UI Automation failed failed",10)
-    EndIf
-
-	local $oParentHandle[10] ; Max 10 (grand)parents
-
-;~ 	at least 1
-	$i=0
-	$oTW.getparentelement($oUIElement,$oparentHandle[$i])
-	$oParentHandle[$i]=objcreateinterface($oparentHandle[$i],$sIID_IUIAutomationElement, $dtagIUIAutomationElement)
-	If IsObj($oParentHandle[$i]) = 0 Then
-		msgbox(1,"No parent", "UI Automation failed",10)
-	Else
-		while ($i <=9) and (IsObj($oParentHandle[$i])=true)
-			$i=$i+1
-			$oTW.getparentelement($oparentHandle[$i-1],$oparentHandle[$i])
-			$oParentHandle[$i]=objcreateinterface($oparentHandle[$i],$sIID_IUIAutomationElement, $dtagIUIAutomationElement)
-		wend
-		$parentCount=$i-1
-		consolewrite($parentCount & " parents found" & @crlf)
+	$oTW = ObjCreateInterface($UIA_pTW, $sIID_IUIAutomationTreeWalker, $dtagIUIAutomationTreeWalker)
+	If IsObj($oTW) = 0 Then
+		MsgBox(1, "UI automation treewalker failed", "UI Automation failed failed", 10)
 	EndIf
 
-	if isobj($oldUIElement) Then
-		if $oldUIElement=$oUIElement then
-			return
-		endif
-	endif
+	Local $oParentHandle[10] ; Max 10 (grand)parents
+
+	; 	at least 1
+	$i = 0
+	$oTW.getparentelement($oUIElement, $oParentHandle[$i])
+	$oParentHandle[$i] = ObjCreateInterface($oParentHandle[$i], $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
+	If IsObj($oParentHandle[$i]) = 0 Then
+		MsgBox(1, "No parent", "UI Automation failed", 10)
+	Else
+		While ($i <= 9) And (IsObj($oParentHandle[$i]) = True)
+			$i = $i + 1
+			$oTW.getparentelement($oParentHandle[$i - 1], $oParentHandle[$i])
+			$oParentHandle[$i] = ObjCreateInterface($oParentHandle[$i], $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
+		WEnd
+		$parentCount = $i - 1
+		ConsoleWrite($parentCount & " parents found" & @CRLF)
+	EndIf
+
+	If IsObj($oldUIElement) Then
+		If $oldUIElement = $oUIElement Then
+			Return
+		EndIf
+	EndIf
 	_WinAPI_RedrawWindow(_WinAPI_GetDesktopWindow(), 0, 0, $RDW_INVALIDATE + $RDW_ALLCHILDREN) ; Clears Red outline graphics.
 
 	GUICtrlSetData($edtCtrlInfo, "Mouse position is retrieved " & $x & "-" & $y & @CRLF)
-	$oldElement=$oUIElement
+	$oldElement = $oUIElement
 
-If IsObj($oUIElement) Then
-	local $title=_UIA_getPropertyValue($oUIElement,$UIA_NamePropertyId)
-	local $class=_UIA_getPropertyValue($oUIElement,$uia_classnamepropertyid)
-	local $controltypeName=_UIA_getControlName(_UIA_getPropertyValue($oUIElement,$UIA_ControlTypePropertyId))
-	local $controltypeId=_UIA_getPropertyValue($oUIElement,$UIA_ControlTypePropertyId)
-	local $controlIDString=$title
-	local $nativeWindow=_UIA_getPropertyValue($oUIElement, $UIA_NativeWindowHandlePropertyId)
-	local $pos=stringinstr($controlIDString,"-")
+	If IsObj($oUIElement) Then
+		Local $title = _UIA_getPropertyValue($oUIElement, $UIA_NamePropertyId)
+		Local $class = _UIA_getPropertyValue($oUIElement, $uia_classnamepropertyid)
+		Local $controltypeName = _UIA_GetControlName(_UIA_getPropertyValue($oUIElement, $UIA_ControlTypePropertyId))
+		Local $controltypeId = _UIA_getPropertyValue($oUIElement, $UIA_ControlTypePropertyId)
+		Local $controlIDString = $title
+		Local $nativeWindow = _UIA_getPropertyValue($oUIElement, $UIA_NativeWindowHandlePropertyId)
+		Local $pos = StringInStr($controlIDString, "-")
 
-	if $pos > 0 Then
-		$controlIDString=stringleft($controlIDString,$pos)
-	EndIf
-	$controlIDString=_NiceString($controlIDString)
+		If $pos > 0 Then
+			$controlIDString = StringLeft($controlIDString, $pos)
+		EndIf
+		$controlIDString = _NiceString($controlIDString)
 
-;~  ConsoleWrite("At least we have an element "  & "[" & _UIA_getPropertyValue($oUIElement, $UIA_NamePropertyId) & "][" & _UIA_getPropertyValue($oUIElement, $UIA_ClassNamePropertyId) & "]" & @CRLF)
-	GUICtrlSetData($edtCtrlInfo, "At least we have an element "  & "[" & $title & "][" & $class & "]" & @CRLF,1)
-    $text1="Title is: <" &  $title &  ">" & @TAB _
-			& "Class   := <" & $class &  ">" & @TAB _
-			& "controltype:= " 	& "<" &  $controltypeName &  ">" & @TAB  _
-			& ",<" &  $controltypeId &  ">" & @TAB & ", (" &  hex($controltypeId )&  ")" & @TAB & @CRLF
+		;  ConsoleWrite("At least we have an element "  & "[" & _UIA_getPropertyValue($oUIElement, $UIA_NamePropertyId) & "][" & _UIA_getPropertyValue($oUIElement, $UIA_ClassNamePropertyId) & "]" & @CRLF)
+		GUICtrlSetData($edtCtrlInfo, "At least we have an element " & "[" & $title & "][" & $class & "]" & @CRLF, 1)
+		$text1 = "Title is: <" & $title & ">" & @TAB _
+				 & "Class   := <" & $class & ">" & @TAB _
+				 & "controltype:= " & "<" & $controltypeName & ">" & @TAB _
+				 & ",<" & $controltypeId & ">" & @TAB & ", (" & Hex($controltypeId) & ")" & @TAB & @CRLF
 
 
-local $codeText1=""
+		Local $codeText1 = ""
 
-if $nativeWindow <> 0 Then
-		$codetext1=$codetext1 & "_UIA_setVar(""" & $controlIDString & ".mainwindow"",""title:=" & $title &";classname:=" & $class & """)" & @CRLF
-		$codetext1=$codetext1 & "_UIA_action(""" & $controlIDString & ".mainwindow"",""setfocus"")" & @CRLF
-Else
-		$codetext1=$codetext1 & ";~ First find the object in the parent before you can do something" & @CRLF
-		$codetext1=$codetext1 & ";~$oUIElement=_UIA_getObjectByFindAll(""" & $controlIDString & ".mainwindow"", ""title:=" & $title &";ControlType:=" & $controltypeName & """, $treescope_subtree)" & @CRLF
-		$codetext1=$codetext1 & "Local $oUIElement=_UIA_getObjectByFindAll($oP0, ""title:=" & $title &";ControlType:=" & $controltypeName & """, $treescope_subtree)" & @CRLF
-		$codetext1=$codetext1 & "_UIA_action($oUIElement,""click"")" & @CRLF
-EndIf
+		If $nativeWindow <> 0 Then
+			$codeText1 = $codeText1 & "_UIA_setVar(""" & $controlIDString & ".mainwindow"",""title:=" & $title & ";classname:=" & $class & """)" & @CRLF
+			$codeText1 = $codeText1 & "_UIA_action(""" & $controlIDString & ".mainwindow"",""setfocus"")" & @CRLF
+		Else
+			$codeText1 = $codeText1 & "; First find the object in the parent before you can do something" & @CRLF
+			$codeText1 = $codeText1 & ";$oUIElement=_UIA_getObjectByFindAll(""" & $controlIDString & ".mainwindow"", ""title:=" & $title & ";ControlType:=" & $controltypeName & """, $treescope_subtree)" & @CRLF
+			$codeText1 = $codeText1 & "Local $oUIElement=_UIA_getObjectByFindAll($oP0, ""title:=" & $title & ";ControlType:=" & $controltypeName & """, $treescope_subtree)" & @CRLF
+			$codeText1 = $codeText1 & "_UIA_action($oUIElement,""click"")" & @CRLF
+		EndIf
 
-    $text1=$text1 & "*** Parent Information top down ***" & @CRLF
-    local $pText1=""
-	local $pCodeText2=""
+		$text1 = $text1 & "*** Parent Information top down ***" & @CRLF
+		Local $pText1 = ""
+		Local $pCodeText2 = ""
 
-;~ parentcount-1 As thats the $UIA_oDesktop
-    for $i=$parentcount to 0 step -1
-			$objParent=$oParentHandle[$i]
-			local $ptitle=_UIA_getPropertyValue($objParent,$UIA_NamePropertyId)
-			local $pclass=_UIA_getPropertyValue($objParent,$uia_classnamepropertyid)
-			local $pcontroltypeName=_UIA_getControlName(_UIA_getPropertyValue($objParent,$UIA_ControlTypePropertyId))
-			local $pControltypeId=_UIA_getPropertyValue($objParent,$UIA_ControlTypePropertyId)
-            local $pDefaultExpression="""Title:=" & $pTitle & ";" & "controltype:=" & $pControlTypeName & ";" & "class:=" & $pClass & """"
-			local $pNativeWindow=_UIA_getPropertyValue($objParent, $UIA_NativeWindowHandlePropertyId)
-			$ptext1=$pText1 & $I & ": Title is: <" &  $ptitle &  ">" & @TAB _
-					& "Class   := <" & $pclass &  ">" & @TAB _
-					& "controltype:= " & "<" &  $pcontroltypeName &  ">" & @TAB  _
-					& ",<" &  $PcontroltypeId &  ">" & @TAB & ", (" &  hex($PcontroltypeId) &  ")" & @TAB & @CRLF
-			$ptext1=$ptext1 &  $pdefaultExpression & @TAB & @CRLF
-			if $i=$parentcount-1 Then
-				$pCodeText2=$pCodeText2 & "Local $oP" &$i & "=_UIA_getObjectByFindAll($UIA_oDesktop, " & $pdefaultExpression & ", $treescope_children)" & @TAB & @CRLF
+		; parentcount-1 As thats the $UIA_oDesktop
+		For $i = $parentCount To 0 Step -1
+			$objParent = $oParentHandle[$i]
+			Local $ptitle = _UIA_getPropertyValue($objParent, $UIA_NamePropertyId)
+			Local $pclass = _UIA_getPropertyValue($objParent, $uia_classnamepropertyid)
+			Local $pcontroltypeName = _UIA_GetControlName(_UIA_getPropertyValue($objParent, $UIA_ControlTypePropertyId))
+			Local $pControltypeId = _UIA_getPropertyValue($objParent, $UIA_ControlTypePropertyId)
+			Local $pDefaultExpression = """Title:=" & $ptitle & ";" & "controltype:=" & $pcontroltypeName & ";" & "class:=" & $pclass & """"
+			Local $pNativeWindow = _UIA_getPropertyValue($objParent, $UIA_NativeWindowHandlePropertyId)
+			$pText1 = $pText1 & $i & ": Title is: <" & $ptitle & ">" & @TAB _
+					 & "Class   := <" & $pclass & ">" & @TAB _
+					 & "controltype:= " & "<" & $pcontroltypeName & ">" & @TAB _
+					 & ",<" & $pControltypeId & ">" & @TAB & ", (" & Hex($pControltypeId) & ")" & @TAB & @CRLF
+			$pText1 = $pText1 & $pDefaultExpression & @TAB & @CRLF
+			If $i = $parentCount - 1 Then
+				$pCodeText2 = $pCodeText2 & "Local $oP" & $i & "=_UIA_getObjectByFindAll($UIA_oDesktop, " & $pDefaultExpression & ", $treescope_children)" & @TAB & @CRLF
 			Else
-				if $i<=$parentcount-2 then
-					$pCodeText2=$pCodeText2 & "Local $oP" &$i & "=_UIA_getObjectByFindAll($oP" & $i+1 & ", " & $pdefaultExpression & ", $treescope_children)" & @TAB & @CRLF
+				If $i <= $parentCount - 2 Then
+					$pCodeText2 = $pCodeText2 & "Local $oP" & $i & "=_UIA_getObjectByFindAll($oP" & $i + 1 & ", " & $pDefaultExpression & ", $treescope_children)" & @TAB & @CRLF
 
-				endif
+				EndIf
 
-			endif
-			if ($pnativeWindow <> 0) and ($i<>$ParentCount) Then
-				$pCodeText2=$pCodeText2 & "_UIA_Action($oP" & $i & ",""setfocus"")"  & @CRLF
-			endif
-	Next
+			EndIf
+			If ($pNativeWindow <> 0) And ($i <> $parentCount) Then
+				$pCodeText2 = $pCodeText2 & "_UIA_Action($oP" & $i & ",""setfocus"")" & @CRLF
+			EndIf
+		Next
 
-    $text1=$text1 & $ptext1
+		$text1 = $text1 & $pText1
 
-	$text1=$text1 & "*** Standard code ***" & @CRLF
-	$text1=$text1 & "#include ""UIAWrappers.au3""" & @CRLF
-	$text1=$text1 & "AutoItSetOption(""MustDeclareVars"", 1)" & @CRLF & @CRLF
+		$text1 = $text1 & "*** Standard code ***" & @CRLF
+		$text1 = $text1 & "#include ""UIAWrappers.au3""" & @CRLF
+		$text1 = $text1 & "AutoItSetOption(""MustDeclareVars"", 1)" & @CRLF & @CRLF
 
-	$text1=$text1 & $pCodeText2
-	$text1=$text1 & $codetext1
+		$text1 = $text1 & $pCodeText2
+		$text1 = $text1 & $codeText1
 
-	$text1=$text1 & "*** Detailed properties of the highlighted element ***"
-	$text1= $text1 & @CRLF & _UIA_getAllPropertyValues($oUIElement)
+		$text1 = $text1 & "*** Detailed properties of the highlighted element ***"
+		$text1 = $text1 & @CRLF & _UIA_getAllPropertyValues($oUIElement)
 
-	GUICtrlSetData($edtCtrlInfo, "Having the following values for all properties: " & @crlf & $text1 & @CRLF, 1)
+		GUICtrlSetData($edtCtrlInfo, "Having the following values for all properties: " & @CRLF & $text1 & @CRLF, 1)
 
-	_GUICtrlEdit_LineScroll($edtCtrlInfo, 0, 0 - _GUICtrlEdit_GetLineCount($edtCtrlInfo))
+		_GUICtrlEdit_LineScroll($edtCtrlInfo, 0, 0 - _GUICtrlEdit_GetLineCount($edtCtrlInfo))
 
-	$t=_UIA_getPropertyValue($oUIElement, $UIA_BoundingRectanglePropertyId)
-	_DrawRect($t[0],$t[2]+$t[0],$t[1],$t[3]+$t[1])
-EndIf
+		$t = _UIA_getPropertyValue($oUIElement, $UIA_BoundingRectanglePropertyId)
+		_DrawRect($t[0], $t[2] + $t[0], $t[1], $t[3] + $t[1])
+	EndIf
 
 EndFunc   ;==>GetElementInfo
 
 Func Close()
-Exit
+	Exit
 EndFunc   ;==>Close
 
-
-
-func genCode()
-	local $i, $tLine
-    $i=0
-	while $i<>ubound($UIA_CodeArray)-1
-		$i=$i+1
-
-;~ 		["name",$UIA_NamePropertyId], _
-;~ Global Const $UIA_RuntimeIdPropertyId=30000
-		$tLine=$UIA_CodeArray[$i]
-	WEnd
-
-
-    ; Display the first line of the file.
-;~     MsgBox($MB_SYSTEMMODAL, "", "First line of the file:" & @CRLF & $aArray[1])
-
-EndFunc
-
-func loadCodeTemplates()
-    Local Const $sFilePath = @scriptdir & "\codeTemplates.txt"
-
-    Local $hFileOpen = FileOpen($sFilePath, $FO_READ)
-    If $hFileOpen = -1 Then
-        consolewrite( "//TODO codetemplates.txt not available An error occurred when reading the file.")
-        Return False
-    EndIf
-
-;~ 	Read the whole file straight into an array
-	$UIA_CodeArray = FileReadToArray($hFileOpen)
-
-    FileClose($hFileOpen)
-EndFunc
-
-func _NiceString($str)
-	local $tStr=$str
-	$tstr=stringreplace($tStr," ","")
-	$tstr=stringreplace($tStr,"\","")
-	return $tStr
-EndFunc
+Func _NiceString($str)
+	Local $tStr = $str
+	$tStr = StringReplace($tStr, " ", "")
+	$tStr = StringReplace($tStr, "\", "")
+	Return $tStr
+EndFunc   ;==>_NiceString
 
 ; Draw rectangle on screen.
 Func _DrawRect($tLeft, $tRight, $tTop, $tBottom, $color = 0xFF, $PenWidth = 4)
-    Local $hDC, $hPen, $obj_orig, $x1, $x2, $y1, $y2
-    $x1 = $tLeft
-    $x2 = $tRight
-    $y1 = $tTop
-    $y2 = $tBottom
-    $hDC = _WinAPI_GetWindowDC(0) ; DC of entire screen (desktop)
-    $hPen = _WinAPI_CreatePen($PS_SOLID, $PenWidth, $color)
-    $obj_orig = _WinAPI_SelectObject($hDC, $hPen)
+	Local $hDC, $hPen, $obj_orig, $x1, $x2, $y1, $y2
+	$x1 = $tLeft
+	$x2 = $tRight
+	$y1 = $tTop
+	$y2 = $tBottom
+	$hDC = _WinAPI_GetWindowDC(0) ; DC of entire screen (desktop)
+	$hPen = _WinAPI_CreatePen($PS_SOLID, $PenWidth, $color)
+	$obj_orig = _WinAPI_SelectObject($hDC, $hPen)
 
-    _WinAPI_DrawLine($hDC, $x1, $y1, $x2, $y1) ; horizontal to right
-    _WinAPI_DrawLine($hDC, $x2, $y1, $x2, $y2) ; vertical down on right
-    _WinAPI_DrawLine($hDC, $x2, $y2, $x1, $y2) ; horizontal to left right
-    _WinAPI_DrawLine($hDC, $x1, $y2, $x1, $y1) ; vertical up on left
+	_WinAPI_DrawLine($hDC, $x1, $y1, $x2, $y1) ; horizontal to right
+	_WinAPI_DrawLine($hDC, $x2, $y1, $x2, $y2) ; vertical down on right
+	_WinAPI_DrawLine($hDC, $x2, $y2, $x1, $y2) ; horizontal to left right
+	_WinAPI_DrawLine($hDC, $x1, $y2, $x1, $y1) ; vertical up on left
 
-    ; clear resources
-    _WinAPI_SelectObject($hDC, $obj_orig)
-    _WinAPI_DeleteObject($hPen)
-    _WinAPI_ReleaseDC(0, $hDC)
-EndFunc   ;==>_DrawtRect
+	; clear resources
+	_WinAPI_SelectObject($hDC, $obj_orig)
+	_WinAPI_DeleteObject($hPen)
+	_WinAPI_ReleaseDC(0, $hDC)
+EndFunc   ;==>_DrawRect
 
 
 ; #FUNCTION# ====================================================================================================================

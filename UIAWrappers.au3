@@ -164,7 +164,7 @@ Func __UIA_ControlSearch($searchRoot, $controlSearchString)
 		$key = StringLeft($kvPair, $n - 1)
 		$value = StringMid($kvPair, $n + 1)
 		Switch $key
-			Case "ID" ; UIA_AutomationId
+			Case "ID", "NAME" ; UIA_AutomationId
 				Local $pCondition
 				$UIA_oUIAutomation.CreatePropertyCondition($UIA_AutomationIdPropertyId, String($value), $pCondition)
 				$pConditions[$i] = $pCondition

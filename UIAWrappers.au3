@@ -221,6 +221,7 @@ Func __UIA_ControlSearch($searchRoot, $controlSearchString)
 	; Search for the element
 	Local $pElements
 	$searchRoot.FindAll($TreeScope_Children, $pCondition, $pElements)
+	If Not $pElements Then Return SetError(1, 0, 0)
 
 	$oAutomationElementArray = ObjCreateInterface($pElements, $sIID_IUIAutomationElementArray, $dtagIUIAutomationElementArray)
 

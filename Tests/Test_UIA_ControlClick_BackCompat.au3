@@ -22,8 +22,3 @@ While TimerDiff($t) < 1000
 WEnd
 
 AssertIsTrue($btn1Clicked, "Button 1 was not clicked twice by _UIA_ControlClick")
-
-
-While ProcessExists("notepad.exe")
-	ProcessClose("notepad.exe")
-WEnd

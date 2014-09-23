@@ -15,7 +15,3 @@ _UIA_ControlFocus($hWnd, "Button2")
 
 $focus = ControlGetFocus($hWnd)
 AssertAreEqual("Button2", $focus, "Focus not on Button2")
-
-While ProcessExists("notepad.exe")
-	ProcessClose("notepad.exe")
-WEnd

@@ -11,7 +11,3 @@ GUISetState()
 _UIA_ControlSetText($hWnd, "Edit1", "Hello World!")
 
 AssertAreEqual("Hello World!", ControlGetText($hWnd, "", "[CLASS:Edit; INSTANCE:1]"))
-
-While ProcessExists("notepad.exe")
-	ProcessClose("notepad.exe")
-WEnd

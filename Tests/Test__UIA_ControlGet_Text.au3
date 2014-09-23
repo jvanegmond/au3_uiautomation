@@ -16,7 +16,3 @@ AssertAreEqual("Test text", ControlGetText($hWnd, "", "[CLASS:Edit; INSTANCE:1]"
 _UIA_ControlSetText($hWnd, "[TEXT:Test text]", "Hello World!")
 
 AssertAreEqual("Hello World!", ControlGetText($hWnd, "", "[CLASS:Edit; INSTANCE:1]"))
-
-While ProcessExists("notepad.exe")
-	ProcessClose("notepad.exe")
-WEnd

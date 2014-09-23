@@ -10,7 +10,3 @@ GUISetState()
 
 _UIA_ControlSetText($hWnd, "[NAME:DOES NOT EXIST!]", "Hello World!")
 AssertNotEqual(0, @error)
-
-While ProcessExists("notepad.exe")
-	ProcessClose("notepad.exe")
-WEnd

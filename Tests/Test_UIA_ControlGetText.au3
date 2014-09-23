@@ -13,7 +13,3 @@ ControlSetText($hWnd, "", "[CLASS:Edit; INSTANCE:1]", "Hello World! 123")
 $sText = _UIA_ControlGetText($hWnd, "[CLASS:Edit; INSTANCE:1]")
 
 AssertAreEqual("Hello World! 123", $sText)
-
-While ProcessExists("notepad.exe")
-	ProcessClose("notepad.exe")
-WEnd

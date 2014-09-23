@@ -17,7 +17,3 @@ AssertAreEqual(80, $bound[2])
 AssertAreEqual(30, $bound[3])
 
 Sleep(100)
-
-While ProcessExists("notepad.exe")
-	ProcessClose("notepad.exe")
-WEnd

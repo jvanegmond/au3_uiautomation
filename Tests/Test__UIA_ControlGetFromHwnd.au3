@@ -11,7 +11,3 @@ GUISetState()
 $oNotepad = __UIA_ControlGetFromHwnd($hWnd)
 
 AssertIsType($oNotepad, "Object")
-
-While ProcessExists("notepad.exe")
-	ProcessClose("notepad.exe")
-WEnd

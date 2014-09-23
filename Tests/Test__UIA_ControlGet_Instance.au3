@@ -13,7 +13,3 @@ $oWindow = _UIA_ControlGetHandle($hWnd, "[INSTANCE:1]")
 $sClassName = _UIA_GetPropertyValue($oWindow, $UIA_ClassNamePropertyId)
 
 AssertAreEqual("Button", $sClassName)
-
-While ProcessExists("notepad.exe")
-	ProcessClose("notepad.exe")
-WEnd

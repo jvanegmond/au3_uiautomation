@@ -42,6 +42,18 @@ Func _UIA_ControlGetText($hWnd, $controlID)
 	Return $sText
 EndFunc
 
+Func _UIA_ControlCheck($hWnd, $controlID, $checked = True)
+	$controlID = _UIA_ControlGetHandle($hWnd, $controlID)
+	If @error Then Return SetError(@error, 0, 0)
+
+	$currentState = _UIA_GetPropertyValue($controlID, $UIA_ToggleToggleStatePropertyId)
+
+	$tPattern = _UIA_CreateControlPattern($controlID, $UIA_TogglePattern)
+	If $currentState <> $checked Then
+		$tPattern.Toggle()
+	EndIf
+EndFunc
+
 Func _UIA_ControlFocus($hWnd, $controlID)
 	$controlID = _UIA_ControlGetHandle($hWnd, $controlID)
 	If @error Then Return SetError(@error, 0, 0)

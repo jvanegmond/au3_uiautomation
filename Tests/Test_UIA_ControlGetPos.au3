@@ -8,7 +8,7 @@ $edit1 = GUICtrlCreateEdit("", 10, 200, 200, 100)
 
 GUISetState()
 
-$bound = _UIA_ControlGetPos($hWnd, "[CLASS:Button; INSTANCE:1]")
+$bound = _UIA_ControlGetPos($hWnd, "[CLASS:Button; INSTANCE:1]") ; MAYBE FIX WITH _WinAPI_ScreenToClient
 
 AssertIsType($bound, "Array")
 AssertAreEqual(13, $bound[0])

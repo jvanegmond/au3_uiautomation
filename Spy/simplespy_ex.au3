@@ -31,6 +31,23 @@ $lblEscape = GUICtrlCreateLabel("Escape to exit", 544, 53, 528, 17)
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
 
+$UIA_oUIAutomation = _UIA_Init()
+
+Local $UIA_pTRUECondition
+
+; Have a treewalker available to easily walk around the element trees
+Local $UIA_pTW
+$UIA_oUIAutomation.RawViewWalker($UIA_pTW)
+$UIA_oTW = ObjCreateInterface($UIA_pTW, $sIID_IUIAutomationTreeWalker, $dtagIUIAutomationTreeWalker)
+If Not IsObj($UIA_oTW) Then
+	MsgBox(0, @ScriptName, "Error creating RawViewWalker")
+	Exit 1
+EndIf
+
+; Create a true condition for easy reference in treewalkers
+$UIA_oUIAutomation.CreateTrueCondition($UIA_pTRUECondition)
+$UIA_oTRUECondition = ObjCreateInterface($UIA_pTRUECondition, $sIID_IUIAutomationCondition, $dtagIUIAutomationCondition)
+
 ; Run the GUI until the dialog is closed
 While True
 	$msg = GUIGetMsg()
@@ -48,9 +65,21 @@ WEnd
 
 Func GetElementInfo()
 	Local $hWnd, $i, $parentCount
+	Local $tStruct = DllStructCreate($tagPOINT) ; Create a structure that defines the point to be checked.
 
-	Local $pos = MouseGetPos()
-	$oUIElement = _UIA_GetElementFromPoint($pos)
+	$x = MouseGetPos(0)
+	$y = MouseGetPos(1)
+	DllStructSetData($tStruct, "x", $x)
+	DllStructSetData($tStruct, "y", $y)
+	; 	consolewrite(DllStructGetData($tStruct,"x") & DllStructGetData($tStruct,"y"))
+
+	; consolewrite("Mouse position is retrieved " & @crlf)
+
+	Local $UIA_pUIElement
+	$UIA_oUIAutomation.ElementFromPoint($tStruct, $UIA_pUIElement)
+
+	; consolewrite("Element from point is passed, trying to convert to object ")
+	$oUIElement = ObjCreateInterface($UIA_pUIElement, $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
 
 	Local $UIA_pTW
 	$UIA_oUIAutomation.RawViewWalker($UIA_pTW)
@@ -84,6 +113,7 @@ Func GetElementInfo()
 	EndIf
 	_WinAPI_RedrawWindow(_WinAPI_GetDesktopWindow(), 0, 0, $RDW_INVALIDATE + $RDW_ALLCHILDREN) ; Clears Red outline graphics.
 
+	GUICtrlSetData($edtCtrlInfo, "Mouse position is retrieved " & $x & "-" & $y & @CRLF)
 	$oldElement = $oUIElement
 
 	If IsObj($oUIElement) Then

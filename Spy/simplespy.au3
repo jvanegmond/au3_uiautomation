@@ -5,11 +5,12 @@
 #include <WinAPI.au3>
 #include <Misc.au3>
 #include <Array.au3>
+#include <GDIPlus.au3>
 #include "..\UIAutomation.au3"
 
 #AutoIt3Wrapper_UseX64=Y  ;Should be used for stuff like tagpoint having right struct etc. when running on a 64 bits os
 
-Local Const $AutoSpy = 0 ;2000 ; SPY about every 2000 milliseconds automatically, 0 is turn of use only ctrl+w
+Local Const $AutoSpy = 1 ;2000 ; SPY about every 2000 milliseconds automatically, 0 is turn of use only ctrl+w
 
 Local $oldUIElement ; To keep track of latest referenced element
 Local $frmSimpleSpy, $edtCtrlInfo, $lblCapture, $lblEscape, $msg, $x, $y, $oUIElement, $oTW, $objParent, $oldElement, $text1, $t
@@ -34,7 +35,7 @@ GUISetState(@SW_SHOW)
 ; Run the GUI until the dialog is closed
 While True
 	$msg = GUIGetMsg()
-	Sleep(100)
+	Sleep(10)
 
 	;Just to show anyway the information about every n ms so ctrl+w is not interfering / removing window as unwanted side effects
 	$i = $i + 100
@@ -66,7 +67,8 @@ Func GetElementInfo()
 	$oTW.getparentelement($oUIElement, $oParentHandle[$i])
 	$oParentHandle[$i] = ObjCreateInterface($oParentHandle[$i], $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
 	If IsObj($oParentHandle[$i]) = 0 Then
-		MsgBox(1, "No parent", "UI Automation failed", 10)
+		;MsgBox(1, "No parent", "UI Automation failed", 10)
+		;Return
 	Else
 		While ($i <= 9) And (IsObj($oParentHandle[$i]) = True)
 			$i = $i + 1
@@ -82,7 +84,7 @@ Func GetElementInfo()
 			Return
 		EndIf
 	EndIf
-	_WinAPI_RedrawWindow(_WinAPI_GetDesktopWindow(), 0, 0, $RDW_INVALIDATE + $RDW_ALLCHILDREN) ; Clears Red outline graphics.
+	;_WinAPI_RedrawWindow(_WinAPI_GetDesktopWindow(), 0, 0, $RDW_INVALIDATE + $RDW_ALLCHILDREN) ; Clears Red outline graphics.
 
 	$oldElement = $oUIElement
 
@@ -169,7 +171,8 @@ Func GetElementInfo()
 		_GUICtrlEdit_LineScroll($edtCtrlInfo, 0, 0 - _GUICtrlEdit_GetLineCount($edtCtrlInfo))
 
 		$t = _UIA_getPropertyValue($oUIElement, $UIA_BoundingRectanglePropertyId)
-		_DrawRect($t[0], $t[2] + $t[0], $t[1], $t[3] + $t[1])
+		;_ArrayDisplay($t)
+		_DrawRect($t[0], $t[1], $t[2], $t[3])
 	EndIf
 
 EndFunc   ;==>GetElementInfo
@@ -187,24 +190,8 @@ EndFunc   ;==>_NiceString
 
 ; Draw rectangle on screen.
 Func _DrawRect($tLeft, $tRight, $tTop, $tBottom, $color = 0xFF, $PenWidth = 4)
-	Local $hDC, $hPen, $obj_orig, $x1, $x2, $y1, $y2
-	$x1 = $tLeft
-	$x2 = $tRight
-	$y1 = $tTop
-	$y2 = $tBottom
-	$hDC = _WinAPI_GetWindowDC(0) ; DC of entire screen (desktop)
-	$hPen = _WinAPI_CreatePen($PS_SOLID, $PenWidth, $color)
-	$obj_orig = _WinAPI_SelectObject($hDC, $hPen)
-
-	_WinAPI_DrawLine($hDC, $x1, $y1, $x2, $y1) ; horizontal to right
-	_WinAPI_DrawLine($hDC, $x2, $y1, $x2, $y2) ; vertical down on right
-	_WinAPI_DrawLine($hDC, $x2, $y2, $x1, $y2) ; horizontal to left right
-	_WinAPI_DrawLine($hDC, $x1, $y2, $x1, $y1) ; vertical up on left
-
-	; clear resources
-	_WinAPI_SelectObject($hDC, $obj_orig)
-	_WinAPI_DeleteObject($hPen)
-	_WinAPI_ReleaseDC(0, $hDC)
+	Local $hDC = _WinAPI_GetWindowDC(0)
+	_GDIPlus_GraphicsDrawRect($hDC, $tLeft, $tTop, $tRight - $tLeft, $tBottom - $tTop)
 EndFunc   ;==>_DrawRect
 
 

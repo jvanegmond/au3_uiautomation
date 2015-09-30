@@ -61,6 +61,7 @@
 #include <WinAPITheme.au3>
 #include <WindowsConstants.au3>
 #include "ColorChooser.au3"
+#include "..\..\UIAutomation.au3"
 
 Opt('GUIResizeMode', BitOR($GUI_DOCKLEFT, $GUI_DOCKTOP, $GUI_DOCKWIDTH, $GUI_DOCKHEIGHT))
 Opt('MustDeclareVars', 1)
@@ -248,6 +249,8 @@ While 1
 				$tPoint = _WinAPI_GetMousePos()
 				$Xi = DllStructGetData($tPoint, 1)
 				$Yi = DllStructGetData($tPoint, 2)
+
+				; Capture image around the mouse region for display in the GUI (+color of pixel under mouse)
 				If $Fade Then
 					$Ci = -1
 				EndIf
@@ -282,7 +285,13 @@ While 1
 					$Yp = $Yi
 					$Cp = $Ci
 				EndIf
+
+				; Get element and window we are hovering over with our mouse
+				Local $pos[] = [$Xi, $Yi]
+				Local $oUIElement = _UIA_GetElementFromPoint($pos)
 				$hWnd[0] = _WinAPI_GetAncestor(_WinAPI_WindowFromPoint($tPoint), $GA_ROOT)
+
+				; Calculate coordinates for display in GUI
 				Switch $_Position
 					Case 0 ; Absolute
 						For $i = 0 To 1
@@ -325,24 +334,8 @@ While 1
 								_SetData($Input[$i], '')
 							Next
 						EndIf
-					Case 3 ; Control
-						If ($hWnd[0] = $hForm) Or ($hWnd[0] = $hFrame) Then
-							If $hOver Then
-								$tRect = _WinAPI_GetWindowRect($hOver)
-							Else
-								$tRect = 0
-							EndIf
-							If _PtInRect($tRect, $tPoint) Then
-								For $i = 0 To 1
-									_SetData($Input[$i], DllStructGetData($tPoint, $i + 1) - DllStructGetData($tRect, $i + 1))
-								Next
-							Else
-								For $i = 0 To 1
-									_SetData($Input[$i], '')
-								Next
-							EndIf
-						EndIf
 				EndSwitch
+
 				If ($hWnd[0] = $hForm) Or ($hWnd[0] = $hFrame) Then
 					If ($hOver) And (Not _WinAPI_IsWindowVisible($hOver)) Then
 						If $hRect Then
@@ -354,6 +347,7 @@ While 1
 					EndIf
 					ContinueLoop
 				EndIf
+
 				$hWnd[1] = 0
 				$List = _WinAPI_EnumChildWindows($hWnd[0], 0)
 				If @error Then
@@ -385,6 +379,14 @@ While 1
 							Next
 						EndIf
 				EndSwitch
+
+				Local $aBound = _UIA_GetPropertyValue($oUIElement, $UIA_BoundingRectanglePropertyId)
+				$tRect = DllStructCreate($tagRECT)
+				DllStructSetData($tRect, 1, $aBound[0])
+				DllStructSetData($tRect, 2, $aBound[1])
+				DllStructSetData($tRect, 3, $aBound[0] + $aBound[2])
+				DllStructSetData($tRect, 4, $aBound[1] + $aBound[3])
+
 				If ($hWnd[0] = $hRoot) And ($hWnd[1] = $hOver) Then
 					ContinueLoop
 				EndIf
@@ -441,6 +443,7 @@ While 1
 					_GUICtrlListView_EnsureVisible($hListView, $Item, 1)
 				EndIf
 				_GUICtrlListView_EndUpdate($hListView)
+
 				If $hWnd[1] Then
 					_ShowFrame(1, $tRect, $hWnd[0])
 				Else

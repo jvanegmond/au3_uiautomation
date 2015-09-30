@@ -96,8 +96,8 @@ Func _UIA_ControlGetPos($hWnd, $controlID)
 		If @error Then Return SetError(2, 0, 0)
 	EndIf
 
-	$aWinBound = _UIA_GetPropertyValue($hWnd, $UIA_BoundingRectanglePropertyId)
-	$aBound = _UIA_GetPropertyValue($controlID, $UIA_BoundingRectanglePropertyId)
+	Local $aWinBound = _UIA_GetPropertyValue($hWnd, $UIA_BoundingRectanglePropertyId)
+	Local $aBound = _UIA_GetPropertyValue($controlID, $UIA_BoundingRectanglePropertyId)
 
 	$aBound[0] = $aBound[0] - $aWinBound[0]
 	$aBound[1] = $aBound[1] - $aWinBound[1]

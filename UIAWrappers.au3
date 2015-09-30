@@ -100,11 +100,11 @@ EndFunc   ;==>_UIA_CreateControlPattern
 Func __UIA_ControlGetFromHwnd($hwnd)
 	If Not WinExists($hwnd) Then Return SetError(1, 0, 0)
 
-	Local $pCondition, $UIA_pUIElement
-
+	Local $pCondition
 	$UIA_oUIAutomation.CreatePropertyCondition($UIA_NativeWindowHandlePropertyId, Int($hwnd), $pCondition)
 
-	$t = _UIA_GetDesktopElement().FindFirst($TreeScope_Children, $pCondition, $UIA_pUIElement)
+	Local $UIA_pUIElement
+	Local $t = _UIA_GetDesktopElement().FindFirst($TreeScope_Children, $pCondition, $UIA_pUIElement)
 	Local $oUIElement = ObjCreateInterface($UIA_pUIElement, $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
 	If Not _UIA_IsElement($oUIElement) Then
 		Return SetError(1, 0, 0)

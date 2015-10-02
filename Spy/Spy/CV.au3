@@ -909,6 +909,7 @@ WEnd
 #Region Additional Functions
 
 Func _About()
+	ConsoleWrite('@@ (911) :(' & @MIN & ':' & @SEC & ') _About()' & @CR) ;### Function Trace
 	If Not RegRead($REG_KEY_NAME, 'About') Then
 		RegWrite($REG_KEY_NAME, 'About', 'REG_DWORD', 1)
 		_ShellAboutDlg()
@@ -916,6 +917,7 @@ Func _About()
 EndFunc   ;==>_About
 
 Func _ApplicationCheck()
+	ConsoleWrite('@@ (919) :(' & @MIN & ':' & @SEC & ') _ApplicationCheck()' & @CR) ;### Function Trace
 	Local $hWnd = WinGetHandle($GUI_UNIQUE)
 
 	If Not $hWnd Then
@@ -951,6 +953,7 @@ Func _ApplicationCheck()
 EndFunc   ;==>_ApplicationCheck
 
 Func _Capture_X1($iX, $iY, $iWidth, $iHeight, $iColCrop, $iColFill = 0, $fCapture = 0, $fDib = 1, $hDesktop = 0)
+	ConsoleWrite('@@ (955) :(' & @MIN & ':' & @SEC & ') _Capture_X1()' & @CR) ;### Function Trace
 	Local $W = $iWidth + 10, $H = $iHeight + 10, $Xc = Floor($W / 2), $Yc = Floor($H / 2)
 
 	Local $hBitmap, $hScreen
@@ -1039,6 +1042,7 @@ Func _Capture_X1($iX, $iY, $iWidth, $iHeight, $iColCrop, $iColFill = 0, $fCaptur
 EndFunc   ;==>_Capture_X1
 
 Func _Capture_X3($iX, $iY, $iSrcWidth, $iSrcHeight, $iDstWidth, $iDstHeight)
+	ConsoleWrite('@@ (1044) :(' & @MIN & ':' & @SEC & ') _Capture_X3()' & @CR) ;### Function Trace
 	Local $hPen = 0, $Xc = Floor($iDstWidth / 2), $Yc = Floor($iDstHeight / 2)
 
 	Local $hDesktop = _WinAPI_GetDesktopWindow()
@@ -1100,6 +1104,7 @@ Func _Capture_X3($iX, $iY, $iSrcWidth, $iSrcHeight, $iDstWidth, $iDstHeight)
 EndFunc   ;==>_Capture_X3
 
 Func _Capture_Desktop()
+	ConsoleWrite('@@ (1106) :(' & @MIN & ':' & @SEC & ') _Capture_Desktop()' & @CR) ;### Function Trace
 	Local $hDesktop = _WinAPI_GetDesktopWindow()
 	Local $hDC = _WinAPI_GetDC($hDesktop)
 	Local $hMemDC = _WinAPI_CreateCompatibleDC($hDC)
@@ -1124,6 +1129,7 @@ Func _Capture_Desktop()
 EndFunc   ;==>_Capture_Desktop
 
 Func _CreateReport()
+	ConsoleWrite('@@ (1131) :(' & @MIN & ':' & @SEC & ') _CreateReport()' & @CR) ;### Function Trace
 	Local $Data[2], $Text = ''
 
 	$Text &= '###AutoIt Control Viewer Report File###' & @CRLF
@@ -1201,6 +1207,7 @@ Func _CreateReport()
 EndFunc   ;==>_CreateReport
 
 Func _GetCursor(ByRef $iX, ByRef $iY, $hWnd = 0)
+	ConsoleWrite('@@ (1209) :(' & @MIN & ':' & @SEC & ') _GetCursor()' & @CR) ;### Function Trace
 	Local $tPoint = _WinAPI_GetMousePos($hWnd, $hWnd)
 
 	If @error Then
@@ -1214,6 +1221,7 @@ Func _GetCursor(ByRef $iX, ByRef $iY, $hWnd = 0)
 EndFunc   ;==>_GetCursor
 
 Func _GetNN($hWnd)
+	ConsoleWrite('@@ (1223) :(' & @MIN & ':' & @SEC & ') _GetNN()' & @CR) ;### Function Trace
 	Local $ID = 0
 
 	Local $Text = _WinAPI_GetClassName($hWnd)
@@ -1243,6 +1251,7 @@ Func _GetNN($hWnd)
 EndFunc   ;==>_GetNN
 
 Func _GetStyleString($iStyle, $fDialog = 1, $fExStyle = 0)
+	ConsoleWrite('@@ (1253) :(' & @MIN & ':' & @SEC & ') _GetStyleString()' & @CR) ;### Function Trace
 	Local $Data, $Text = ''
 
 	If $fExStyle Then
@@ -1268,6 +1277,7 @@ Func _GetStyleString($iStyle, $fDialog = 1, $fExStyle = 0)
 EndFunc   ;==>_GetStyleString
 
 Func _GUICreate()
+	ConsoleWrite('@@ (1279) :(' & @MIN & ':' & @SEC & ') _GUICreate()' & @CR) ;### Function Trace
 	Local $Style = BitOR($GUI_SS_DEFAULT_INPUT, $ES_READONLY, $WS_TABSTOP)
 	Local $ID, $tData, $hIcon, $hImageList
 	Local $Height = $_Height - 653
@@ -1622,6 +1632,7 @@ Func _GUICreate()
 EndFunc   ;==>_GUICreate
 
 Func _HWnd($CtrlID)
+	ConsoleWrite('@@ (1634) :(' & @MIN & ':' & @SEC & ') _HWnd()' & @CR) ;### Function Trace
 	If Not IsHWnd($CtrlID) Then
 		$CtrlID = GUICtrlGetHandle($CtrlID)
 		If Not $CtrlID Then
@@ -1633,6 +1644,7 @@ Func _HWnd($CtrlID)
 EndFunc   ;==>_HWnd
 
 Func _IsCrop($iX, $iY, ByRef $iDX, ByRef $iDY)
+	ConsoleWrite('@@ (1646) :(' & @MIN & ':' & @SEC & ') _IsCrop()' & @CR) ;### Function Trace
 	Local $Xn = 36 + Floor((349 - $_Crop[0]) / 2)
 	Local $Yn = 171 + Floor((223 - $_Crop[1]) / 2)
 	Local $Xc = Floor($_Crop[0] / 2)
@@ -1679,6 +1691,7 @@ Func _IsCrop($iX, $iY, ByRef $iDX, ByRef $iDY)
 EndFunc   ;==>_IsCrop
 
 Func _IsDark($iRgb)
+	ConsoleWrite('@@ (1693) :(' & @MIN & ':' & @SEC & ') _IsDark()' & @CR) ;### Function Trace
 	If CC_GetRValue($iRgb) + CC_GetGValue($iRgb) + CC_GetBValue($iRgb) < 3 * 255 / 2 Then
 		Return 1
 	Else
@@ -1687,6 +1700,7 @@ Func _IsDark($iRgb)
 EndFunc   ;==>_IsDark
 
 Func _LoadResourceImage($hInstance, $sResType, $sResName, $iResLanguage = 0)
+	ConsoleWrite('@@ (1702) :(' & @MIN & ':' & @SEC & ') _LoadResourceImage()' & @CR) ;### Function Trace
 	Local $hInfo
 	If $iResLanguage Then
 		$hInfo = _WinAPI_FindResourceEx($hInstance, $sResType, $sResName, $iResLanguage)
@@ -1734,6 +1748,7 @@ Func _LoadResourceImage($hInstance, $sResType, $sResName, $iResLanguage = 0)
 EndFunc   ;==>_LoadResourceImage
 
 Func _OSVersion()
+	ConsoleWrite('@@ (1750) :(' & @MIN & ':' & @SEC & ') _OSVersion()' & @CR) ;### Function Trace
 	Local $oService = ObjGet('winmgmts:\\.\root\cimv2')
 	If Not IsObj($oService) Then
 		Return ''
@@ -1752,6 +1767,7 @@ Func _OSVersion()
 EndFunc   ;==>_OSVersion
 
 Func _PtInRect($tRect, $tPoint)
+	ConsoleWrite('@@ (1769) :(' & @MIN & ':' & @SEC & ') _PtInRect()' & @CR) ;### Function Trace
 	Local $Ret = DllCall('user32.dll', 'int', 'PtInRect', 'ptr', DllStructGetPtr($tRect), 'uint64', DllStructGetData(DllStructCreate('uint64', DllStructGetPtr($tPoint)), 1))
 
 	If @error Then
@@ -1761,6 +1777,7 @@ Func _PtInRect($tRect, $tPoint)
 EndFunc   ;==>_PtInRect
 
 Func _ReadRegistry()
+	ConsoleWrite('@@ (1779) :(' & @MIN & ':' & @SEC & ') _ReadRegistry()' & @CR) ;### Function Trace
 	$_XPos = _WinAPI_DWordToInt(_RegRead($REG_KEY_NAME, 'XPos', 'REG_DWORD', $_XPos))
 	$_YPos = _WinAPI_DWordToInt(_RegRead($REG_KEY_NAME, 'YPos', 'REG_DWORD', $_YPos))
 	$_Height = _ValueCheck(_RegRead($REG_KEY_NAME, 'ClientHeight', 'REG_DWORD', $_Height), 552)
@@ -1801,6 +1818,7 @@ Func _ReadRegistry()
 EndFunc   ;==>_ReadRegistry
 
 Func _RegRead($sKey, $sValue, $sType, $sDefault)
+	ConsoleWrite('@@ (1820) :(' & @MIN & ':' & @SEC & ') _RegRead()' & @CR) ;### Function Trace
 	Local $Val, $Error = 0
 
 	$Val = RegRead($sKey, $sValue)
@@ -1837,6 +1855,7 @@ Func _RegRead($sKey, $sValue, $sType, $sDefault)
 EndFunc   ;==>_RegRead
 
 Func _SCAW()
+	ConsoleWrite('@@ (1857) :(' & @MIN & ':' & @SEC & ') _SCAW()' & @CR) ;### Function Trace
 	Local $tState = _WinAPI_GetKeyboardState()
 
 	For $i = 0x5B To 0x5C
@@ -1853,6 +1872,7 @@ Func _SCAW()
 EndFunc   ;==>_SCAW
 
 Func _SetAutoItInfo()
+	ConsoleWrite('@@ (1874) :(' & @MIN & ':' & @SEC & ') _SetAutoItInfo()' & @CR) ;### Function Trace
 	Local $Data[101][6] = [[0]]
 
 	_GUICtrlListView_BeginUpdate($hAutoIt)
@@ -1971,6 +1991,7 @@ Func _SetAutoItInfo()
 EndFunc   ;==>_SetAutoItInfo
 
 Func _SetBitmap($hWnd, $hBitmap, $fUpdate = 0)
+	ConsoleWrite('@@ (1993) :(' & @MIN & ':' & @SEC & ') _SetBitmap()' & @CR) ;### Function Trace
 	Local $Pos
 	If Not $hBitmap Then
 		$Pos = ControlGetPos($hWnd, '', 0)
@@ -1997,12 +2018,14 @@ Func _SetBitmap($hWnd, $hBitmap, $fUpdate = 0)
 EndFunc   ;==>_SetBitmap
 
 Func _SetData($CtrlID, $sData)
+	ConsoleWrite('@@ (2020) :(' & @MIN & ':' & @SEC & ') _SetData()' & @CR) ;### Function Trace
 	If StringCompare(GUICtrlRead($CtrlID), $sData, 1) Then
 		_GUICtrlEdit_SetText($CtrlID, $sData)
 	EndIf
 EndFunc   ;==>_SetData
 
 Func _SetStyle($hWnd, $iStyle, $fSet, $fExStyle = 0, $fUpdate = 0)
+	ConsoleWrite('@@ (2027) :(' & @MIN & ':' & @SEC & ') _SetStyle()' & @CR) ;### Function Trace
 	$hWnd = _HWnd($hWnd)
 	If Not $hWnd Then
 		Return
@@ -2031,6 +2054,7 @@ Func _SetStyle($hWnd, $iStyle, $fSet, $fExStyle = 0, $fUpdate = 0)
 EndFunc   ;==>_SetStyle
 
 Func _SetControlInfo($hWnd)
+	ConsoleWrite('@@ (2056) :(' & @MIN & ':' & @SEC & ') _SetControlInfo()' & @CR) ;### Function Trace
 	If Not $hWnd Then
 		For $i = 16 To 30
 			_SetData($Input[$i], '')
@@ -2128,6 +2152,7 @@ Func _SetControlInfo($hWnd)
 EndFunc   ;==>_SetControlInfo
 
 Func _SetWindowInfo($hWnd)
+	ConsoleWrite('@@ (2154) :(' & @MIN & ':' & @SEC & ') _SetWindowInfo()' & @CR) ;### Function Trace
 	If Not $hWnd Then
 		For $i = 3 To 15
 			_SetData($Input[$i], '')
@@ -2180,6 +2205,7 @@ Func _SetWindowInfo($hWnd)
 EndFunc   ;==>_SetWindowInfo
 
 Func _SetFrameOrder($hOwner)
+	ConsoleWrite('@@ (2207) :(' & @MIN & ':' & @SEC & ') _SetFrameOrder()' & @CR) ;### Function Trace
 	If BitAND(_WinAPI_GetWindowLong($hOwner, $GWL_EXSTYLE), $WS_EX_TOPMOST) Then
 		WinSetOnTop($hFrame, '', 1)
 	Else
@@ -2193,6 +2219,7 @@ Func _SetFrameOrder($hOwner)
 EndFunc   ;==>_SetFrameOrder
 
 Func _ShellAboutDlg($hParent = 0)
+	ConsoleWrite('@@ (2221) :(' & @MIN & ':' & @SEC & ') _ShellAboutDlg()' & @CR) ;### Function Trace
 	If Not $hAbout Then
 		_GDIPlus_Startup()
 		Local $hPng
@@ -2246,6 +2273,7 @@ Func _ShellAboutDlg($hParent = 0)
 EndFunc   ;==>_ShellAboutDlg
 
 Func _ShellKillProcess($PID, $hParent = 0)
+	ConsoleWrite('@@ (2275) :(' & @MIN & ':' & @SEC & ') _ShellKillProcess()' & @CR) ;### Function Trace
 	Local $Name = _WinAPI_GetProcessName($PID)
 
 	If Not $Name Then
@@ -2263,6 +2291,7 @@ Func _ShellKillProcess($PID, $hParent = 0)
 EndFunc   ;==>_ShellKillProcess
 
 Func _ShellReportDlg($hParent = 0)
+	ConsoleWrite('@@ (2293) :(' & @MIN & ':' & @SEC & ') _ShellReportDlg()' & @CR) ;### Function Trace
 	Local $Path = FileSaveDialog('Save Report', StringRegExpReplace($PathDlg, '\\[^\\]*\Z', ''), 'Text Document (*.txt)|All Files (*.*)', 2 + 16, 'Report.txt', $hParent)
 	If Not $Path Then
 		Return 1
@@ -2279,6 +2308,7 @@ Func _ShellReportDlg($hParent = 0)
 EndFunc   ;==>_ShellReportDlg
 
 Func _ShellSaveDlg($hParent = 0)
+	ConsoleWrite('@@ (2310) :(' & @MIN & ':' & @SEC & ') _ShellSaveDlg()' & @CR) ;### Function Trace
 	Local $Path = FileSaveDialog('Save Image', StringRegExpReplace($PathDlg, '\\[^\\]*\Z', ''), 'Portable Network Graphic (*.png)|All Files (*.*)', 2 + 16, 'Capture.png', $hParent)
 	If Not $Path Then
 		Return 1
@@ -2307,6 +2337,7 @@ Func _ShellSaveDlg($hParent = 0)
 EndFunc   ;==>_ShellSaveDlg
 
 Func _ShowFrame($fShow, $tRect = 0, $hOwner = 0)
+	ConsoleWrite('@@ (2339) :(' & @MIN & ':' & @SEC & ') _ShowFrame()' & @CR) ;### Function Trace
 	If (Not $_Alpha) Or (Not $_Highlight) Then
 		Return
 	EndIf
@@ -2370,6 +2401,7 @@ Func _ShowFrame($fShow, $tRect = 0, $hOwner = 0)
 EndFunc   ;==>_ShowFrame
 
 Func _ShowProc()
+	ConsoleWrite('@@ (2403) :(' & @MIN & ':' & @SEC & ') _ShowProc()' & @CR) ;### Function Trace
 	If $Hold Then
 		If TimerDiff($Hold) > 250 Then
 			AdlibUnRegister('_ShowProc')
@@ -2389,6 +2421,7 @@ Func _ShowProc()
 EndFunc   ;==>_ShowProc
 
 Func _Update($fDisable = 0)
+	ConsoleWrite('@@ (2423) :(' & @MIN & ':' & @SEC & ') _Update()' & @CR) ;### Function Trace
 	$Refresh += 1
 
 	Opt('GUIOnEventMode', 1)
@@ -2433,6 +2466,7 @@ Func _Update($fDisable = 0)
 EndFunc   ;==>_Update
 
 Func _ValueCheck($iValue, $iMin, $iMax = Default)
+	ConsoleWrite('@@ (2468) :(' & @MIN & ':' & @SEC & ') _ValueCheck()' & @CR) ;### Function Trace
 	If ($iMin <> Default) And ($iValue < $iMin) Then
 		Return $iMin
 	EndIf
@@ -2443,6 +2477,7 @@ Func _ValueCheck($iValue, $iMin, $iMax = Default)
 EndFunc   ;==>_ValueCheck
 
 Func _WriteRegistry()
+	ConsoleWrite('@@ (2479) :(' & @MIN & ':' & @SEC & ') _WriteRegistry()' & @CR) ;### Function Trace
 	RegWrite($REG_KEY_NAME, 'XPos', 'REG_DWORD', $_XPos)
 	RegWrite($REG_KEY_NAME, 'YPos', 'REG_DWORD', $_YPos)
 	RegWrite($REG_KEY_NAME, 'ClientWidth', 'REG_DWORD', $_Width)
@@ -2485,6 +2520,7 @@ EndFunc   ;==>_WriteRegistry
 #Region Hotkey Assigned Functions
 
 Func _HK_Edit()
+	ConsoleWrite('@@ (2522) :(' & @MIN & ':' & @SEC & ') _HK_Edit()' & @CR) ;### Function Trace
 	Switch _WinAPI_GetFocus()
 		Case 0
 
@@ -2500,6 +2536,7 @@ Func _HK_Edit()
 EndFunc   ;==>_HK_Edit
 
 Func _HK_SelectAll()
+	ConsoleWrite('@@ (2538) :(' & @MIN & ':' & @SEC & ') _HK_SelectAll()' & @CR) ;### Function Trace
 	Local $ID = _WinAPI_GetDlgCtrlID(_WinAPI_GetFocus())
 
 	For $i = 0 To UBound($Input) - 1
@@ -2518,6 +2555,7 @@ EndFunc   ;==>_HK_SelectAll
 #Region Windows Message Functions
 
 Func WM_COMMAND($hWnd, $iMsg, $wParam, $lParam)
+	ConsoleWrite('@@ (2557) :(' & @MIN & ':' & @SEC & ') WM_COMMAND()' & @CR) ;### Function Trace
 	; Handler from ColorChooser.au3
 	CC_WM_COMMAND($hWnd, $iMsg, $wParam, $lParam)
 
@@ -2532,6 +2570,7 @@ Func WM_COMMAND($hWnd, $iMsg, $wParam, $lParam)
 EndFunc   ;==>WM_COMMAND
 
 Func WM_GETMINMAXINFO($hWnd, $iMsg, $wParam, $lParam)
+	ConsoleWrite('@@ (2572) :(' & @MIN & ':' & @SEC & ') WM_GETMINMAXINFO()' & @CR) ;### Function Trace
 	Local $tMMI = DllStructCreate('long Reserved[2];long MaxSize[2];long MaxPosition[2];long MinTrackSize[2];long MaxTrackSize[2]', $lParam)
 
 	Switch $hWnd
@@ -2546,6 +2585,7 @@ Func WM_GETMINMAXINFO($hWnd, $iMsg, $wParam, $lParam)
 EndFunc   ;==>WM_GETMINMAXINFO
 
 Func WM_LBUTTONDBLCLK($hWnd, $iMsg, $wParam, $lParam)
+	ConsoleWrite('@@ (2587) :(' & @MIN & ':' & @SEC & ') WM_LBUTTONDBLCLK()' & @CR) ;### Function Trace
 	Switch $hWnd
 		Case $hForm
 
@@ -2559,6 +2599,7 @@ Func WM_LBUTTONDBLCLK($hWnd, $iMsg, $wParam, $lParam)
 EndFunc   ;==>WM_LBUTTONDBLCLK
 
 Func WM_LBUTTONDOWN($hWnd, $iMsg, $wParam, $lParam)
+	ConsoleWrite('@@ (2601) :(' & @MIN & ':' & @SEC & ') WM_LBUTTONDOWN()' & @CR) ;### Function Trace
 	Switch $hWnd
 		Case $hForm
 
@@ -2572,6 +2613,7 @@ Func WM_LBUTTONDOWN($hWnd, $iMsg, $wParam, $lParam)
 EndFunc   ;==>WM_LBUTTONDOWN
 
 Func WM_NOTIFY($hWnd, $iMsg, $wParam, $lParam)
+	ConsoleWrite('@@ (2615) :(' & @MIN & ':' & @SEC & ') WM_NOTIFY()' & @CR) ;### Function Trace
 	If $Enum Then
 		Return $GUI_RUNDEFMSG
 	EndIf
@@ -2726,6 +2768,7 @@ Func WM_NOTIFY($hWnd, $iMsg, $wParam, $lParam)
 EndFunc   ;==>WM_NOTIFY
 
 Func WM_MOVE($hWnd, $iMsg, $wParam, $lParam)
+	ConsoleWrite('@@ (2770) :(' & @MIN & ':' & @SEC & ') WM_MOVE()' & @CR) ;### Function Trace
 	Switch $hWnd
 		Case $hForm
 			If Not _WinAPI_IsIconic($hForm) Then
@@ -2738,6 +2781,7 @@ Func WM_MOVE($hWnd, $iMsg, $wParam, $lParam)
 EndFunc   ;==>WM_MOVE
 
 Func WM_SIZE($hWnd, $iMsg, $wParam, $lParam)
+	ConsoleWrite('@@ (2783) :(' & @MIN & ':' & @SEC & ') WM_SIZE()' & @CR) ;### Function Trace
 	Switch $hWnd
 		Case $hForm
 			Switch $wParam
@@ -2750,6 +2794,7 @@ Func WM_SIZE($hWnd, $iMsg, $wParam, $lParam)
 EndFunc   ;==>WM_SIZE
 
 Func WM_SETCURSOR($hWnd, $iMsg, $wParam, $lParam)
+	ConsoleWrite('@@ (2796) :(' & @MIN & ':' & @SEC & ') WM_SETCURSOR()' & @CR) ;### Function Trace
 	If $Browser Then
 		Return $GUI_RUNDEFMSG
 	EndIf
@@ -2799,6 +2844,7 @@ EndFunc   ;==>WM_SETCURSOR
 #Region AutoIt Exit Functions
 
 Func AutoItExit()
+	ConsoleWrite('@@ (2846) :(' & @MIN & ':' & @SEC & ') AutoItExit()' & @CR) ;### Function Trace
 	_WriteRegistry()
 
 	If $hPrev Then

@@ -15,8 +15,7 @@ While Not _IsPressed($KEY_ESC)
 	Local $controlPos = _UIA_ControlGetPos(0, $oUIElement)
 	If Not CoordEquals($lastKnownPos, $controlPos) Then
 		$lastKnownPos = $controlPos
-		ConsoleWrite(_ArrayToString($controlPos) & @CRLF)
-		_ShowFrame(True, $controlPos)
+		_ShowFrame(True, $oUIElement, $controlPos)
 	EndIf
 	Sleep(10)
 WEnd
@@ -31,7 +30,7 @@ Func CoordEquals($a, $b)
 	Return True
 EndFunc
 
-Func _ShowFrame($fShow, $Pos = 0)
+Func _ShowFrame($fShow, $Element = Null, $Pos = 0)
 	Local Const $FrameAlpha = 192
 	Local Const $FrameColor = 0xFF0000
 	Local Const $Thickness = 2
@@ -52,6 +51,12 @@ Func _ShowFrame($fShow, $Pos = 0)
 		Next
 		Return
 	EndIf
+
+	; If the given element is one of our frame windows, do not change the frame
+	$hWnd = _UIA_GetPropertyValue($Element, $UIA_NativeWindowHandlePropertyId)
+	For $n = 0 To 3
+		If Int($hFrame[$n]) == Int($hWnd) Then Return
+	Next
 
 	WinMove($hFrame[0], '', $Pos[0], $Pos[1], $Thickness, $Pos[3]) ; Left
 	WinMove($hFrame[1], '', $Pos[0], $Pos[1], $Pos[2], $Thickness) ; Top

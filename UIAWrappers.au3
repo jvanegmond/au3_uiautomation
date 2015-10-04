@@ -61,7 +61,7 @@ EndFunc   ;==>_UIA_Init
 ;                  Failure		- Returns 0 and sets @error on errors:
 ;                  |@error=1    - $oElement was not a UI element
 ; ===============================================================================================================================
-; Just return a single property or if its an array string them together
+; Returns the value single property
 Func _UIA_GetPropertyValue($oElement, $iPropertyID)
 	Local $vRetVal
 
@@ -98,7 +98,7 @@ EndFunc   ;==>_UIA_CreateControlPattern
 
 ; Gets an UIA element for a Win32 window handle
 Func __UIA_ControlGetFromHwnd($hwnd)
-	If Not WinExists($hwnd) Then Return SetError(1, 0, 0)
+	If Not IsHWnd($hwnd) Or Not WinExists($hwnd) Then Return SetError(1, 0, 0)
 
 	Local $pCondition
 	$UIA_oUIAutomation.CreatePropertyCondition($UIA_NativeWindowHandlePropertyId, Int($hwnd), $pCondition)

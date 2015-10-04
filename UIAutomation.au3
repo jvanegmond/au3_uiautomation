@@ -8,7 +8,12 @@
 ; Author(s) .....: junkew, Manadar
 ; ===============================================================================================================================
 
-Func _UIA_ControlGetHandle($hWnd, $controlID)
+Func _UIA_ControlGetHandle(ByRef $hWnd, $controlID)
+	If $hWnd == 0 Then
+		$hWnd = _UIA_GetDesktopElement()
+		If @error Then Return SetError(3, 0, 0)
+	EndIf
+
 	If Not _UIA_IsElement($hWnd) Then
 		$hWnd = __UIA_ControlGetFromHwnd($hWnd)
 		If @error Then Return SetError(1, 0, 0)

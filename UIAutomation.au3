@@ -86,15 +86,8 @@ Func _UIA_ControlClick($hWnd, $controlID, $button = "invoke", $clicks = 1, $x = 
 EndFunc
 
 Func _UIA_ControlGetPos($hWnd, $controlID)
-	If Not _UIA_IsElement($hWnd) Then
-		$hWnd = __UIA_ControlGetFromHwnd($hWnd)
-		If @error Then Return SetError(1, 0, 0)
-	EndIf
-
-	If Not _UIA_IsElement($controlID) Then
-		$controlID = __UIA_ControlGet($hWnd, $controlID)
-		If @error Then Return SetError(2, 0, 0)
-	EndIf
+	$controlID = _UIA_ControlGetHandle($hWnd, $controlID)
+	If @error Then Return SetError(@error, 0, 0)
 
 	Local $aWinBound = _UIA_GetPropertyValue($hWnd, $UIA_BoundingRectanglePropertyId)
 	Local $aBound = _UIA_GetPropertyValue($controlID, $UIA_BoundingRectanglePropertyId)

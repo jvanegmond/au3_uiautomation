@@ -13,7 +13,7 @@ While Not _IsPressed($KEY_ESC)
 	Local $mousePos = MouseGetPos()
 	Local $oUIElement = _UIA_GetElementFromPoint($mousePos)
 	Local $controlPos = _UIA_ControlGetPos(0, $oUIElement)
-	If Not CoordEquals($lastKnownPos, $controlPos) Then
+	If Not @error And Not CoordEquals($lastKnownPos, $controlPos) Then
 		$lastKnownPos = $controlPos
 		_ShowFrame(True, $oUIElement, $controlPos)
 	EndIf
@@ -35,13 +35,15 @@ Func _ShowFrame($fShow, $Element = Null, $Pos = 0)
 	Local Const $FrameColor = 0xFF0000
 	Local Const $Thickness = 2
 
+	Local Static $hParent
 	Local Static $hFrame[4]
 
-	If Not $hFrame[0] Then
+	If Not $hParent Then
+		$hParent = GUICreate("", 100, 100) ; Don't show this to avoid windows appearing in task bar
 		For $n = 0 To 3
-			$hFrame[$n] = GUICreate('', 100, 100, -1, -1, $WS_POPUP, $WS_EX_APPWINDOW)
+			$hFrame[$n] = GUICreate("", 100, 100, -1, -1, $WS_POPUP, -1, $hParent)
 			GUISetBkColor($FrameColor, $hFrame[$n])
-			WinSetTrans($hFrame[$n], '', $FrameAlpha)
+			WinSetTrans($hFrame[$n], "", $FrameAlpha)
 		Next
 	EndIf
 
@@ -58,13 +60,13 @@ Func _ShowFrame($fShow, $Element = Null, $Pos = 0)
 		If Int($hFrame[$n]) == Int($hWnd) Then Return
 	Next
 
-	WinMove($hFrame[0], '', $Pos[0], $Pos[1], $Thickness, $Pos[3]) ; Left
-	WinMove($hFrame[1], '', $Pos[0], $Pos[1], $Pos[2], $Thickness) ; Top
-	WinMove($hFrame[2], '', $Pos[0] + $Pos[2] - $Thickness, $Pos[1], $Thickness, $Pos[3]) ; Right
-	WinMove($hFrame[3], '', $Pos[0], $Pos[1] + $Pos[3] - $Thickness, $Pos[2], $Thickness) ; Bottom
+	WinMove($hFrame[0], "", $Pos[0], $Pos[1], $Thickness, $Pos[3]) ; Left
+	WinMove($hFrame[1], "", $Pos[0], $Pos[1], $Pos[2], $Thickness) ; Top
+	WinMove($hFrame[2], "", $Pos[0] + $Pos[2] - $Thickness, $Pos[1], $Thickness, $Pos[3]) ; Right
+	WinMove($hFrame[3], "", $Pos[0], $Pos[1] + $Pos[3] - $Thickness, $Pos[2], $Thickness) ; Bottom
 
 	For $n = 0 To 3
 		GUISetState(@SW_SHOWNOACTIVATE, $hFrame[$n])
-		WinSetOnTop($hFrame[$n], '', $WINDOWS_ONTOP)
+		WinSetOnTop($hFrame[$n], "", $WINDOWS_ONTOP)
 	Next
 EndFunc   ;==>_ShowFrame

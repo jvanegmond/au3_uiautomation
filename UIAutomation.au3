@@ -92,13 +92,17 @@ EndFunc
 
 Func _UIA_ControlGetPos($hWnd, $controlID)
 	$controlID = _UIA_ControlGetHandle($hWnd, $controlID)
-	If @error Then Return SetError(@error, 0, 0)
+	If @error Then Return SetError(1, @error, 0)
 
 	Local $aWinBound = _UIA_GetPropertyValue($hWnd, $UIA_BoundingRectanglePropertyId)
 	Local $aBound = _UIA_GetPropertyValue($controlID, $UIA_BoundingRectanglePropertyId)
 
 	$aBound[0] = $aBound[0] - $aWinBound[0]
 	$aBound[1] = $aBound[1] - $aWinBound[1]
+
+	If $aBound[2] == 0 And $aBound[3] == 0 Then
+		Return SetError(2, 0, 0)
+	EndIf
 
 	Return $aBound
 EndFunc

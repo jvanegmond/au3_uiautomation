@@ -1,24 +1,73 @@
 #include <Array.au3>
+#include <GUIConstantsEx.au3>
 #include <WinAPISys.au3>
 #include <WindowsConstants.au3>
 #include <Math.au3>
 #include <Misc.au3>
 #include <AutoItConstants.au3>
+#include <WinAPIRes.au3>
 #include "..\..\UIAutomation.au3"
 
-Const $KEY_ESC = "1B"
-Local $lastKnownPos[4]
+Const $MB_PRIMARY = "01"
+Const $ICON_FOLDER = @ScriptDir & "\Resources\"
+Const $ICON_PICKER = $ICON_FOLDER & "202.ico"
+Const $ICON_PICKER_EMPTY = $ICON_FOLDER & "201.ico"
 
-While Not _IsPressed($KEY_ESC)
-	Local $mousePos = MouseGetPos()
-	Local $oUIElement = _UIA_GetElementFromPoint($mousePos)
-	Local $controlPos = _UIA_ControlGetPos(0, $oUIElement)
-	If Not @error And Not CoordEquals($lastKnownPos, $controlPos) Then
-		$lastKnownPos = $controlPos
-		_ShowFrame(True, $oUIElement, $controlPos)
-	EndIf
-	Sleep(10)
+Local $hWnd = GUICreate("Spy", 140, 140)
+
+GUICtrlCreateGroup('Browse Tool', 20, 20, 100, 100)
+
+Local $Icon = GUICtrlCreateIcon($ICON_PICKER, -1, 36, 36, 64, 64)
+
+GUISetState()
+
+While True
+	$msg = GUIGetMsg()
+	Switch $msg
+		Case $GUI_EVENT_CLOSE
+			ExitLoop
+		Case $Icon
+			StartCaptureUnderCursor()
+	EndSwitch
 WEnd
+
+Exit
+
+Func StartCaptureUnderCursor()
+	Static $hCursor
+
+	If Not $hCursor Then
+		$hCursor = _WinAPI_LoadCursorFromFile($ICON_FOLDER & '100.cur')
+	EndIf
+
+
+	GUICtrlSetImage($Icon, $ICON_PICKER_EMPTY)
+
+	$hPrev = _WinAPI_CopyCursor(_WinAPI_LoadCursor(0, $IDI_APPLICATION))
+	_WinAPI_SetSystemCursor($hCursor, $IDI_APPLICATION, 1)
+
+	CaptureUnderCursor()
+
+	GUICtrlSetImage($Icon, $ICON_PICKER)
+
+	_WinAPI_SetSystemCursor($hPrev, $IDI_APPLICATION, 1)
+EndFunc
+
+Func CaptureUnderCursor()
+	Local $lastKnownPos[4]
+	While _IsPressed($MB_PRIMARY)
+		Local $mousePos = MouseGetPos()
+		Local $oUIElement = _UIA_GetElementFromPoint($mousePos)
+		Local $controlPos = _UIA_ControlGetPos(0, $oUIElement)
+		If Not @error And Not CoordEquals($lastKnownPos, $controlPos) Then
+			$lastKnownPos = $controlPos
+			_ShowFrame(True, $oUIElement, $controlPos)
+		EndIf
+		Sleep(20)
+	WEnd
+
+	_ShowFrame(False)
+EndFunc
 
 Func CoordEquals($a, $b)
 	If Not IsArray($a) Or Not IsArray($b) Then Return False

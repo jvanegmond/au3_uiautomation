@@ -42,13 +42,18 @@ Func _UIA_ControlGetText($hWnd, $controlID)
 	If @error Then Return SetError(1, @error, 0)
 
 	$tPattern = _UIA_CreateControlPattern($controlID, $UIA_ValuePattern)
-	If Not IsObj($tPattern) Then
-		Return SetError(2, 0, "")
+	If IsObj($tPattern) Then
+		Local $sText = ""
+		$tPattern.CurrentValue($sText)
+		Return $sText
 	EndIf
 
-	Local $sText = ""
-	$tPattern.CurrentValue($sText)
-	Return $sText
+	Local $sText = _UIA_GetPropertyValue($controlID, $UIA_NamePropertyId)
+	If StringLen($sText) > 0 Then
+		Return $sText
+	EndIf
+
+	Return SetError(2, 0, "")
 EndFunc
 
 Func _UIA_ControlCheck($hWnd, $controlID, $checked = True)

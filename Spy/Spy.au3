@@ -62,7 +62,6 @@ Func CaptureUnderCursor()
 		If Not @error And Not CoordEquals($lastKnownPos, $controlPos) Then
 			$lastKnownPos = $controlPos
 			_ShowFrame(True, $oUIElement, $controlPos)
-			_ShowProperties($oUIElement)
 		EndIf
 		Sleep(20)
 	WEnd
@@ -71,8 +70,10 @@ Func CaptureUnderCursor()
 EndFunc
 
 Func _ShowProperties($oUIElement)
+	Local $text = _UIA_ControlGetText(Default, $oUIElement)
+	If StringInStr($text, @CRLF) Then $text = StringLeft($text, StringInStr($text, @CRLF, 0, 4) - 2) & " ... "
 	ConsoleWrite("Id: " & _UIA_GetPropertyValue($oUIElement, $UIA_AutomationIdPropertyId) & @CRLF)
-	ConsoleWrite("Text: " & _UIA_ControlGetText(Default, $oUIElement) & @CRLF)
+	ConsoleWrite("Text: " & $text & @CRLF)
 	ConsoleWrite("Class: " & _UIA_GetPropertyValue($oUIElement, $UIA_ClassNamePropertyId) & @CRLF)
 	ConsoleWrite("Native handle: " & _UIA_GetPropertyValue($oUIElement, $UIA_NativeWindowHandlePropertyId) & @CRLF)
 	ConsoleWrite("Bounding box: " & _ArrayToString(_UIA_GetPropertyValue($oUIElement, $UIA_BoundingRectanglePropertyId), ", ") & @CRLF)
@@ -118,6 +119,8 @@ Func _ShowFrame($fShow, $Element = Null, $Pos = 0)
 	For $n = 0 To 3
 		If Int($hFrame[$n]) == Int($hWnd) Then Return
 	Next
+
+	_ShowProperties($Element)
 
 	WinMove($hFrame[0], "", $Pos[0], $Pos[1], $Thickness, $Pos[3]) ; Left
 	WinMove($hFrame[1], "", $Pos[0], $Pos[1], $Pos[2], $Thickness) ; Top

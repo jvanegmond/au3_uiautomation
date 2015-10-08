@@ -61,7 +61,7 @@ EndFunc   ;==>_UIA_Init
 ;                  Failure		- Returns 0 and sets @error on errors:
 ;                  |@error=1    - $oElement was not a UI element
 ; ===============================================================================================================================
-; Returns the value single property
+; Returns the value of single property
 Func _UIA_GetPropertyValue($oElement, $iPropertyID)
 	Local $vRetVal
 

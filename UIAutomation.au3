@@ -9,7 +9,7 @@
 ; ===============================================================================================================================
 
 Func _UIA_ControlGetHandle(ByRef $hWnd, $controlID)
-	If $hWnd == 0 Then
+	If $hWnd == 0 Or $hWnd == Default Then
 		$hWnd = _UIA_GetDesktopElement()
 		If @error Then Return SetError(3, 0, 0)
 	EndIf
@@ -29,7 +29,7 @@ EndFunc
 
 Func _UIA_ControlSetText($hWnd, $controlID, $text, $flag = 0)
 	$controlID = _UIA_ControlGetHandle($hWnd, $controlID)
-	If @error Then Return SetError(@error, 0, 0)
+	If @error Then Return SetError(1, @error, 0)
 
 	$tPattern = _UIA_CreateControlPattern($controlID, $UIA_ValuePattern)
 	$tPattern.SetValue($text)
@@ -39,9 +39,13 @@ EndFunc
 
 Func _UIA_ControlGetText($hWnd, $controlID)
 	$controlID = _UIA_ControlGetHandle($hWnd, $controlID)
-	If @error Then Return SetError(@error, 0, 0)
+	If @error Then Return SetError(1, @error, 0)
 
 	$tPattern = _UIA_CreateControlPattern($controlID, $UIA_ValuePattern)
+	If Not IsObj($tPattern) Then
+		Return SetError(2, 0, "")
+	EndIf
+
 	Local $sText = ""
 	$tPattern.CurrentValue($sText)
 	Return $sText
@@ -49,7 +53,7 @@ EndFunc
 
 Func _UIA_ControlCheck($hWnd, $controlID, $checked = True)
 	$controlID = _UIA_ControlGetHandle($hWnd, $controlID)
-	If @error Then Return SetError(@error, 0, 0)
+	If @error Then Return SetError(1, @error, 0)
 
 	$currentState = _UIA_GetPropertyValue($controlID, $UIA_ToggleToggleStatePropertyId)
 
@@ -61,14 +65,14 @@ EndFunc
 
 Func _UIA_ControlFocus($hWnd, $controlID)
 	$controlID = _UIA_ControlGetHandle($hWnd, $controlID)
-	If @error Then Return SetError(@error, 0, 0)
+	If @error Then Return SetError(1, @error, 0)
 
 	$controlID.SetFocus()
 EndFunc
 
 Func _UIA_ControlClick($hWnd, $controlID, $button = "invoke", $clicks = 1, $x = Default, $y = Default)
 	$controlID = _UIA_ControlGetHandle($hWnd, $controlID)
-	If @error Then Return SetError(@error, 0, 0)
+	If @error Then Return SetError(1, @error, 0)
 
 	If $button = "invoke" Then
 		$controlID.SetFocus()
@@ -109,7 +113,7 @@ EndFunc
 
 Func _UIA_ControlSend($hWnd, $controlID, $string, $flag = 0)
 	$controlID = _UIA_ControlGetHandle($hWnd, $controlID)
-	If @error Then Return SetError(@error, 0, 0)
+	If @error Then Return SetError(1, @error, 0)
 
 	WinActivate($hWnd)
 

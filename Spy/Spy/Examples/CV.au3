@@ -61,7 +61,7 @@
 #include <WinAPITheme.au3>
 #include <WindowsConstants.au3>
 #include "ColorChooser.au3"
-#include "..\..\UIAutomation.au3"
+#include "..\..\..\UIAutomation.au3"
 
 Opt('GUIResizeMode', BitOR($GUI_DOCKLEFT, $GUI_DOCKTOP, $GUI_DOCKWIDTH, $GUI_DOCKHEIGHT))
 Opt('MustDeclareVars', 1)
@@ -169,7 +169,7 @@ Local $tPoint, $tRect
 
 If Not @Compiled Then
 	For $i = 0 To 7
-		$hCursor[$i] = _WinAPI_LoadCursorFromFile(@ScriptDir & '\Resources\' & (100 + $i) & '.cur')
+		$hCursor[$i] = _WinAPI_LoadCursorFromFile(@ScriptDir & '\..\Resources\' & (100 + $i) & '.cur')
 	Next
 Else
 	For $i = 0 To 7
@@ -229,7 +229,7 @@ While 1
 			_ShowFrame(0)
 			_WinAPI_SetFocus($hListView)
 			If Not @Compiled Then
-				GUICtrlSetImage($Icon[0], @ScriptDir & '\Resources\201.ico')
+				GUICtrlSetImage($Icon[0], @ScriptDir & '\..\Resources\201.ico')
 			Else
 				GUICtrlSetImage($Icon[0], @ScriptFullPath, 201)
 			EndIf
@@ -470,7 +470,7 @@ While 1
 			$hOver = 0
 			$Browser = 0
 			If Not @Compiled Then
-				GUICtrlSetImage($Icon[0], @ScriptDir & '\Resources\202.ico')
+				GUICtrlSetImage($Icon[0], @ScriptDir & '\..\Resources\202.ico')
 			Else
 				GUICtrlSetImage($Icon[0], @ScriptFullPath, 202)
 			EndIf
@@ -1403,7 +1403,7 @@ Func _GUICreate()
 	$Icon[0] = GUICtrlCreateIcon('', 0, 330, 30, 64, 64)
 	_SetStyle(-1, $WS_TABSTOP, 0)
 	If Not @Compiled Then
-		GUICtrlSetImage(-1, @ScriptDir & '\Resources\202.ico')
+		GUICtrlSetImage(-1, @ScriptDir & '\..\Resources\202.ico')
 	Else
 		GUICtrlSetImage(-1, @ScriptFullPath, 202)
 	EndIf
@@ -1448,7 +1448,7 @@ Func _GUICreate()
 	GUICtrlSetCursor(-1, 0)
 	_SetStyle(-1, $WS_TABSTOP, 0)
 	If Not @Compiled Then
-		GUICtrlSetImage(-1, @ScriptDir & '\Resources\210.ico')
+		GUICtrlSetImage(-1, @ScriptDir & '\..\Resources\210.ico')
 	Else
 		GUICtrlSetImage(-1, @ScriptFullPath, 210)
 	EndIf
@@ -1511,7 +1511,7 @@ Func _GUICreate()
 	_GUIImageList_ReplaceIcon($hIL, -1, $hIcon)
 	_WinAPI_DestroyIcon($hIcon)
 	If Not @Compiled Then
-		$hIcon = _WinAPI_ExtractIcon(@ScriptDir & '\Resources\214.ico', 0, 1)
+		$hIcon = _WinAPI_ExtractIcon(@ScriptDir & '\..\Resources\214.ico', 0, 1)
 	Else
 		$hIcon = _WinAPI_ExtractIcon(@ScriptFullPath, -214, 1)
 	EndIf
@@ -1540,7 +1540,7 @@ Func _GUICreate()
 		$hImageList = _GUIImageList_Create(16, 16, 5, 1)
 		If Not @Compiled Then
 			For $i = 203 To 206
-				_GUIImageList_AddIcon($hImageList, @ScriptDir & '\Resources\' & $i & '.ico')
+				_GUIImageList_AddIcon($hImageList, @ScriptDir & '\..\Resources\' & $i & '.ico')
 			Next
 		Else
 			For $i = 203 To 206
@@ -2224,7 +2224,7 @@ Func _ShellAboutDlg($hParent = 0)
 		_GDIPlus_Startup()
 		Local $hPng
 		If Not @Compiled Then
-			$hPng = _GDIPlus_ImageLoadFromFile(@ScriptDir & '\Resources\About.png')
+			$hPng = _GDIPlus_ImageLoadFromFile(@ScriptDir & '\..\Resources\About.png')
 		Else
 			$hPng = _LoadResourceImage($hInstance, 'PNG', 'ABOUT')
 		EndIf

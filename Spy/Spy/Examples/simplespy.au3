@@ -6,7 +6,7 @@
 #include <Misc.au3>
 #include <Array.au3>
 #include <GDIPlus.au3>
-#include "..\UIAutomation.au3"
+#include "..\..\..\UIAutomation.au3"
 
 #AutoIt3Wrapper_UseX64=Y  ;Should be used for stuff like tagpoint having right struct etc. when running on a 64 bits os
 
@@ -70,13 +70,14 @@ Func GetElementInfo()
 		;MsgBox(1, "No parent", "UI Automation failed", 10)
 		;Return
 	Else
-		While ($i <= 9) And (IsObj($oParentHandle[$i]) = True)
+		While ($i < 9) And (IsObj($oParentHandle[$i]) = True)
 			$i = $i + 1
+			ConsoleWrite($i & @CRLF)
 			$oTW.getparentelement($oParentHandle[$i - 1], $oParentHandle[$i])
 			$oParentHandle[$i] = ObjCreateInterface($oParentHandle[$i], $sIID_IUIAutomationElement, $dtagIUIAutomationElement)
 		WEnd
 		$parentCount = $i - 1
-		ConsoleWrite($parentCount & " parents found" & @CRLF)
+		;ConsoleWrite($parentCount & " parents found" & @CRLF)
 	EndIf
 
 	If IsObj($oldUIElement) Then

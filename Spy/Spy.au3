@@ -6,16 +6,16 @@
 #include <Misc.au3>
 #include <AutoItConstants.au3>
 #include <WinAPIRes.au3>
-#include "..\..\UIAutomation.au3"
+#include "..\UIAutomation.au3"
 
 Const $MB_PRIMARY = "01"
-Const $ICON_FOLDER = @ScriptDir & "\Resources\"
+Const $ICON_FOLDER = @ScriptDir & "\Spy\Resources\"
 Const $ICON_PICKER = $ICON_FOLDER & "202.ico"
 Const $ICON_PICKER_EMPTY = $ICON_FOLDER & "201.ico"
 
 Local $hWnd = GUICreate("Spy", 140, 140)
 
-GUICtrlCreateGroup('Browse Tool', 20, 20, 100, 100)
+GUICtrlCreateGroup('Browse Tool', 20, 20, 98, 104)
 
 Local $Icon = GUICtrlCreateIcon($ICON_PICKER, -1, 36, 36, 64, 64)
 
@@ -35,16 +35,16 @@ Exit
 
 Func StartCaptureUnderCursor()
 	Static $hCursor
+	Static $hPrev
 
 	If Not $hCursor Then
 		$hCursor = _WinAPI_LoadCursorFromFile($ICON_FOLDER & '100.cur')
+		$hPrev = _WinAPI_CopyCursor(_WinAPI_LoadCursor(0, $IDI_APPLICATION))
 	EndIf
 
+	_WinAPI_SetSystemCursor($hCursor, $IDI_APPLICATION, 1)
 
 	GUICtrlSetImage($Icon, $ICON_PICKER_EMPTY)
-
-	$hPrev = _WinAPI_CopyCursor(_WinAPI_LoadCursor(0, $IDI_APPLICATION))
-	_WinAPI_SetSystemCursor($hCursor, $IDI_APPLICATION, 1)
 
 	CaptureUnderCursor()
 
@@ -62,11 +62,21 @@ Func CaptureUnderCursor()
 		If Not @error And Not CoordEquals($lastKnownPos, $controlPos) Then
 			$lastKnownPos = $controlPos
 			_ShowFrame(True, $oUIElement, $controlPos)
+			_ShowProperties($oUIElement)
 		EndIf
 		Sleep(20)
 	WEnd
 
 	_ShowFrame(False)
+EndFunc
+
+Func _ShowProperties($oUIElement)
+	ConsoleWrite("Id: " & _UIA_GetPropertyValue($oUIElement, $UIA_AutomationIdPropertyId) & @CRLF)
+	ConsoleWrite("Text: " & _UIA_ControlGetText(Default, $oUIElement) & @CRLF)
+	ConsoleWrite("Class: " & _UIA_GetPropertyValue($oUIElement, $UIA_ClassNamePropertyId) & @CRLF)
+	ConsoleWrite("Native handle: " & _UIA_GetPropertyValue($oUIElement, $UIA_NativeWindowHandlePropertyId) & @CRLF)
+	ConsoleWrite("Bounding box: " & _ArrayToString(_UIA_GetPropertyValue($oUIElement, $UIA_BoundingRectanglePropertyId), ", ") & @CRLF)
+	ConsoleWrite(@CRLF)
 EndFunc
 
 Func CoordEquals($a, $b)
